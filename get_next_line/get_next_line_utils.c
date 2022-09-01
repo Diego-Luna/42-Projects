@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 15:47:49 by anacamilalu       #+#    #+#             */
-/*   Updated: 2022/09/01 14:20:39 by anacamilalu      ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "get_next_line.h"
 
 void	*ft_malloc_zero(size_t count, size_t size)
