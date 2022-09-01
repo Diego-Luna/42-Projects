@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 15:47:49 by anacamilalu       #+#    #+#             */
-/*   Updated: 2022/08/31 16:26:08 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/01 14:20:39 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 void	*ft_malloc_zero(size_t count, size_t size)
 {
-	void			*r;
+	void			*clean_total;
 	size_t			total;
-	unsigned char	*p;
+	unsigned char	*str_p;
 
 	total = count * size;
-	r = malloc(total);
-	if (!r)
+	clean_total = malloc(total);
+	if (!clean_total)
 	{
 		return (NULL);
 	}
-	p = (unsigned char *)r;
+	str_p = (unsigned char *)clean_total;
 	while (total != 0)
 	{
-		*p = '\0';
-		p++;
+		*str_p = '\0';
+		str_p++;
 		total--;
 	}
-	return (r);
+	return (clean_total);
 }
 
 char	*ft_strdup(const char *str_1)
@@ -79,42 +79,42 @@ void	ft_strs_cleans(char **str_1, char **str_2, char **str_3)
 	}
 }
 
-int	contains_newline(const char *s)
+int	ft_contains_newline(const char *str)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while (str[i])
 	{
-		if (s[i] == '\n')
+		if (str[i] == '\n')
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-char	*join_strs(const char *s1, const char *s2)
+char	*ft_join_strs(const char *str_1, const char *str_2)
 {
-	char	*s;
-	int		len;
-	int		i;
+	char	*str;
+	int		len_str_1;
+	int		len_str_2;
 
-	len = 0;
-	if (!s1 && !s2)
+	len_str_1 = 0;
+	if (!str_1 && !str_2)
 		return (NULL);
-	while (s1 && s1[len])
-		len++;
-	i = 0;
-	while (s2 && s2[i])
-		i++;
-	s = ft_malloc_zero(len + i + 1, sizeof * s);
-	if (!s)
+	while (str_1 && str_1[len_str_1])
+		len_str_1++;
+	len_str_2 = 0;
+	while (str_2 && str_2[len_str_2])
+		len_str_2++;
+	str = ft_malloc_zero(len_str_1 + len_str_2 + 1, sizeof * str);
+	if (!str)
 		return (NULL);
-	len = -1;
-	while (s1 && s1[++len])
-		s[len] = s1[len];
-	i = -1;
-	while (s2 && s2[++i])
-		s[len + i] = s2[i];
-	return (s);
+	len_str_1 = -1;
+	while (str_1 && str_1[++len_str_1])
+		str[len_str_1] = str_1[len_str_1];
+	len_str_2 = -1;
+	while (str_2 && str_2[++len_str_2])
+		str[len_str_1 + len_str_2] = str_2[len_str_2];
+	return (str);
 }
