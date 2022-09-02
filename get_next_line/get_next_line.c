@@ -1,5 +1,33 @@
 #include "get_next_line.h"
 
+char	*get_before_newline(const char *str)
+{
+	int		i;
+	char	*res;
+
+	i = 0;
+	while (str[i] != '\0' && str[i] != '\n')
+		i++;
+	if (str[i] != '\0' && str[i] == '\n')
+		i++;
+	res = ft_malloc_zero(i + 1, sizeof * res);
+	if (!res)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (str[i] != '\0' && str[i] != '\n')
+	{
+		res[i] = str[i];
+		i++;
+	}
+	if (str[i] == '\n')
+	{
+		res[i] = str[i];
+	}
+	return (res);
+}
+
 void	ft_read_line(int fd, char **save, char **temporary)
 {
 	char	*buf;
@@ -28,6 +56,18 @@ void	ft_read_line(int fd, char **save, char **temporary)
 	ft_strs_cleans(&buf, 0, 0);
 }
 
+char	*ft_parse_line(char **save, char **temporary)
+{
+	char	*line;
+
+	*temporary = ft_strdup(*save);
+	ft_strs_cleans(save, 0, 0);
+	*save = get_after_newline(*temporary);
+	line = get_before_newline(*temporary);
+	ft_strs_cleans(temporary, 0, 0);
+	return (line);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*line;
@@ -39,5 +79,9 @@ char	*get_next_line(int fd)
 	if (fd < 0 && BUFFER_SIZE <= 0)
 		return (NULL);
 	ft_read_line(fd, &save, &temporary);
+	if (save != NULL && *save != '\0')
+	{
+		line = ft_parse_line(&save, &temporary);
+	}
 	return (line);
 }
