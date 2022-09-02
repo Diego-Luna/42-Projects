@@ -28,6 +28,34 @@ char	*get_before_newline(const char *str)
 	return (res);
 }
 
+char	*get_after_newline(const char *str)
+{
+	char	*res;
+	int		ii;
+	int		i;
+
+	i = 0;
+	ii = 0;
+	while (str && str[ii])
+		ii++;
+	while (str[i] != '\0' && str[i] != '\n')
+		i++;
+	if (str[i] != '\0' && str[i] == '\n')
+		i++;
+	res = ft_malloc_zero((ii - i) + 1, sizeof * res);
+	if (!res)
+	{
+		return (NULL);
+	}
+	ii = 0;
+	while (str[i + ii])
+	{
+		res[ii] = str[i + ii];
+		ii++;
+	}
+	return (res);
+}
+
 void	ft_read_line(int fd, char **save, char **temporary)
 {
 	char	*buf;
