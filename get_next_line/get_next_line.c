@@ -104,12 +104,17 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	temporary = NULL;
-	if (fd < 0 && BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	ft_read_line(fd, &save, &temporary);
 	if (save != NULL && *save != '\0')
 	{
 		line = ft_parse_line(&save, &temporary);
+	}
+	if (!line || *line == '\0')
+	{
+		ft_strs_cleans(&save, &line, &temporary);
+		return (NULL);
 	}
 	return (line);
 }
