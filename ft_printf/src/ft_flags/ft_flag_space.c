@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_space.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:46:45 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/05/10 14:47:06 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/09/03 15:47:28 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	ft_flag_space(t_printf *ob_print, char *str)
 {
-	ft_strtostr(ob_print->strold, str);
-	ft_strtostr(str, " ");
-	ft_strtostrn(str, ob_print->strold, 1);
+	if (ft_is_negative_number(str) != 1)
+	{
+		ft_strtostr(ob_print->strold, str);
+		ft_strtostr(str, " ");
+		ft_strtostrn(str, ob_print->strold, 1);
+	}
 }

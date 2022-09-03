@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 09:23:59 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/03 13:29:12 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/03 15:38:31 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void	ft_strtostrnn(char *str1, const char *str2, int start1, int start2 );
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
 void	ft_putstr_fd(char *s, int fd);
+int		ft_is_negative_number(char *str);
 
 #endif
