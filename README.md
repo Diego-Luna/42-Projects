@@ -2,7 +2,7 @@
 
 
 ## ft_printf
-run : clear && make clean && make all && gcc main.c libftprintf.a && ./a.out | cat -e
+run : clear && make clean && make all && gcc main.c -Wall -Wextra -Werror libftprintf.a && ./a.out | cat -e
 
 
 ## get_next_line
