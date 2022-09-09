@@ -6,11 +6,26 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:07:06 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/08/24 14:00:01 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/08 19:03:49 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+
+void	ft_is_x_or_X (t_printf *ob_print, char *val)
+{
+	int	i_leng;
+
+	i_leng = ft_strlen(val);
+	if (val[i_leng - 1] >= 'a' && val[i_leng - 1] <= 'z' )
+	{
+		ob_print->is_x = 'x';
+	}
+	else{
+		ob_print->is_x = 'X';
+	}
+
+}
 
 void	ft_result_x(int arg, t_printf *ob_print, char *val, \
 	int counter)
@@ -21,6 +36,7 @@ void	ft_result_x(int arg, t_printf *ob_print, char *val, \
 	str[0] = '\0';
 	hex[0] = '\0';
 	ft_strtostr(hex, val);
+	ft_is_x_or_X(ob_print, val);
 	if (arg >= 0)
 	{
 		ft_inttostrx(arg, str, val);
@@ -33,6 +49,7 @@ void	ft_result_x(int arg, t_printf *ob_print, char *val, \
 		ft_inttostrx(arg, str, hex);
 		ft_fill(str, hex[0], 8);
 	}
+	ft_flags(ob_print, str, counter);
 	ft_update_result(ob_print, str, counter);
 }
 

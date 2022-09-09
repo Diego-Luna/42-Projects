@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:06:55 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/03 15:42:43 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/08 19:04:50 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 int	main(void)
 {
-	int ii = ft_printf("\nf :  % d ", 0);
-	int	i = printf("\np :  % d ", 0);
+	int ii = ft_printf("\nf :  %#X  %#x %#X", 1, 4, 12);
+	int	i = printf("\np :  %#X  %#x %#X", 1, 4, 12);
 
 	printf("\nValor de p :{%i}", i);
 	printf("\nValor de f :{%i}", ii);

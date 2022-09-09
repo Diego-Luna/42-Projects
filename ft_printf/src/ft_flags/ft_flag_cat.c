@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flag_cat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 21:03:10 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/05/13 10:41:59 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/09/08 19:05:25 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 void	ft_flag_cat(t_printf *ob_print, char *str)
 {
-	ft_strtostr(ob_print->strold, str);
-	ft_strtostr(str, "0x");
-	ft_strtostrn(str, ob_print->strold, 2);
+	if (str[0] != '0' && str[1] != '\n')
+	{
+		ft_strtostr(ob_print->strold, str);
+		if (ob_print->is_x == 'X')
+		{
+			ft_strtostr(str, "0X");
+		}
+		else
+		{
+			ft_strtostr(str, "0x");
+		}
+		ft_strtostrn(str, ob_print->strold, 2);
+	}
 }
