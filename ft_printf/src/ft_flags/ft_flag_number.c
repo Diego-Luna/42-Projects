@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 14:45:23 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/08/25 20:27:19 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/08 20:08:16 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	ft_flag_number(t_printf *ob_print, char *flags, char *str)
 	int		full;
 	int		i;
 
+	printf("\n -> str:{%s}flag:{%s}", str, flags);
+	printf("\n -> ob_print flag:{%s}", ob_print->flags);
 	leng_string = ft_strlen(str);
 	leng_numbes = ft_atoi(flags);
 	if (leng_numbes > leng_string)
