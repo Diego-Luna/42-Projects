@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 09:23:59 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/08 19:02:45 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/09 17:34:43 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ void	ft_str_flags(const char *s, int i, t_printf *ob_print);
 void	ft_flag_cat(t_printf *ob_print, char *str);
 void	ft_flag_plus(t_printf *ob_print, char *str);
 void	ft_flag_space(t_printf *ob_print, char *str);
-void	ft_flag_number(t_printf *ob_print, char *flags, char *str);
 void	ft_control(t_printf *ob_print, char *flags, char *str);
+void	ft_flag_minus(t_printf *ob_print, char *flags, char *str);
+void	ft_flag_number(t_printf *ob_print, char *flags, char *str);
 
 // str
 int		ft_check(char s);

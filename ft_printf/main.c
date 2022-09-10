@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:06:55 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/08 20:07:19 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/09 19:14:25 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 
 int	main(void)
 {
-	int ii = ft_printf("\nf : %.1s %.2s %.3s %.4s ", " - ", "", "4", "");
-	int	i = printf("\np : %.1s %.2s %.3s %.4s ", " - ", "", "4", "");
+	int ii = ft_printf("\nf : %-1c %-2c %-3c ", '0', 0, '1');
+	int	i = printf("\np : %-1c %-2c %-3c ", '0', 0, '1');
 
 	printf("\nValor de p :{%i}", i);
 	printf("\nValor de f :{%i}", ii);

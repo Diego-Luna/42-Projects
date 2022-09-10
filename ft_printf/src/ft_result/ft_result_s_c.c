@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 19:05:24 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/08/24 13:58:11 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/09 19:01:34 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_check_end(t_printf *ob_print)
 
 void	ft_result_c(int arg, t_printf *ob_print, int counter)
 {
-	char	str[2];
+	char	str[100];
 
 	if (ob_print->str_end == 0)
 	{

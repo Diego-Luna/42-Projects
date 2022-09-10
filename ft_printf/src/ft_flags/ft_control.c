@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 20:20:29 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/08 19:05:33 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/09 17:34:06 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_control(t_printf *ob_print, char *flags, char *str)
 	{
 		if (flags[i] == '-')
 		{
+			ft_flag_minus(ob_print, flags, str);
 		}
 		if ((flags[i] == '0' || flags[i] == '.') && ft_isdigit(flags[i + 1]))
 			ft_flag_number(ob_print, flags, str);
