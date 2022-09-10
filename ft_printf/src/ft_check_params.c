@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 10:03:25 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/05/24 08:24:54 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/09/09 19:38:08 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	ft_check_params(va_list arg, t_printf *ob_print)
 {
 	int	num;
 
+	ob_print->more_return = 0;
 	if (!arg)
 	{
 		return (-1);

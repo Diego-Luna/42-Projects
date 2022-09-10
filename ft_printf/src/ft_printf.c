@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 10:30:18 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/08 18:58:30 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/09 19:37:02 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	ft_check_c(t_printf *ob_print)
 		result = ft_findc_next_same(ob_print->convers,
 				ft_findc(ob_print->convers, 0, 'c'), 'c') + 1 ;
 		return ((int)(ft_strlen(ob_print->result) + (result)));
+	}
+	if (ob_print->more_return > 0)
+	{
+		return (ft_strlen(ob_print->str) - ft_strlen(ob_print->convers) \
+	+ ob_print->more_return);
 	}
 	return (ft_strlen(ob_print->str) - ft_strlen(ob_print->convers));
 }

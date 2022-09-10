@@ -6,7 +6,7 @@
 /*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 09:23:59 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/09 17:34:43 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/09/09 19:32:27 by anacamilalu      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_printf
 	int		i_result;
 	int		i_str;
 	char	is_x;
+	char	more_return;
 }	t_printf;
 
 // main
