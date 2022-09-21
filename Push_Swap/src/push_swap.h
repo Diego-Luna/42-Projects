@@ -10,6 +10,7 @@
 
 int	ft_isdigit(int i);
 int	ft_atoi(const char *str);
+int	ft_strlen(const char *str);
 int	ft_str_equal(char *str_1, char *str_2);
 
 int		main(int argc, char **argv);

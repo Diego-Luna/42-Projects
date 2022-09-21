@@ -14,9 +14,11 @@ int	ft_strlen(const char *str)
 
 int	ft_isdigit(int i)
 {
-	while ('0' <= i && i <= '9')
+	while (i >= '0' && i <= '9')
+	{
 		return (1);
-	return (0);
+	}
+	return (-1);
 }
 
 int	ft_str_equal(char *str_1, char *str_2)
@@ -24,23 +26,19 @@ int	ft_str_equal(char *str_1, char *str_2)
 	int i;
 
 	i = 0;
-	printf("\n{%s}", str_1);
-	printf("\n{%s}", str_2);
 	if (ft_strlen(str_1) != ft_strlen(str_2))
 	{
 		return (-1);
 	}
-	printf("\n -> Paso el if numero 1");
 	while (str_1[i] == str_2[i])
 	{
 		i++;
 	}
-	printf("\n -> Paso el if numero 2 {%s}{%s}", str_1[i], str_2[i]);
-	if (str_1[i] == str_2[i])
+	i--;
+	if (str_1[i] == str_2[i] && ft_strlen(str_1) == (i))
 	{
 		return (1);
 	}
-	printf("\n -> Paso el if numero 3");
 	return (-1);
 }
 
