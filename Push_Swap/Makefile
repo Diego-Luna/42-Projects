@@ -1,6 +1,6 @@
 NAME = push_swap.a
 
-SRCS =	main.c ./src/libft.c
+SRCS =	main.c ./src/libft.c ./src/check.c
 
 OBJS = ${SRCS:.c=.o}
 

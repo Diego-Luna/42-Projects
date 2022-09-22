@@ -1,7 +1,6 @@
 
 #include "./push_swap.h"
 
-
 int	ft_strlen(const char *str)
 {
 	int	i;
