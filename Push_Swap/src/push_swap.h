@@ -14,6 +14,8 @@ int	ft_strlen(const char *str);
 int	ft_str_equal(char *str_1, char *str_2);
 
 // verifcacion
+int ft_is_number(char *str);
+int ft_is_negative_number(char *str);
 int ft_verification(int argc, char **argv);
 
 int		main(int argc, char **argv);
