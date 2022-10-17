@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 12:23:02 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/04 13:40:59 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:29:05 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:55:37 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

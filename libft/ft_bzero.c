@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 13:43:08 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/03/31 14:53:43 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:21:17 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:47:49 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

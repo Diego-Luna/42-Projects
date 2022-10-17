@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 12:37:29 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/03/31 12:52:49 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:21:46 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:45:01 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

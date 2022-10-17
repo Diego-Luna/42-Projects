@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 12:48:06 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/07 13:29:38 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:21:34 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:52:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

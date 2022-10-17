@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 12:57:18 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/03/31 13:00:53 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:28:57 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:45:59 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

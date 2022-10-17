@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 18:54:42 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/03/31 18:59:36 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:34:58 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:49:14 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

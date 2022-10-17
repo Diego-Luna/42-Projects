@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/03 19:11:08 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/07 12:30:59 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:35:22 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:59:52 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

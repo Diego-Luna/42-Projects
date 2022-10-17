@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 07:58:43 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/07 12:25:20 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:36:56 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:58:34 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

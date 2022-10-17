@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 12:40:43 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/07 12:40:41 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:28:34 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:45:51 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

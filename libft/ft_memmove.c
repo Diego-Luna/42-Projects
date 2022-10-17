@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 18:13:13 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/01 13:10:26 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:31:38 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:48:04 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

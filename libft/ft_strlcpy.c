@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 18:34:53 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/06 12:24:22 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:33:43 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:48:26 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

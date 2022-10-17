@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+         #
+#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/04/07 10:36:22 by diegofranci       #+#    #+#              #
-#    Updated: 2022/04/07 12:35:03 by diegofranci      ###   ########.fr        #
+#    Created: 2022/10/17 14:59:37 by dluna-lo          #+#    #+#              #
+#    Updated: 2022/10/17 14:59:41 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

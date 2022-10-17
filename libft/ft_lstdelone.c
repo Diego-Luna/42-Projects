@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 07:47:11 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/07 07:58:26 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:37:04 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:58:23 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

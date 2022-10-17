@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 20:24:29 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/06 12:03:36 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:22:00 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:43:46 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

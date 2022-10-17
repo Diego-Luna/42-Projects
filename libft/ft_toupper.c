@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 18:47:29 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/03/31 18:51:59 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:35:08 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:48:56 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

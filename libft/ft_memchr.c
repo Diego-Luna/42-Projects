@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 19:54:20 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/04/06 12:12:26 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/10/17 14:30:54 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/17 14:50:06 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
