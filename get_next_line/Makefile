@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+         #
+#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/29 19:31:18 by anacamilalu       #+#    #+#              #
-#    Updated: 2022/08/31 16:40:30 by anacamilalu      ###   ########.fr        #
+#    Created: 2022/10/17 15:48:28 by dluna-lo          #+#    #+#              #
+#    Updated: 2022/10/17 15:48:30 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

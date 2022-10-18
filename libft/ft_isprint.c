@@ -6,11 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:28:57 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/17 14:45:59 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/18 11:29:01 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(char c)
+int	ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 	{

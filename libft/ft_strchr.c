@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:32:49 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/17 14:49:27 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/18 12:08:39 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,6 @@ char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
-	if (!s)
-	{
-		return (NULL);
-	}
 	i = 0;
 	while (s[i])
 	{

@@ -6,25 +6,43 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:31:31 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/17 14:47:54 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/18 12:49:20 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+//void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+{
+	size_t			i;
+	unsigned char	*src1;
+
+	i = 0;
+	src1 = (unsigned char *)src;
+	if (!dst && !src)
+		return (NULL);
+	while (i < n)
+	{
+		((unsigned char *)dst)[i] = src1[i];
+		i++;
+	}
+	return ((void *)dst);
+}
+
+/* void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
-	if (dest == NULL || src == NULL)
+	if (dst == NULL || src == NULL)
 	{
-		return (0);
+		return (NULL);
 	}
 	while (i < n)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
-	return (dest);
-}
+	return ((void *)dst);
+} */
