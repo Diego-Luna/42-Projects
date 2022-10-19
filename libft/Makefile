@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 14:59:37 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/10/17 14:59:41 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/10/19 17:44:59 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ CC				= gcc
 
 RM				= rm -f
 
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Werror -Wextra
 
 .c.o:
 		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
@@ -42,7 +42,7 @@ $(NAME): ${OBJS}
 all:	${NAME}
 
 clean:
-		${RM} ${OBJS}
+		${RM} ${OBJS} ${BONUS_OBJS}
 
 fclean:	clean
 		${RM} ${NAME}

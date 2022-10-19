@@ -6,11 +6,10 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:21:17 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/19 13:14:01 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/19 17:46:10 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//- #include <string.h>
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)

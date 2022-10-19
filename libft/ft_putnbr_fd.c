@@ -6,13 +6,13 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:32:14 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/19 13:20:47 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/19 18:20:15 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	num_of_char(int n)
+static int	ft_num_of_char(int n)
 {
 	int				i;
 	unsigned int	num;
@@ -38,7 +38,7 @@ void	ft_putnbr_fd(int n, int fd)
 	unsigned int	num;
 	char			buffer[42];
 
-	i = num_of_char(n);
+	i = ft_num_of_char(n);
 	num = n;
 	if (n < 0)
 	{
