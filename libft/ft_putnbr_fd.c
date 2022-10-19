@@ -6,11 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:32:14 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/17 14:56:53 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:20:47 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 int	num_of_char(int n)
 {

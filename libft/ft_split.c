@@ -6,12 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:32:38 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/19 10:43:01 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:22:48 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static char	*ft_add_strs(const char *s, char c, int *start)
 {
@@ -35,7 +34,7 @@ static char	*ft_add_strs(const char *s, char c, int *start)
 	return (str);
 }
 
-int	ft_number_words(const char *s, char c)
+static int	ft_number_words(const char *s, char c)
 {
 	int	i;
 	int	words;

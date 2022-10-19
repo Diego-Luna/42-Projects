@@ -6,20 +6,14 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:35:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/18 13:21:53 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:34:13 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
-
-# include <stdbool.h>
 # include <stdlib.h>
-# include <strings.h>
 # include <unistd.h>
 
 typedef struct s_list
@@ -27,12 +21,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
-typedef struct s_split_next
-{
-	size_t			start;
-	size_t			length;
-}					t_split_next;
 
 /* Checker */
 int					ft_isalpha(int c);

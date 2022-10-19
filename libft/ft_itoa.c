@@ -6,13 +6,13 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:29:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/17 14:55:37 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:16:15 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int	ft_num_of_char(int n)
+static int	ft_num_of_char(int n)
 {
 	int				i;
 	unsigned int	num;

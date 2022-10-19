@@ -6,12 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:33:35 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/18 14:48:23 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:23:47 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 {
