@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 15:48:28 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/10/17 15:48:30 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/10/21 13:34:40 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,3 +39,5 @@ fclean:	clean
 		${RM} ${NAME}
 
 re:		fclean all
+
+run:	clean && all && ${CC} ${CFLAGS} -D BUFFER_SIZE=26 main.c get_next_line.a && ./a.out test/test_0.txt | cat -e

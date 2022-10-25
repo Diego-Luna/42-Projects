@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:48:44 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/17 15:48:45 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/20 15:06:21 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FT_PRINTF_H
 
 // Test
-# include <fcntl.h>
-# include <stddef.h>
+// # include <fcntl.h>
+// # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
