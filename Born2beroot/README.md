@@ -1,4 +1,4 @@
-# Notas de Born2berrot
+# 🤟 Notas de Born2berrot
 
 * [English](#English)
 * [Español](#Español)
@@ -57,6 +57,15 @@
 * Status : ```sudo systemctl status cron```
 * Reiniciar cron : ```sudo systemctl restart cron```
 * Acceder a el script de cron : ```sudo crontab -u root -e```
+
+### Firma.txt
+
+⚠️ Advertencia: antes de generar un número de firma, apague su máquina virtual. ⚠️
+
+1. Abra iTerm y escriba `cd`
+1. Luego escriba `cd sgoinfre/Perso/dluna-lo/Born2BeRoot`
+2. Luego escriba `shasum Born2BeRoot.vdi` o como se llame el archivo .vdi de su máquina virtual.
+3. Después de unos minutos, debería ver un resultado similar a este: 6e657c4619944be17df3c31faa030c25e43e40af
 
 ----
 ### Defense con respuestas
@@ -177,6 +186,15 @@ Cron o trabajo cron es una utilidad de línea de comandos para programar comando
 * Status : ```sudo systemctl status cron```
 * Restart cron : ```sudo systemctl restart cron```
 * Access the cron script: ```sudo crontab -u root -e```
+
+### Signature.txt
+
+⚠️ Warning: before you generate a signature number, please power off your Virtual Machine. ⚠️
+
+1. Open iTerm and type `cd`
+1. Then type `cd sgoinfre/Perso/dluna-lo/Born2BeRoot`
+2. Then type `shasum Born2BeRoot.vdi` or whatever your Virtual Machine .vdi file is called.
+3. After a few mins, you should see an output similar to this - 6e657c4619944be17df3c31faa030c25e43e40af
 
 ----
 
