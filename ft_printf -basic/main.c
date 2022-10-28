@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 13:06:55 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/09 19:26:19 by anacamilalu      ###   ########.fr       */
+/*   Updated: 2022/10/28 17:09:27 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 int	main(void)
 {
-	int ii = ft_printf("\nf : %-1c %-2c %-3c ", '0', 0, '1');
-	int	i = printf("\np : %-1c %-2c %-3c ", '0', 0, '1');
+	int pointer = 1234567890;
+	int ii = ft_printf("\nf : c{%c} s{%s} p{%p} d{%d} i{%i} u{%u} x{%x} X{%X} {%%}", 'd', "diego", &pointer, 42, 42, -42, 42, 42 );
+	int	i = printf("\np : c{%c} s{%s} p{%p} d{%d} i{%i} u{%u} x{%x} X{%X} {%%}", 'd', "diego", &pointer, 42, 42, -42, 42, 42 );
 
 	printf("\nValor de p :{%i}", i);
 	printf("\nValor de f :{%i}", ii);
