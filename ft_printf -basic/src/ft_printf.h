@@ -6,11 +6,9 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:37:10 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 13:05:56 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:18:45 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
@@ -26,11 +24,11 @@
 typedef struct s_printf
 {
 	char	*str;
-	int	leng;
+	int		leng;
 }	t_printf;
 
 // main
-int		ft_printf(const char *str, ...);
+int	ft_printf(const char *str, ...);
 
 // controller
 int	ft_print_and_length(va_list arg, char *str);
@@ -40,7 +38,7 @@ int	ft_percent_controller(va_list arg, char *str);
 int	ft_putnbr_base(unsigned long nbr, char *base);
 
 // caracteres
-int	ft_result_sign();
+int	ft_result_sign(void);
 int	ft_result_c(int arg);
 int	ft_result_di(int arg);
 int	ft_result_s(char *arg);

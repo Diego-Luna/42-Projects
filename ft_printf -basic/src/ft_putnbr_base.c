@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:37:03 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 13:07:44 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:21:22 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_number_repit(char *base)
 
 	i = 0;
 	j = 0;
-	while (base[i] != '\0' )
+	while (base[i] != '\0')
 	{
 		j = 0;
-		while (base[j] != '\0' )
+		while (base[j] != '\0')
 		{
 			if (base[i] == base[j] && i != j)
 				return (1);
@@ -66,7 +66,8 @@ void	ft_write_2(unsigned long n, char *base)
 	write(1, &base[n], 1);
 }
 
-void	ft_putnbr(unsigned long nb, char *base, unsigned long length, int *l_str)
+void	ft_putnbr(unsigned long nb, char *base, unsigned long length,
+		int *l_str)
 {
 	if (nb < 0)
 	{
@@ -86,8 +87,8 @@ void	ft_putnbr(unsigned long nb, char *base, unsigned long length, int *l_str)
 
 int	ft_putnbr_base(unsigned long nbr, char *base)
 {
-	unsigned long	i;
-	int	leng;
+	unsigned long		i;
+	int					leng;
 
 	leng = 0;
 	if (ft_base_check(base))

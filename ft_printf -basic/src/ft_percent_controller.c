@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:37:58 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 13:03:02 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:15:45 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_percent_controller(va_list arg, char *str)
 		return (ft_result_s(va_arg(arg, char *)));
 	if (str[1] == 'p')
 		return (ft_result_p(va_arg(arg, unsigned long)));
-	if (str[1] == 'd' || str[1]  == 'i')
+	if (str[1] == 'd' || str[1] == 'i')
 		return (ft_result_di(va_arg(arg, int)));
 	if (str[1] == 'u')
 		return (ft_result_u(va_arg(arg, unsigned int)));

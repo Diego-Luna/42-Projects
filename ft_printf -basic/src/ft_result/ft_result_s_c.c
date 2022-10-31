@@ -6,11 +6,9 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:38:17 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 13:07:24 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:21:52 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "../ft_printf.h"
 
@@ -23,6 +21,5 @@ int	ft_result_s(char *arg)
 int	ft_result_c(int arg)
 {
 	write(1, &arg, 1);
-
 	return (0);
 }

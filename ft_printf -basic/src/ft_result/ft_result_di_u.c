@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:38:25 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 12:22:32 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/31 13:21:37 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_num_of_char(unsigned int n)
 {
-	unsigned int				i;
+	unsigned int	i;
 	unsigned int	num;
 
 	i = 1;
@@ -34,7 +34,7 @@ static int	ft_num_of_char(unsigned int n)
 
 char	*ft_itoa_unsigned(unsigned int n)
 {
-	unsigned int				i;
+	unsigned int	i;
 	unsigned int	num;
 	char			*buffer;
 
@@ -67,6 +67,6 @@ int	ft_result_di(int arg)
 
 int	ft_result_u(unsigned int arg)
 {
-	ft_putstr_fd(ft_itoa_unsigned(arg),1);
+	ft_putstr_fd(ft_itoa_unsigned(arg), 1);
 	return (ft_strlen(ft_itoa_unsigned(arg)) - 1);
 }
