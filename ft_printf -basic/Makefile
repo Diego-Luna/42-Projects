@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/31 11:37:17 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/10/31 11:55:34 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/10/31 15:28:47 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,9 @@ NAME = libftprintf.a
 
 SRCS =	src/ft_printf.c src/ft_print_and_length.c src/ft_percent_controller.c \
 				src/ft_result/ft_result_s_c.c src/ft_result/ft_result_xsp.c \
-				src/ft_putnbr_base.c src/ft_result/ft_result_di_u.c
+				src/ft_putnbr_base.c src/ft_result/ft_result_di_u.c src/utils/utils.c
 
 OBJS = ${SRCS:.c=.o}
-
-
-OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 

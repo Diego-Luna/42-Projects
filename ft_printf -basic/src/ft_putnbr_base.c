@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 11:37:03 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 13:21:22 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:52:19 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,14 @@ void	ft_putnbr(unsigned long nb, char *base, unsigned long length,
 		{
 			ft_putnbr(nb / length, base, length, l_str);
 		}
-		ft_write_2(nb % length, base);
+		if (nb == ft_strlen(base))
+		{
+			ft_write_2(1, base);
+			ft_write_2(0, base);
+			*l_str += 1;
+		}
+		else
+			ft_write_2(nb % length, base);
 	}
 	*l_str += 1;
 }

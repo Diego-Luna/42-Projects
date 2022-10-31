@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_result_di_u.c                                   :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 11:38:25 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 14:40:00 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 14:12:21 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 14:18:49 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-static int	ft_num_of_char(unsigned int n)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned int	i;
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	write(fd, s, i);
+}
+
+static int	ft_num_of_char(int n)
+{
+	int				i;
 	unsigned int	num;
 
 	i = 1;
@@ -32,9 +49,9 @@ static int	ft_num_of_char(unsigned int n)
 	return (i);
 }
 
-char	*ft_itoa_unsigned(unsigned int n)
+char	*ft_itoa(int n)
 {
-	unsigned int	i;
+	int				i;
 	unsigned int	num;
 	char			*buffer;
 
@@ -59,26 +76,14 @@ char	*ft_itoa_unsigned(unsigned int n)
 	return (buffer);
 }
 
-int	ft_result_di(int arg)
+size_t	ft_strlen(const char *s)
 {
-	char *str;
-	size_t leng;
+	int	i;
 
-	str = ft_itoa(arg);
-	leng = ft_strlen(str);
-	ft_putstr_fd(str, 1);
-	free(str);
-	return (leng - 1);
-}
-
-int	ft_result_u(unsigned int arg)
-{
-	char *str;
-	size_t leng;
-
-	str = ft_itoa_unsigned(arg);
-	leng = ft_strlen(str);
-	ft_putstr_fd(str, 1);
-	free(str);
-	return (leng - 1);
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return (i);
 }
