@@ -5,31 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 19:06:25 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/10/28 17:34:40 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:38:25 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 12:22:32 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
-void	ft_result_di(int arg, t_printf *ob_print)
+static int	ft_num_of_char(unsigned int n)
 {
-	(void) arg;
-	(void) ob_print;
-	// char	str[12];
+	unsigned int				i;
+	unsigned int	num;
 
-	// str[0] = '\0';
-	// ft_inttostr(arg, str);
-	// ft_flags(ob_print, str, counter);
-	// ft_update_result(ob_print, str, counter);
+	i = 1;
+	num = n;
+	if (n < 0)
+	{
+		i = 2;
+		num = -n;
+	}
+	while (num > 9)
+	{
+		num = num / 10;
+		i++;
+	}
+	return (i);
 }
 
-void	ft_result_u(unsigned int arg, t_printf *ob_print, int counter)
+char	*ft_itoa_unsigned(unsigned int n)
 {
-	char	str[12];
+	unsigned int				i;
+	unsigned int	num;
+	char			*buffer;
 
-	str[0] = '\0';
-	ft_inttostrn(arg, str);
-	ft_flags(ob_print, str, counter);
-	ft_update_result(ob_print, str, counter);
+	buffer = (char *)malloc(ft_num_of_char(n) + 1);
+	if (buffer == NULL)
+		return (0);
+	i = ft_num_of_char(n);
+	num = n;
+	if (n < 0)
+	{
+		num = -n;
+		buffer[0] = '-';
+	}
+	buffer[i] = 0;
+	buffer[i - 1] = '0';
+	while (num > 0)
+	{
+		i--;
+		buffer[i] = num % 10 + 48;
+		num /= 10;
+	}
+	return (buffer);
+}
+
+int	ft_result_di(int arg)
+{
+	ft_putstr_fd(ft_itoa(arg), 1);
+	return (ft_strlen(ft_itoa(arg)) - 1);
+}
+
+int	ft_result_u(unsigned int arg)
+{
+	ft_putstr_fd(ft_itoa_unsigned(arg),1);
+	return (ft_strlen(ft_itoa_unsigned(arg)) - 1);
 }

@@ -3,55 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_result_s_c.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anacamilalunalopez <anacamilalunalopez@    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 19:05:24 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/09/09 19:01:34 by anacamilalu      ###   ########.fr       */
+/*   Created: 2022/10/31 11:38:17 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 13:07:24 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "../ft_printf.h"
 
-void	ft_result_s(char *arg, t_printf *ob_print, int counter)
+int	ft_result_s(char *arg)
 {
-	if (arg == NULL)
-	{
-		arg = "(null)";
-	}
-	ft_flags(ob_print, arg, counter);
-	ft_update_result(ob_print, arg, counter);
+	ft_putstr_fd(arg, 1);
+	return (ft_strlen(arg) - 1);
 }
 
-void	ft_check_end(t_printf *ob_print)
+int	ft_result_c(int arg)
 {
-	if (ob_print->str_end == 0)
-	{
-		ob_print->str_end = 1;
-	}
-}
+	write(1, &arg, 1);
 
-void	ft_result_c(int arg, t_printf *ob_print, int counter)
-{
-	char	str[100];
-
-	if (ob_print->str_end == 0)
-	{
-		str[1] = '\0';
-		if (arg >= 31)
-		{
-			str[0] = arg;
-		}
-		else if (arg >= 0)
-		{
-			str[0] = '\0';
-			ft_check_end(ob_print);
-		}
-		else
-		{
-			str[0] = '0';
-			ft_check_end(ob_print);
-		}
-		ft_flags(ob_print, str, counter);
-		ft_update_result(ob_print, str, counter);
-	}
+	return (0);
 }

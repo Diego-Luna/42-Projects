@@ -1,22 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_percent_controller.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 11:37:58 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 13:03:02 by dluna-lo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	ft_percent_controller(va_list arg, t_printf *ob_print, char *str, int start)
+int	ft_percent_controller(va_list arg, char *str)
 {
-	start++;
-	if (str[start] == 's')
-		ft_result_s(va_arg(arg, char *), ob_print);
-	if (str[start] == 'c')
-		ft_result_c(va_arg(arg, int), ob_print);
-	if (str[start] == 'd' || str[start]  == 'i')
-		ft_result_di(va_arg(arg, int), ob_print);
-	if (str[start] == 'u')
-		ft_result_u(va_arg(arg, unsigned int), ob_print);
-	if (str[start] == 'x')
-		ft_result_x(va_arg(arg, int), ob_print, "0123456789abcdef");
-	if (str[start] == 'X')
-		ft_result_x(va_arg(arg, int), ob_print, "0123456789ABCDEF");
-	if (str[start] == '%')
-		ft_result_sign(ob_print);
-	if (str[start] == 'p')
-			ft_result_p((unsigned long)va_arg(arg, void *), ob_print);
+	if (str[1] == 'c')
+		return (ft_result_c(va_arg(arg, int)));
+	if (str[1] == 's')
+		return (ft_result_s(va_arg(arg, char *)));
+	if (str[1] == 'p')
+		return (ft_result_p(va_arg(arg, unsigned long)));
+	if (str[1] == 'd' || str[1]  == 'i')
+		return (ft_result_di(va_arg(arg, int)));
+	if (str[1] == 'u')
+		return (ft_result_u(va_arg(arg, unsigned int)));
+	if (str[1] == 'x')
+		return (ft_result_x(va_arg(arg, int), "0123456789abcdef"));
+	if (str[1] == 'X')
+		return (ft_result_x(va_arg(arg, int), "0123456789ABCDEF"));
+	if (str[1] == '%')
+		return (ft_result_sign());
+	return (0);
 }

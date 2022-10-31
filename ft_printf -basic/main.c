@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 13:06:55 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/10/28 17:09:27 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:37:30 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 13:02:18 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@
 
 int	main(void)
 {
+	// int pointer = 1234567890;
+	// int ii = ft_printf("\nf : c{%c} s{%s} p{%p} d{%d} i{%i} u{%u} x{%x} X{%X} {%%}", 'd', "diego", &pointer, 42, 42, -42, 42, 42 );
+	// int	i = printf("\np : c{%c} s{%s} p{%p} d{%d} i{%i} u{%u} x{%x} X{%X} {%%}", 'd', "diego", &pointer, 42, 42, -42, 42, 42 );
 	int pointer = 1234567890;
-	int ii = ft_printf("\nf : c{%c} s{%s} p{%p} d{%d} i{%i} u{%u} x{%x} X{%X} {%%}", 'd', "diego", &pointer, 42, 42, -42, 42, 42 );
-	int	i = printf("\np : c{%c} s{%s} p{%p} d{%d} i{%i} u{%u} x{%x} X{%X} {%%}", 'd', "diego", &pointer, 42, 42, -42, 42, 42 );
+	int ii = ft_printf("\nf : 123456789 0 c{%c}1 s{%s}2 p{%p}3 d{%d}4 i{%i}5 u{%u}6 x{%x}7 X{%X}8 P{%%}9", '1', "Hola como estas", &pointer, pointer, pointer*5, -1, 123456, 987654);
+	int	i = printf("\np : 123456789 0 c{%c}1 s{%s}2 p{%p}3 d{%d}4 i{%i}5 u{%u}6 x{%x}7 X{%X}8 P{%%}9", '1', "Hola como estas", &pointer, pointer, pointer*5, -1, 123456, 987654);
 
 	printf("\nValor de p :{%i}", i);
 	printf("\nValor de f :{%i}", ii);

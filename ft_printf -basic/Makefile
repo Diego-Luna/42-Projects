@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/24 14:02:20 by anacamilalu       #+#    #+#              #
-#    Updated: 2022/10/20 15:49:29 by dluna-lo         ###   ########.fr        #
+#    Created: 2022/10/31 11:37:17 by dluna-lo          #+#    #+#              #
+#    Updated: 2022/10/31 11:55:34 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRCS =	src/ft_printf.c src/ft_check_params.c src/ft_convert.c src/str_1.c src/str_2.c src/str_3.c src/strt_to_number.c \
-				src/ft_result/ft_result_di_u.c src/ft_result/ft_result_s_c.c src/ft_result/ft_result_x.c \
-				src/test/ft_atoi.c src/test/ft_isdigit.c src/test/ft_putstr_fd.c src/test/ft_strlen.c
+SRCS =	src/ft_printf.c src/ft_print_and_length.c src/ft_percent_controller.c \
+				src/ft_result/ft_result_s_c.c src/ft_result/ft_result_xsp.c \
+				src/ft_putnbr_base.c src/ft_result/ft_result_di_u.c
 
 OBJS = ${SRCS:.c=.o}
 

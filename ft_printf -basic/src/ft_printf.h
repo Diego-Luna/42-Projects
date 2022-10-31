@@ -5,10 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/11 09:23:59 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/10/28 17:13:56 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:37:10 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 13:05:56 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
@@ -30,6 +32,20 @@ typedef struct s_printf
 // main
 int		ft_printf(const char *str, ...);
 
-int	ft_check_params(va_list arg, t_printf *ob_print, char *str);
+// controller
+int	ft_print_and_length(va_list arg, char *str);
+int	ft_percent_controller(va_list arg, char *str);
+
+// utils
+int	ft_putnbr_base(unsigned long nbr, char *base);
+
+// caracteres
+int	ft_result_sign();
+int	ft_result_c(int arg);
+int	ft_result_di(int arg);
+int	ft_result_s(char *arg);
+int	ft_result_p(unsigned long p);
+int	ft_result_u(unsigned int arg);
+int	ft_result_x(int arg, char *base);
 
 #endif

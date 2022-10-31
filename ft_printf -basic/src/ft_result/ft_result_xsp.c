@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_result_xsp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 11:37:43 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/31 11:49:01 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:38:08 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 13:07:11 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_result_x(int arg, char *base)
 {
-	va_list		arg;
-	int	lenght;
+	return (ft_putnbr_base(arg, base) - 1);
+}
 
-	va_start(arg, str);
-	lenght = ft_print_and_length(arg, (char *)str);
-	va_end(arg);
-	return (lenght);
+int	ft_result_sign()
+{
+ft_putchar_fd('%', 1);
+return (1);
+}
+
+int	ft_result_p(unsigned long p)
+{
+
+	ft_putstr_fd("0x", 1);
+	return (ft_putnbr_base(p, "0123456789abcdef") + 1);
 }
