@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:48:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/01 17:42:19 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:15:30 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_before_newline(const char *str)
 {
@@ -96,19 +96,6 @@ void	ft_read_line(int fd, char **save, char **temporary)
 	ft_strs_cleans(&buf, 0, 0);
 }
 
-// char	*ft_parse_line(char *save, char *temporary)
-// {
-// 	char	*line;
-
-// 	temporary = ft_strdup(save);
-// 	ft_strs_cleans(&save, 0, 0);
-// 	save = get_after_newline(temporary);
-// 	printf("\n get_after_newline:{%s}", save);
-// 	line = get_before_newline(temporary);
-// 	printf("\n get_after_newline:{%s}", line);
-// 	ft_strs_cleans(&temporary, 0, 0);
-// 	return (line);
-// }
 char	*ft_parse_line(char **save, char **temporary)
 {
 	char	*line;
@@ -116,9 +103,7 @@ char	*ft_parse_line(char **save, char **temporary)
 	*temporary = ft_strdup(*save);
 	ft_strs_cleans(save, 0, 0);
 	*save = get_after_newline(*temporary);
-	// printf("\n --> get_after_newline:{%s}", save[0]);
 	line = get_before_newline(*temporary);
-	// printf("\n -+> get_before_newline:{%s}", line);
 	ft_strs_cleans(temporary, 0, 0);
 	return (line);
 }
@@ -127,21 +112,20 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	char		*temporary;
-	static char	*save = NULL;
+	static char	*save[OPEN_MAX];
 
 	line = NULL;
 	temporary = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd > OPEN_MAX || fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	ft_read_line(fd, &save, &temporary);
-	if (save != NULL && *save != '\0')
+	ft_read_line(fd, &save[fd], &temporary);
+	if (save[fd] && *save[fd] != '\0')
 	{
-		line = ft_parse_line(&save, &temporary);
-		// line = ft_parse_line(save, temporary);
+		line = ft_parse_line(&save[fd], &temporary);
 	}
 	if (!line || *line == '\0')
 	{
-		ft_strs_cleans(&save, &line, &temporary);
+		ft_strs_cleans(&save[fd], &line, &temporary);
 		return (NULL);
 	}
 	return (line);

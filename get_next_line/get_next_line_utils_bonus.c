@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:49:00 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/10/17 15:49:01 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:14:59 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*ft_malloc_zero(size_t count, size_t size)
 {
@@ -25,7 +25,7 @@ void	*ft_malloc_zero(size_t count, size_t size)
 		return (NULL);
 	}
 	str_p = (unsigned char *)clean_total;
-	while (total != 0)
+	while (total > 0)
 	{
 		*str_p = '\0';
 		str_p++;
@@ -48,15 +48,10 @@ char	*ft_strdup(const char *str_1)
 		i++;
 	str_2 = ft_malloc_zero(i + 1, sizeof * str_2);
 	if (!str_2)
-	{
 		return (NULL);
-	}
-	i = 0;
-	while (str_1[i])
-	{
+	i = -1;
+	while (str_1[++i])
 		str_2[i] = str_1[i];
-		i++;
-	}
 	return (str_2);
 }
 
@@ -95,7 +90,7 @@ int	ft_contains_newline(const char *str)
 
 char	*ft_join_strs(const char *str_1, const char *str_2)
 {
-	char	*str;
+	char	*new_str;
 	int		len_str_1;
 	int		len_str_2;
 
@@ -107,14 +102,14 @@ char	*ft_join_strs(const char *str_1, const char *str_2)
 	len_str_2 = 0;
 	while (str_2 && str_2[len_str_2])
 		len_str_2++;
-	str = ft_malloc_zero(len_str_1 + len_str_2 + 1, sizeof * str);
-	if (!str)
+	new_str = ft_malloc_zero(len_str_1 + len_str_2 + 1, sizeof * new_str);
+	if (!new_str)
 		return (NULL);
 	len_str_1 = -1;
 	while (str_1 && str_1[++len_str_1])
-		str[len_str_1] = str_1[len_str_1];
+		new_str[len_str_1] = str_1[len_str_1];
 	len_str_2 = -1;
 	while (str_2 && str_2[++len_str_2])
-		str[len_str_1 + len_str_2] = str_2[len_str_2];
-	return (str);
+		new_str[len_str_1 + len_str_2] = str_2[len_str_2];
+	return (new_str);
 }

@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:48:44 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/01 17:38:48 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:23:40 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define FT_PRINTF_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-// Test
-// # include <fcntl.h>
-// # include <stddef.h>
+// Header
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
+# include <limits.h>
 
 // configuracion de
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
-// # ifndef BUFFER_SIZE
-// #  define BUFFER_SIZE BUFSIZ
-// # endif
-
-// # if BUFFER_SIZE > 9223372036854775806
-// #  undef BUFFER_SIZE
-// #  define BUFFER_SIZE 0
-// # endif
 
 // main
 char	*get_next_line(int fd);
