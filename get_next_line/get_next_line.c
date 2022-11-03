@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:48:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/01 18:20:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:04:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,6 @@ void	ft_read_line(int fd, char **save, char **temporary)
 	ft_strs_cleans(&buf, 0, 0);
 }
 
-// char	*ft_parse_line(char *save, char *temporary)
-// {
-// 	char	*line;
-
-// 	temporary = ft_strdup(save);
-// 	ft_strs_cleans(&save, 0, 0);
-// 	save = get_after_newline(temporary);
-// 	printf("\n get_after_newline:{%s}", save);
-// 	line = get_before_newline(temporary);
-// 	printf("\n get_after_newline:{%s}", line);
-// 	ft_strs_cleans(&temporary, 0, 0);
-// 	return (line);
-// }
 char	*ft_parse_line(char **save, char **temporary)
 {
 	char	*line;
@@ -116,9 +103,7 @@ char	*ft_parse_line(char **save, char **temporary)
 	*temporary = ft_strdup(*save);
 	ft_strs_cleans(save, 0, 0);
 	*save = get_after_newline(*temporary);
-	// printf("\n --> get_after_newline:{%s}", save[0]);
 	line = get_before_newline(*temporary);
-	// printf("\n -+> get_before_newline:{%s}", line);
 	ft_strs_cleans(temporary, 0, 0);
 	return (line);
 }
@@ -134,10 +119,9 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	ft_read_line(fd, &save, &temporary);
-	if (save != NULL && *save != '\0')
+	if (save && *save != '\0')
 	{
 		line = ft_parse_line(&save, &temporary);
-		// line = ft_parse_line(save, temporary);
 	}
 	if (!line || *line == '\0')
 	{
