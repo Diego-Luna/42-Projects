@@ -6,18 +6,18 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:49:12 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/07 17:36:20 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:09:36 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	ft_check_parameters(int argc, char const *argv[])
+void	ft_check_parameters(int argc, char const *argv[], char *envp[])
 {
 	int	i;
 
 	i = 2;
-	if (argc < 5)
+	if (argc < 5 || envp[0][0] == '\n')
 		ft_error_message();
 	if (access(argv[1], F_OK) == -1 || access(argv[argc - 1], F_OK) == -1)
 		ft_error_message();

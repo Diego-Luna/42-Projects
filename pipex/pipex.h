@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:42:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/07 17:04:37 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:09:20 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <unistd.h>
 
 void	ft_error_message(void);
-void	ft_check_parameters(int argc, char const *argv[]);
+void	ft_check_parameters(int argc, char const *argv[], char *envp[]);
 size_t	ft_strlen(const char *s);
 
 #endif

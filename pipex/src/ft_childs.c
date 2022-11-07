@@ -6,7 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:51:16 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/07 17:51:16 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:04:08 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+void ft_childd(int num_childs, char const *argv[])
+{
+	
+}
