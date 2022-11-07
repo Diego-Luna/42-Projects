@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_result_s_c.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 12:50:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/07 17:29:34 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:38:17 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 14:28:15 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../ft_printf.h"
 
-int	main(int argc, char const *argv[])
+int	ft_result_s(char *arg)
 {
-	ft_check_parameters(argc, argv);
+	if (!arg)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (ft_strlen("(null)") - 1);
+	}
+	else
+	{
+		ft_putstr_fd(arg, 1);
+		return (ft_strlen(arg) - 1);
+	}
+}
+
+int	ft_result_c(int arg)
+{
+	write(1, &arg, 1);
 	return (0);
 }

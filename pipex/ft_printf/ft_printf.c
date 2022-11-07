@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 12:50:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/07 17:29:34 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:37:43 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/10/31 13:17:46 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "ft_printf.h"
 
-int	main(int argc, char const *argv[])
+int	ft_printf(const char *str, ...)
 {
-	ft_check_parameters(argc, argv);
-	return (0);
+	int		lenght;
+	va_list	arg;
+
+	va_start(arg, str);
+	lenght = ft_print_and_length(arg, (char *)str);
+	va_end(arg);
+	return (lenght);
 }

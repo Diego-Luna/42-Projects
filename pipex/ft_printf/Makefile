@@ -5,26 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/04 12:49:52 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/07 17:46:04 by dluna-lo         ###   ########.fr        #
+#    Created: 2022/10/31 11:37:17 by dluna-lo          #+#    #+#              #
+#    Updated: 2022/11/01 10:02:07 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME = libftprintf.a
 
-SRCS = main.c src/ft_check_parameters.c src/ft_errors.c utils/utils_str.c
+SRCS =	ft_printf.c ft_print_and_length.c ft_percent_controller.c \
+				ft_result/ft_result_s_c.c ft_result/ft_result_xsp.c \
+				ft_putnbr_base.c ft_result/ft_result_di_u.c utils/utils.c
 
-OBJS			= $(SRCS:.c=.o)
+OBJS = ${SRCS:.c=.o}
 
 CC				= gcc
 
 RM				= rm -f
 
-CFLAGS			= -Wall -Werror -Wextra
+CFLAGS			= -Wall -Wextra -Werror
 
-		# ${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 .c.o:
-		${CC} ${CFLAGS} ${<:.c=.o}
+		${CC} ${CFLAGS} -I includes -c $< -o ${<:.c=.o}
 
 $(NAME): ${OBJS}
 		ar rcs ${NAME} ${OBJS}
@@ -32,7 +33,7 @@ $(NAME): ${OBJS}
 all:	${NAME}
 
 clean:
-		${RM} ${OBJS} ${BONUS_OBJS}
+		${RM} ${OBJS}
 
 fclean:	clean
 		${RM} ${NAME}

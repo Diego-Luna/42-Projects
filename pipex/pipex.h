@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 12:50:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/07 17:29:34 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/11/07 10:42:51 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/11/07 17:04:37 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	main(int argc, char const *argv[])
-{
-	ft_check_parameters(argc, argv);
-	return (0);
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
+void	ft_error_message(void);
+void	ft_check_parameters(int argc, char const *argv[]);
+size_t	ft_strlen(const char *s);
+
+#endif
