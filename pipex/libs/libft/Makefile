@@ -6,12 +6,14 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 14:59:37 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/08 11:17:26 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/08 12:47:28 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
+# Sources are all .c files
+SRCDIR	=	src/
 SRCS	=	src/ft_isalpha.c src/ft_isalnum.c src/ft_isdigit.c src/ft_isprint.c src/ft_isascii.c \
 				src/ft_atoi.c src/ft_itoa.c src/ft_putnbr_fd.c src/ft_putstr_fd.c src/ft_putchar_fd.c \
 				src/ft_putendl_fd.c src/ft_strdup.c src/ft_calloc.c src/ft_substr.c src/ft_memset.c \
@@ -22,15 +24,17 @@ SRCS	=	src/ft_isalpha.c src/ft_isalnum.c src/ft_isdigit.c src/ft_isprint.c src/f
 				src/ft_lstsize.c src/ft_lstlast.c src/ft_lstnew.c src/ft_lstadd_back.c src/ft_lstadd_front.c \
 				src/ft_lstiter.c src/ft_lstdelone.c src/ft_lstclear.c src/ft_lstmap.c \
 				src/ft_printf.c src/ft_print_and_length.c src/ft_percent_controller.c \
-				src/ft_result/ft_result_s_c.c src/ft_result/ft_result_xsp.c \
-				src/ft_putnbr_base.c src/ft_result/ft_result_di_u.c
+				src/ft_result_s_c.c src/ft_result_xsp.c \
+				src/ft_putnbr_base.c src/ft_result_di_u.c
 
-OBJS			= $(SRCS:.c=.o)
+# OBJS			= $(SRCS:.c=.o)
+OBJDIR	=	bin/
+OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
+
+INC		=	libft.h
 
 CC				= gcc
-
 RM				= rm -f
-
 CFLAGS			= -Wall -Werror -Wextra
 
 .c.o:
@@ -38,6 +42,14 @@ CFLAGS			= -Wall -Werror -Wextra
 
 $(NAME): ${OBJS}
 		ar rcs ${NAME} ${OBJS}
+
+# Compiles sources into objects
+$(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c $(INC) | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Creates directory for binaries
+$(OBJDIR):
+	mkdir -p $@
 
 all:	${NAME}
 

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_result_s_c.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 10:42:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/08 12:25:21 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:38:17 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/11/08 12:41:36 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../libft.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include "libft/libft.h"
+int	ft_result_s(char *arg)
+{
+	if (!arg)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (ft_strlen("(null)") - 1);
+	}
+	else
+	{
+		ft_putstr_fd(arg, 1);
+		return (ft_strlen(arg) - 1);
+	}
+}
 
-void	ft_error_message(void);
-void	ft_check_parameters(int argc, char const *argv[], char *envp[]);
-// size_t	ft_strlen(const char *s);
-
-#endif
+int	ft_result_c(int arg)
+{
+	write(1, &arg, 1);
+	return (0);
+}

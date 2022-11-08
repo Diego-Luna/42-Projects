@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_result_xsp.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 10:42:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/08 12:25:21 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/10/31 11:38:08 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/11/08 12:41:40 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "../libft.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include "libft/libft.h"
+int	ft_result_x(unsigned int arg, char *base)
+{
+	return (ft_putnbr_base(arg, base) - 1);
+}
 
-void	ft_error_message(void);
-void	ft_check_parameters(int argc, char const *argv[], char *envp[]);
-// size_t	ft_strlen(const char *s);
+int	ft_result_sign(void)
+{
+	ft_putchar_fd('%', 1);
+	return (0);
+}
 
-#endif
+int	ft_result_p(unsigned long p)
+{
+	ft_putstr_fd("0x", 1);
+	return (ft_putnbr_base(p, "0123456789abcdef") + 1);
+}

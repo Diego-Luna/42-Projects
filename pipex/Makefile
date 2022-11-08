@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 12:49:52 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/08 11:54:09 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/08 12:44:47 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ INC		=	$(wildcard $(INCDIR)*.h)
 
 # Sources are all .c files
 SRCDIR	=	src/
-# SRCS = src/main.c src/ft_check_parameters.c src/ft_errors.c src/utils_str.c
 SRCS = src/main.c src/ft_check_parameters.c src/ft_errors.c
 
 # Objects are all .o files
