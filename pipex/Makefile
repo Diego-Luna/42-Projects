@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 12:49:52 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/08 11:10:35 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/08 11:54:09 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,35 +23,50 @@ INC		=	$(wildcard $(INCDIR)*.h)
 
 # Sources are all .c files
 SRCDIR	=	src/
-SRCS = src/main.c src/ft_check_parameters.c src/ft_errors.c src/utils_str.c
+# SRCS = src/main.c src/ft_check_parameters.c src/ft_errors.c src/utils_str.c
+SRCS = src/main.c src/ft_check_parameters.c src/ft_errors.c
 
 # Objects are all .o files
 OBJDIR	=	bin/
 OBJS	=	$(patsubst $(SRCDIR)%.c,$(OBJDIR)%.o,$(SRCS))
 
+# libf
+LIBFT = libft.a
+D_LIBFT = libs/libft/
+
 # ////////////////// TARGETS
 
-all: $(NAME)
+# all: $(NAME)
+all: do_libft $(NAME)
 
 # Generates output file
 $(NAME): $(OBJS)
-	$(HIDE)$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $(OBJS) $(D_LIBFT)$(LIBFT)
 
 # Compiles sources into objects
 $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c $(INC) | $(OBJDIR)
-	$(HIDE)$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Creates directory for binaries
 $(OBJDIR):
-	$(HIDE)mkdir -p $@
+	mkdir -p $@
 
 # Removes objects
 clean:
-	$(HIDE)$(RM) $(OBJS)
+	@$(RM) $(OBJS)
+	@$(MAKE) --no-print-directory -C $(D_LIBFT) clean
 
 # Removes objects and executables
 fclean: clean
-	$(HIDE)$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@$(MAKE) --no-print-directory -C $(D_LIBFT) fclean
 
 # Removes objects and executables and remakes
 re: fclean all
+
+# libf
+do_libft:
+	@$(MAKE) -C $(D_LIBFT)
+# libf
+
+.PHONY: all clean fclean re
