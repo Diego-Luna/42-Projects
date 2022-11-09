@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:50:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/09 13:00:20 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:25:10 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_run_comand(char *comds, char **envp)
 	args = ft_split(comds, ' ');
 	cmd = ft_strjoin("/", args[0]);
 	path = ft_get_comand_p(envp, cmd);
-	if (!ft_get_comand_p(envp, cmd) | !cmd | !args)
+	if (!path | !cmd | !args)
 	{
 		i = -1;
 		while (args[++i])

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:04:07 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/09 11:55:41 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:30:15 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_father(char **argv, char **envp, int *state)
 {
 	int		file;
 
-	file = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 644);
+	file = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (file == -1)
 		ft_error_message("Error father open : parent:outfile", 0);
 	dup2(state[0], STDIN_FILENO);

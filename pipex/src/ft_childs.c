@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:51:16 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/09 12:53:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/09 16:23:58 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_childs(char **argv, char **envp, int *state)
 {
 	int	file;
 
-	file = open(argv[1], O_RDONLY);
+	file = open(argv[1], O_RDONLY, 0644);
 	if (file == -1)
 		ft_error_message("Error ./pipex : no read file in child", 0);
 	dup2(state[1], STDOUT_FILENO);

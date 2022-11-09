@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:13:49 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/09 12:03:44 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/09 14:30:37 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_get_path(char **envp)
 		{
 			envp_path = ft_strdup(envp[i]);
 			if (!envp_path)
-				ft_error_message("f_g_p envp_path Error ./pipex path:envp", 0);
+				ft_error_message("Error ./pipex path:envp", 0);
 			break ;
 		}
 		i++;
