@@ -6,14 +6,17 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:51:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/08 11:07:38 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:03:56 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/pipex.h"
 
-void	ft_error_message(void)
+void	ft_error_message(char *str)
 {
-	perror("Error: ./pipex");
+	if (!str)
+		perror("Error: ./pipex");
+	else
+		perror(str);
 	exit(0);
 }

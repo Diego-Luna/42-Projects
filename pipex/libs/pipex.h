@@ -6,22 +6,30 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:42:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/08 12:25:21 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/08 17:56:56 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef PIPEX_H
+# define PIPEX_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include "libft/libft.h"
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdlib.h>
+# include <string.h>
+# include <sys/wait.h>
+# include <unistd.h>
+# include "libft/libft.h"
 
-void	ft_error_message(void);
-void	ft_check_parameters(int argc, char const *argv[], char *envp[]);
-// size_t	ft_strlen(const char *s);
+# define E_PIPE "Error: ./pipex : Error using pipe"
+
+void	ft_error_message(char *str);
+
+char	*ft_get_comand_p(char **envp, char *cmd);
+
+void	ft_run_comand( char *comds, char **envp);
+void	ft_childs( char **argv, char **envp, int *state);
+void	ft_father( char **argv, char **envp, int *state);
+void	ft_check_parameters(int argc, char  *argv[], char *envp[]);
 
 #endif
