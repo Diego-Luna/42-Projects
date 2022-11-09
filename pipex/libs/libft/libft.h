@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:35:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/08 10:41:24 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:45:31 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+// ft_printf
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -85,25 +87,23 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 
 // ft_printf
 
-# include <stdarg.h>
-
 // main
-int			ft_printf(const char *str, ...);
+int					ft_printf(const char *str, ...);
 
 // controller
-int			ft_print_and_length(va_list arg, char *str);
-int			ft_percent_controller(va_list arg, char *str);
+int					ft_print_and_length(va_list arg, char *str);
+int					ft_percent_controller(va_list arg, char *str);
 
 // utils
-int			ft_putnbr_base(unsigned long nbr, char *base);
+int					ft_putnbr_base(unsigned long nbr, char *base);
 
 // caracteres
-int			ft_result_sign(void);
-int			ft_result_c(int arg);
-int			ft_result_di(int arg);
-int			ft_result_s(char *arg);
-int			ft_result_p(unsigned long p);
-int			ft_result_u(unsigned int arg);
-int			ft_result_x(unsigned int arg, char *base);
+int					ft_result_sign(void);
+int					ft_result_c(int arg);
+int					ft_result_di(int arg);
+int					ft_result_s(char *arg);
+int					ft_result_p(unsigned long p);
+int					ft_result_u(unsigned int arg);
+int					ft_result_x(unsigned int arg, char *base);
 
 #endif
