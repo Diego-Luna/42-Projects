@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 12:49:52 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/09 16:17:44 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/09 16:46:14 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,7 @@ all: do_libft $(NAME)
 
 # Generates output file
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) $(D_LIBFT)$(LIBFT)
-	# $(CC) -o $@ $(OBJS) $(D_LIBFT)$(LIBFT)
+	$(CC) -o $@ $(OBJS) $(D_LIBFT)$(LIBFT)
 
 # Compiles sources into objects
 $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c $(INC) | $(OBJDIR)
