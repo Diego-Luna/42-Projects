@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:42:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/09 17:30:53 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:06:32 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,5 @@ void	ft_run_comand(char *comds, char **envp);
 void	ft_childs(char **argv, char **envp, int *state, int *file);
 void	ft_father(char **argv, char **envp, int *state, int *file);
 void	ft_check_parameters(int argc, char *argv[], char *envp[]);
-
-void	ft_run_comand_pather(char *comds, char **envp);
 
 #endif
