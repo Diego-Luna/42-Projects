@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_father.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:04:07 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 11:59:06 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:13:05 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	ft_father_clean(v_state *state)
 		unlink(".heredoc_tmp");
 	while (state->cmd_paths[i])
 	{
-		free(state->cmd_args[i]);
+		free(state->cmd_paths[i]);
 		i++;
 	}
-	free(state->cmd_args);
-	free(state->cmd);
+	free(state->cmd_paths);
+	free(state->pipe);
 }
 
 // void	ft_father(char **argv, char **envp, v_state *state, int *file)

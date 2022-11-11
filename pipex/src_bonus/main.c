@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:50:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 12:26:58 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:16:54 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[], char *envp[])
 {
 	v_state state;
 
-	ft_check_parameters(argc, argv, envp);
+	ft_check_parameters(argc, argv, envp, &state);
 	ft_create_here_bonus(argv, &state);
 	ft_use_here_bonus(argv[argc - 1], &state);
 	state.cmd_nmbs = argc - 3 - state.here_doc;

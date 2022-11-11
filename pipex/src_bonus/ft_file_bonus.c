@@ -68,9 +68,9 @@ void	ft_create_pipes(v_state *state)
 	int i;
 
 	i = 0;
-	while (i < state->pipe_nmbs)
+	while (i < state->cmd_nmbs - 1)
 	{
-		if (pipes(state->pipe + 2 * i)) // todo, crear pipe, temiendo en cuenta el numero de pipes
+		if (pipe(state->pipe + 2 * i) < 0) // todo, crear pipe, temiendo en cuenta el numero de pipes
 			ft_cmd_error(state);
 		i++;
 	}

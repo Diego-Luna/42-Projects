@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:51:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 12:25:14 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:02:25 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void ft_pipe_error(v_state *state)
 }
 void ft_cmd_error(v_state *state)
 {
-	int i =
+	int i;
+
+	i = 0;
 	close(state->infile);
 	close(state->outfile);
 	if (state->here_doc)
@@ -46,7 +48,7 @@ void ft_cmd_error(v_state *state)
 	}
 	free(state->cmd_paths);
 	free(state->pipe);
-	ft_error_message("Error", 1);;
+	// ft_error_message("Error", 1);
 	// ft_putstr_fd("Error", 2);;
 	// exit(1);
 }

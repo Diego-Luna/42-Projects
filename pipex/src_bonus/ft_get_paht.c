@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_paht.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:13:49 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 11:42:02 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:08:31 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,16 @@ char	*ft_get_comand_p2(char **paths, char *cmd)
 {
 	char *tem;
 	char *new_c;
-	int i;
 
-	i = 0;
-	while (paths[i])
+	while (*paths)
 	{
 		tem = ft_strjoin(*paths, "/");
 		new_c = ft_strjoin(tem, cmd);
 		free(tem);
-		if (access(tem, F_OK | X_OK) == 0)
+		if (access(new_c, 0) == 0)
 			return (new_c);
 		free(new_c);
-		i++;
+		paths++;
 	}
 	return (NULL);
 }

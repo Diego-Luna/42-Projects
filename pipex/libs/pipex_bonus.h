@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:42:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 12:26:31 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 14:55:17 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct va_states
 void	ft_error_message(char *str, int error);
 void	ft_run_comand(char *comds, char **envp);
 char	*ft_get_comand_p(char **envp, char *cmd);
-void	ft_check_parameters(int argc, char *argv[], char *envp[]);
+void	ft_check_parameters(int argc, char *argv[], char *envp[], v_state *state);
 void	ft_father(char **argv, char **envp, v_state *state, int *file);
 
 char	*ft_find_path(char ** envp);

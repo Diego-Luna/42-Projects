@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_parameters.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:49:12 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/10 13:00:43 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 14:55:49 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libs/pipex_bonus.h"
 
-void	ft_check_parameters(int argc, char *argv[], char *envp[])
+void	ft_check_parameters(int argc, char *argv[], char *envp[], v_state *state)
 {
 	int	i;
 
@@ -27,4 +27,8 @@ void	ft_check_parameters(int argc, char *argv[], char *envp[])
 			ft_error_message(ft_strjoin("Error ./pipex - 3 : ", ft_itoa(access(argv[i], F_OK))), 0);
 		i++;
 	}
+	if (argv[0] && !ft_strncmp("here_doc", argv[0], 9))
+		state->here_doc = 1;
+	else
+		state->here_doc = 0;
 }
