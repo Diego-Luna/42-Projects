@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 07:23:10 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/11/11 08:05:15 by diegofranci      ###   ########.fr       */
+/*   Created: 2022/11/11 07:23:10 by dluna-lo       #+#    #+#             */
+/*   Updated: 2022/11/11 11:04:43 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,29 @@ void	ft_create_here_bonus(char **argv, v_state *state)
 		if (state->infile < 0)
 			ft_error_message("Infile", 1);
 	}
+}
+
+void	ft_create_pipes(v_state *state)
+{
+	int i;
+
+	i = 0;
+	while (i < state->pipe_nmbs)
+	{
+		if (pipes(state->pipe + 2 * i)) // todo, crear pipe, temiendo en cuenta el numero de pipes
+			ft_cmd_error(state);
+		i++;
+	}
+}
+
+char *ft_find_path(char ** envp)
+{
+	int i;
+
+	i = 0;
+	while (ft_strncmp("PATH", envp[i], 4))
+	{
+		i++;
+	}
+	return (envp[i] + 5);
 }

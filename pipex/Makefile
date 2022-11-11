@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/04 12:49:52 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/10 14:33:16 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/11 12:01:32 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS =	src/main.c src/ft_check_parameters.c src/ft_errors.c \
 
 SRCDIR_BONUS	=	src_bonus/
 SRCS_BONUS =	src_bonus/main.c src_bonus/ft_check_parameters.c src_bonus/ft_errors.c \
-				src_bonus/ft_childs.c src_bonus/ft_father.c src_bonus/ft_get_paht.c
+				src_bonus/ft_childs.c src_bonus/ft_father.c src_bonus/ft_get_paht.c \
+				src_bonus/ft_file_bonus.c src_bonus/ft_pipe.c
 
 # Objects are all .o files
 OBJDIR	=	bin/

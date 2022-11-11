@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:35:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 07:58:57 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/11/11 12:09:04 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ int					ft_result_x(unsigned int arg, char *base);
 int	get_next_line(int fd, char *buf);
 
 // utils
-int		find_nl(char *str);
-char	*str_join(char *s1, char *s2);
-char	*get_line(char *str);
-char	*trim_rem(char *str);
-int		some_error(char *str);
+char	*ft_gnl_strdup(const char *str_1);
+int		ft_gnl_contains_newline(const char *str);
+void	*ft_gnl_malloc_zero(size_t count, size_t size);
+char	*ft_gnl_join_strs(const char *str_1, const char *str_2);
+void	ft_gnl_strs_cleans(char **str_1, char **str_2, char **str_3);
 
 #endif

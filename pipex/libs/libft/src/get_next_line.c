@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:48:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 07:58:51 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/11/11 12:10:01 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../libft.h"
 
-char	*get_before_newline(const char *str)
+char	*ft_gnl_get_before_newline(const char *str)
 {
 	int		i;
 	char	*res;
@@ -22,7 +22,7 @@ char	*get_before_newline(const char *str)
 		i++;
 	if (str[i] != '\0' && str[i] == '\n')
 		i++;
-	res = ft_malloc_zero(i + 1, sizeof * res);
+	res = ft_gnl_malloc_zero(i + 1, sizeof * res);
 	if (!res)
 	{
 		return (NULL);
@@ -40,7 +40,7 @@ char	*get_before_newline(const char *str)
 	return (res);
 }
 
-char	*get_after_newline(const char *str)
+char	*ft_gnl_get_after_newline(const char *str)
 {
 	char	*res;
 	int		ii;
@@ -54,7 +54,7 @@ char	*get_after_newline(const char *str)
 		i++;
 	if (str[i] != '\0' && str[i] == '\n')
 		i++;
-	res = ft_malloc_zero((ii - i) + 1, sizeof * res);
+	res = ft_gnl_malloc_zero((ii - i) + 1, sizeof * res);
 	if (!res)
 	{
 		return (NULL);
@@ -68,7 +68,7 @@ char	*get_after_newline(const char *str)
 	return (res);
 }
 
-void	ft_read_line(int fd, char **save, char **temporary)
+void	ft_gnl_read_line(int fd, char **save, char **temporary)
 {
 	char	*buf;
 	int		status;
@@ -82,33 +82,33 @@ void	ft_read_line(int fd, char **save, char **temporary)
 		status = read(fd, buf, BUFFER_SIZE);
 		if (status == -1)
 		{
-			ft_strs_cleans(&buf, save, temporary);
+			ft_gnl_strs_cleans(&buf, save, temporary);
 			return ;
 		}
 		buf[status] = '\0';
-		*temporary = ft_strdup(*save);
-		ft_strs_cleans(save, 0, 0);
-		*save = ft_join_strs(*temporary, buf);
-		ft_strs_cleans(temporary, 0, 0);
-		if (ft_contains_newline(*save))
+		*temporary = ft_gnl_strdup(*save);
+		ft_gnl_strs_cleans(save, 0, 0);
+		*save = ft_gnl_join_strs(*temporary, buf);
+		ft_gnl_strs_cleans(temporary, 0, 0);
+		if (ft_gnl_contains_newline(*save))
 			break ;
 	}
-	ft_strs_cleans(&buf, 0, 0);
+	ft_gnl_strs_cleans(&buf, 0, 0);
 }
 
-char	*ft_parse_line(char **save, char **temporary)
+char	*ft_gnl_parse_line(char **save, char **temporary)
 {
 	char	*line;
 
-	*temporary = ft_strdup(*save);
-	ft_strs_cleans(save, 0, 0);
-	*save = get_after_newline(*temporary);
-	line = get_before_newline(*temporary);
-	ft_strs_cleans(temporary, 0, 0);
+	*temporary = ft_gnl_strdup(*save);
+	ft_gnl_strs_cleans(save, 0, 0);
+	*save = ft_gnl_get_after_newline(*temporary);
+	line = ft_gnl_get_before_newline(*temporary);
+	ft_gnl_strs_cleans(temporary, 0, 0);
 	return (line);
 }
 
-int	*get_next_line(int fd, char *buf)
+int	get_next_line(int fd, char *buf)
 {
 	char		*line;
 	char		*temporary;
@@ -117,17 +117,17 @@ int	*get_next_line(int fd, char *buf)
 	line = NULL;
 	temporary = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
-	ft_read_line(fd, &save, &temporary);
+		return (-1);
+	ft_gnl_read_line(fd, &save, &temporary);
 	if (save && *save != '\0')
 	{
-		line = ft_parse_line(&save, &temporary);
+		line = ft_gnl_parse_line(&save, &temporary);
 	}
 	if (!line || *line == '\0')
 	{
-		ft_strs_cleans(&save, &line, &temporary);
-		return (NULL);
+		ft_gnl_strs_cleans(&save, &line, &temporary);
+		return (-1);
 	}
-	buf = ft_strdup(line);
+	buf = ft_gnl_strdup(line);
 	return (1);
 }

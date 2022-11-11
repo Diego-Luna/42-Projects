@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:49:00 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 07:39:53 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/11/11 12:04:11 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	*ft_malloc_zero(size_t count, size_t size)
+void	*ft_gnl_malloc_zero(size_t count, size_t size)
 {
 	void			*clean_total;
 	size_t			total;
@@ -34,19 +34,19 @@ void	*ft_malloc_zero(size_t count, size_t size)
 	return (clean_total);
 }
 
-char	*ft_strdup(const char *str_1)
+char	*ft_gnl_strdup(const char *str_1)
 {
 	int		i;
 	char	*str_2;
 
 	if (!str_1)
 	{
-		return (ft_strdup(""));
+		return (ft_gnl_strdup(""));
 	}
 	i = 0;
 	while (str_1[i])
 		i++;
-	str_2 = ft_malloc_zero(i + 1, sizeof * str_2);
+	str_2 = ft_gnl_malloc_zero(i + 1, sizeof * str_2);
 	if (!str_2)
 		return (NULL);
 	i = -1;
@@ -55,7 +55,7 @@ char	*ft_strdup(const char *str_1)
 	return (str_2);
 }
 
-void	ft_strs_cleans(char **str_1, char **str_2, char **str_3)
+void	ft_gnl_strs_cleans(char **str_1, char **str_2, char **str_3)
 {
 	if (str_1 && *str_1)
 	{
@@ -74,7 +74,7 @@ void	ft_strs_cleans(char **str_1, char **str_2, char **str_3)
 	}
 }
 
-int	ft_contains_newline(const char *str)
+int	ft_gnl_contains_newline(const char *str)
 {
 	int	i;
 
@@ -88,7 +88,7 @@ int	ft_contains_newline(const char *str)
 	return (0);
 }
 
-char	*ft_join_strs(const char *str_1, const char *str_2)
+char	*ft_gnl_join_strs(const char *str_1, const char *str_2)
 {
 	char	*new_str;
 	int		len_str_1;
@@ -102,7 +102,7 @@ char	*ft_join_strs(const char *str_1, const char *str_2)
 	len_str_2 = 0;
 	while (str_2 && str_2[len_str_2])
 		len_str_2++;
-	new_str = ft_malloc_zero(len_str_1 + len_str_2 + 1, sizeof * new_str);
+	new_str = ft_gnl_malloc_zero(len_str_1 + len_str_2 + 1, sizeof * new_str);
 	if (!new_str)
 		return (NULL);
 	len_str_1 = -1;
