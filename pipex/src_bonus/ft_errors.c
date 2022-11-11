@@ -1,0 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_errors.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/07 15:51:01 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/11/11 08:13:52 by diegofranci      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../libs/pipex_bonus.h"
+
+void	ft_error_message(char *str, int error)
+{
+	if (!str)
+		perror("Error: ./pipex");
+	else
+		perror(str);
+	exit(error);
+}
+
+void ft_pipe_error(v_state *state)
+{
+	close(state->infile);
+	close(state->outfile);
+	if (state->here_doc)
+		unlink(".heredoc_tmp");
+	free(state->pipe);
+	ft_putstr_fd("Error Environment", 2);;
+	exit(1);
+}
