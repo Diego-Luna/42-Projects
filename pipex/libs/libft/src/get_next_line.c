@@ -3,131 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 15:48:51 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 12:10:01 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 12:41:38 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*ft_gnl_get_before_newline(const char *str)
+int	ft_gnl_error(char *str)
 {
-	int		i;
-	char	*res;
-
-	i = 0;
-	while (str[i] != '\0' && str[i] != '\n')
-		i++;
-	if (str[i] != '\0' && str[i] == '\n')
-		i++;
-	res = ft_gnl_malloc_zero(i + 1, sizeof * res);
-	if (!res)
-	{
-		return (NULL);
-	}
-	i = 0;
-	while (str[i] != '\0' && str[i] != '\n')
-	{
-		res[i] = str[i];
-		i++;
-	}
-	if (str[i] == '\n')
-	{
-		res[i] = str[i];
-	}
-	return (res);
+	if (str)
+		free(str);
+	return (-1);
 }
 
-char	*ft_gnl_get_after_newline(const char *str)
+int	get_next_line(int fd, char **line)
 {
-	char	*res;
-	int		ii;
-	int		i;
+	char		*buf;
+	int			rd;
+	static char	*rem;
 
-	i = 0;
-	ii = 0;
-	while (str && str[ii])
-		ii++;
-	while (str[i] != '\0' && str[i] != '\n')
-		i++;
-	if (str[i] != '\0' && str[i] == '\n')
-		i++;
-	res = ft_gnl_malloc_zero((ii - i) + 1, sizeof * res);
-	if (!res)
-	{
-		return (NULL);
-	}
-	ii = 0;
-	while (str[i + ii])
-	{
-		res[ii] = str[i + ii];
-		ii++;
-	}
-	return (res);
-}
-
-void	ft_gnl_read_line(int fd, char **save, char **temporary)
-{
-	char	*buf;
-	int		status;
-
-	buf = malloc(sizeof * buf * (BUFFER_SIZE + 1));
+	if (fd < 0 || BUFFER_SIZE < 1 || !line)
+		return (-1);
+	buf = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buf)
-		return ;
-	status = 1;
-	while (status > 0)
+		return (ft_gnl_error(rem));
+	rd = 1;
+	while (!ft_gnl_find_new_line(rem) && rd > 0)
 	{
-		status = read(fd, buf, BUFFER_SIZE);
-		if (status == -1)
-		{
-			ft_gnl_strs_cleans(&buf, save, temporary);
-			return ;
-		}
-		buf[status] = '\0';
-		*temporary = ft_gnl_strdup(*save);
-		ft_gnl_strs_cleans(save, 0, 0);
-		*save = ft_gnl_join_strs(*temporary, buf);
-		ft_gnl_strs_cleans(temporary, 0, 0);
-		if (ft_gnl_contains_newline(*save))
-			break ;
+		rd = read(fd, buf, BUFFER_SIZE);
+		if (rd < 0)
+			return (ft_gnl_error(buf));
+		buf[rd] = '\0';
+		rem = ft_gnl_str_join(rem, buf);
 	}
-	ft_gnl_strs_cleans(&buf, 0, 0);
-}
-
-char	*ft_gnl_parse_line(char **save, char **temporary)
-{
-	char	*line;
-
-	*temporary = ft_gnl_strdup(*save);
-	ft_gnl_strs_cleans(save, 0, 0);
-	*save = ft_gnl_get_after_newline(*temporary);
-	line = ft_gnl_get_before_newline(*temporary);
-	ft_gnl_strs_cleans(temporary, 0, 0);
-	return (line);
-}
-
-int	get_next_line(int fd, char *buf)
-{
-	char		*line;
-	char		*temporary;
-	static char	*save = NULL;
-
-	line = NULL;
-	temporary = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (-1);
-	ft_gnl_read_line(fd, &save, &temporary);
-	if (save && *save != '\0')
-	{
-		line = ft_gnl_parse_line(&save, &temporary);
-	}
-	if (!line || *line == '\0')
-	{
-		ft_gnl_strs_cleans(&save, &line, &temporary);
-		return (-1);
-	}
-	buf = ft_gnl_strdup(line);
+	free(buf);
+	*line = ft_gnl_get_line(rem);
+	rem = ft_gnl_str_trim(rem);
+	if (rd == 0 && !rem)
+		return (0);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:35:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 12:09:04 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/11 12:41:38 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,17 @@ int					ft_result_p(unsigned long p);
 int					ft_result_u(unsigned int arg);
 int					ft_result_x(unsigned int arg, char *base);
 
-// main
-int	get_next_line(int fd, char *buf);
+// Get next line modificado
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
-// utils
-char	*ft_gnl_strdup(const char *str_1);
-int		ft_gnl_contains_newline(const char *str);
-void	*ft_gnl_malloc_zero(size_t count, size_t size);
-char	*ft_gnl_join_strs(const char *str_1, const char *str_2);
-void	ft_gnl_strs_cleans(char **str_1, char **str_2, char **str_3);
+int		get_next_line(int fd, char **line);
+size_t	ft_gnl_strlen(const char *s);
+int		ft_gnl_find_new_line(char *str);
+char	*ft_gnl_str_join(char *s1, char *s2);
+char	*ft_gnl_get_line(char *str);
+char	*ft_gnl_str_trim(char *str);
+int		ft_gnl_error(char *str);
 
 #endif
