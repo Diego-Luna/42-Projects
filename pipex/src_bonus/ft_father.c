@@ -6,7 +6,7 @@
 /*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:04:07 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 15:13:05 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/11/11 17:41:51 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_father_clean(v_state *state)
 	i = 0;
 	close(state->infile);
 	close(state->outfile);
-	if (state->here_doc)
+	if (state->here_doc == 1)
 		unlink(".heredoc_tmp");
 	while (state->cmd_paths[i])
 	{

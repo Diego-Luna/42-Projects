@@ -6,7 +6,7 @@
 /*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 15:51:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 15:02:25 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/11/11 17:35:46 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_pipe_error(v_state *state)
 {
 	close(state->infile);
 	close(state->outfile);
-	if (state->here_doc)
+	if (state->here_doc == 1)
 		unlink(".heredoc_tmp");
 	free(state->pipe);
 	ft_error_message("Error Environment", 1);
@@ -39,7 +39,7 @@ void ft_cmd_error(v_state *state)
 	i = 0;
 	close(state->infile);
 	close(state->outfile);
-	if (state->here_doc)
+	if (state->here_doc == 1)
 		unlink(".heredoc_tmp");
 	while (state->cmd_paths[i])
 	{

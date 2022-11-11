@@ -14,7 +14,7 @@
 
 void	ft_use_here_bonus(char *argv, v_state *state)
 {
-	if (state->here_doc)
+	if (state->here_doc == 1)
 		state->outfile = open(argv, O_WRONLY | O_CREAT | O_APPEND, 0000644);
 	else
 		state->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, 0000644);

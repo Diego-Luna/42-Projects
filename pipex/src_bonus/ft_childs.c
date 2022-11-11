@@ -6,7 +6,7 @@
 /*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 17:51:16 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/11 15:10:54 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/11/11 17:33:39 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	ft_childs(v_state state, char **envp, char **argv)
 		ft_pipe_close(&state);
 		state.cmd_args = ft_split(argv[2 + state.here_doc + state.index], ' ');
 		state.cmd = ft_get_comand_p2(state.cmd_paths, state.cmd_args[0]);
-		if(!(state.cmd))
+		if (!state.cmd)
 		{
+			ft_error_message(state.cmd_args[0], 1);
 			ft_childs_clean(&state);
-			ft_error_message("Error en el comando", 1);
+			exit(1);
 		}
 		execve(state.cmd, state.cmd_args, envp);
-		exit(0);
 	}
 }
 // {
