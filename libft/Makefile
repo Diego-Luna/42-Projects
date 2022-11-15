@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 14:59:37 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/08 12:51:05 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/15 15:10:37 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS	=	src/ft_isalpha.c src/ft_isalnum.c src/ft_isdigit.c src/ft_isprint.c src/f
 				src/ft_lstiter.c src/ft_lstdelone.c src/ft_lstclear.c src/ft_lstmap.c \
 				src/ft_printf.c src/ft_print_and_length.c src/ft_percent_controller.c \
 				src/ft_result_s_c.c src/ft_result_xsp.c \
-				src/ft_putnbr_base.c src/ft_result_di_u.c
+				src/ft_putnbr_base.c src/ft_result_di_u.c \
+				src/get_next_line.c src/get_next_line_utils.c
 
 # OBJS			= $(SRCS:.c=.o)
 OBJDIR	=	bin/
