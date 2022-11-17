@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:58:34 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/17 10:16:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/17 16:39:31 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,32 @@ void	ft_error_message(char *str, int error)
 	exit(error);
 }
 
-int ft_exit_x(t_game *game)
+int	ft_exit_x(t_game *game)
 {
 	mlx_destroy_window(game->mlx, game->win);
-	ft_free_table(game);
+	ft_free_table(game->t_game);
 	ft_error_message("\nDiego exit", 1);
 	exit(0);
 	return (0);
 }
 
-void ft_free_table(t_game *game)
+void	ft_free_table(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (game->t_game[i])
+	while (str[i])
 	{
-		free(game->t_game[i]);
+		free(str[i]);
 		i++;
 	}
-	free(game->t_game);
+	free(str);
+}
+
+void	ft_error_check_table(t_game *game, t_e_map *error, int i)
+{
+	if ((error->wiht != (int)ft_strlen(game->t_game[i]) && i < game->heith - 1)
+		|| ((error->wiht - 1) != (int)ft_strlen(game->t_game[i])
+			&& i == game->heith - 1))
+		ft_error_message("Error no es un rectagunlof", 1);
 }

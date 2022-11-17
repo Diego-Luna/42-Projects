@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2022/11/16 13:16:16 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/17 16:38:04 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ INC		=	libs/so_long.h
 
 # Sources are all .c files
 SRCDIR	=	src/
-SRCS =	src/main.c src/ft_read_file.c src/ft_error.c src/ft_create_map.c
+SRCS =	src/main.c src/ft_read_file.c src/ft_error.c src/ft_create_map.c \
+				src/ft_move_caracter.c src/ft_read_file_utils.c src/ft_map_posible.c \
+				src/ft_create_map_utils.c
 
 # Objects are all .o files
 OBJDIR	=	bin/
