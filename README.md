@@ -12,3 +12,7 @@ run :  clear && make clean && make all && gcc -Wall -Wextra -Werror -D BUFFER_SI
 # pipe
 
 valgrind -s --leak-check=full --track-fds=all ./pipex_bonus infile.txt  "ls -l" "wc -l"  diego2.txt
+
+# So_long
+
+make fclean all && leaks --atExit -- ./so_long ./test/map.ber
