@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2022/11/17 16:38:04 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/11/19 16:33:45 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ all: do_libft $(NAME)
 
 # Generates output file
 $(NAME): $(OBJS)
-	$(CC) -lmlx -framework OpenGL -framework AppKit -o $@ $(OBJS) $(D_LIBFT)$(LIBFT)
+	$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit -o $@ $(OBJS) $(D_LIBFT)$(LIBFT)
 
 # Compiles sources into objects
 $(OBJS): $(OBJDIR)%.o : $(SRCDIR)%.c $(INC) | $(OBJDIR)
