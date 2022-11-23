@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 16:38:37 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/23 12:28:17 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/23 17:20:25 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,22 +126,23 @@ int	main(int argc, char **argv)
 	{
 		ft_create_lists(&l_a, argv);
 
-		ft_printf("\n ** l-a");
-		ft_print_list(l_a);
-		ft_printf("\n ** l-b");
-		ft_print_list(l_b);
-		ft_printf("\n -- ft_arrange_3_format");
+		// ft_printf("\n ** l-a");
+		// ft_print_list(l_a);
+		// ft_printf("\n ** l-b");
+		// ft_print_list(l_b);
+		// ft_printf("\n -- ft_arrange_3_format");
 
 		// ft_arrange_3_format(&l_a, &l_b);
 		ft_arrange_5_format(&l_a, &l_b);
 
-		ft_printf("\n ** new l-a");
-		ft_print_list(l_a);
-		ft_printf("\n ** new l-b");
-		ft_print_list(l_b);
+		// ft_printf("\n ** new l-a");
+		// ft_print_list(l_a);
+		// ft_printf("\n ** new l-b");
+		// ft_print_list(l_b);
+
 		ft_free_tlist(l_a);
 		ft_free_tlist(l_b);
-		ft_printf("\n Diego");
+		// ft_printf("\n Diego");
 	}
 	return (0);
 }

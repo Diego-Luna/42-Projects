@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:24:04 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/22 12:29:18 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:24:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_mov_sb(t_list **lst)
 	tem = (*lst)->content;
 	(*lst)->content = (*lst)->next->content;
 	(*lst)->next->content = tem;
-	ft_printf("\nsb");
+	ft_printf("sb\n");
 }
 
 void	ft_mov_sa(t_list **lst)
@@ -41,7 +41,7 @@ void	ft_mov_sa(t_list **lst)
 	tem = (*lst)->content;
 	(*lst)->content = (*lst)->next->content;
 	(*lst)->next->content = tem;
-	ft_printf("\nsa");
+	ft_printf("sa\n");
 }
 
 void	ft_mov_ss(t_list **l_a, t_list **l_b)
@@ -61,5 +61,5 @@ void	ft_mov_ss(t_list **l_a, t_list **l_b)
 	tem = (*l_b)->content;
 	(*l_b)->content = (*l_b)->next->content;
 	(*l_b)->next->content = tem;
-	ft_printf("\nss");
+	ft_printf("ss\n");
 }

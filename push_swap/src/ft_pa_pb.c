@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 19:02:18 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/22 12:24:23 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:23:35 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_mov_pa(t_list **l_a, t_list **l_b)
 	*l_b = (*l_b)->next;
 	free(delete->content);
 	free(delete);
-	ft_printf("\npa");
+	ft_printf("pa\n");
 }
 
 void	ft_mov_pb(t_list **l_a, t_list **l_b)
@@ -62,5 +62,5 @@ void	ft_mov_pb(t_list **l_a, t_list **l_b)
 	*l_a = (*l_a)->next;
 	free(delete->content);
 	free(delete);
-	ft_printf("\npb");
+	ft_printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:27:06 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/22 12:28:30 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:23:55 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,18 @@ void	ft_mov_rr_utils(t_list **l_1)
 void	ft_mov_rra(t_list **l_a)
 {
 	ft_mov_rr_utils(l_a);
-	ft_printf("\nrra");
+	ft_printf("rra\n");
 }
 
 void	ft_mov_rrb(t_list **l_b)
 {
 	ft_mov_rr_utils(l_b);
-	ft_printf("\nrrb");
+	ft_printf("rrb\n");
 }
 
 void	ft_mov_rrr(t_list **l_a, t_list **l_b)
 {
 	ft_mov_rr_utils(l_a);
 	ft_mov_rr_utils(l_b);
-	ft_printf("\nrrr");
+	ft_printf("rrr\n");
 }
