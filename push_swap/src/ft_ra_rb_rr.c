@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 10:51:35 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/23 14:23:44 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/24 13:00:57 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,23 @@ void	ft_mov_r_utils(t_list **l_1)
 // 	}
 // }
 
-void	ft_mov_ra(t_list **l_a)
+// void	ft_mov_ra(t_list **l_a)
+void	ft_mov_ra(t_state *state)
 {
-	ft_mov_r_utils(l_a);
+	ft_mov_r_utils(&state->l_a);
 	ft_printf("ra\n");
 }
 
-void	ft_mov_rb(t_list **l_b)
+void	ft_mov_rb(t_state *state)
 {
-	ft_mov_r_utils(l_b);
+	ft_mov_r_utils(&state->l_b);
 	ft_printf("rb\n");
 }
 
-void	ft_mov_rr(t_list **l_a, t_list **l_b)
+// void	ft_mov_rr(t_list **l_a, t_list **l_b)
+void	ft_mov_rr(t_state *state)
 {
-	ft_mov_r_utils(l_a);
-	ft_mov_r_utils(l_b);
+	ft_mov_r_utils(&state->l_a);
+	ft_mov_r_utils(&state->l_b);
 	ft_printf("rr\n");
 }

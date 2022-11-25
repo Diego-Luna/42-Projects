@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:34:41 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/23 12:42:41 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:10:27 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,74 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-# include <stdio.h>
+// # include <stdio.h>
 # include <errno.h>
 
+typedef struct s_state
+{
+	struct s_list*	l_a;
+	struct s_list*	l_b;
+	int chunk;
+	int addchunk;
+	int index;
+}	t_state;
+
+// Exit
+void ft_exit();
+
 // control
-void	ft_arrange_3_format(t_list **l_a, t_list **l_b);
-void	ft_arrange_5_format(t_list **l_a, t_list **l_b);
+void	ft_arrange_2_format(t_state *state);
+void	ft_arrange_3_format(t_state *state);
+void	ft_arrange_5_format(t_state *state);
 
 // utils
 t_list *ft_get_list_n(t_list *lst, int num);
+
+// get de value in int
+int	ft_gnl(t_list *lst, int num);
+int	ft_check_organize(t_list *lst, int start, int end);
+
 void	ft_print_list(t_list *lst);
 
 // Movements
-void	ft_mov_sb(t_list **lst);
-void	ft_mov_sa(t_list **lst);
-void	ft_mov_ss(t_list **l_a, t_list **l_b);
+void	ft_mov_sb(t_state *state);
+void	ft_mov_sa(t_state *state);
+void	ft_mov_ss(t_state *state);
 
-void	ft_mov_pa(t_list **l_a, t_list **l_b);
-void	ft_mov_pb(t_list **l_a, t_list **l_b);
+void	ft_mov_pa(t_state *state);
+void	ft_mov_pb(t_state *state);
 
-void	ft_mov_ra(t_list **l_a);
-void	ft_mov_rb(t_list **l_b);
-void	ft_mov_rr(t_list **l_a, t_list **l_b);
+void	ft_mov_ra(t_state *state);
+void	ft_mov_rb(t_state *state);
+void	ft_mov_rr(t_state *state);
 
-void	ft_mov_rra(t_list **l_a);
-void	ft_mov_rrb(t_list **l_a);
-void	ft_mov_rrr(t_list **l_a, t_list **l_b);
+void	ft_mov_rra(t_state *state);
+void	ft_mov_rrb(t_state *state);
+void	ft_mov_rrr(t_state *state);
+
+// ------ /// -------  /// vieja version
+// // control
+// void	ft_arrange_3_format(t_list **l_a, t_list **l_b);
+// void	ft_arrange_5_format(t_list **l_a, t_list **l_b);
+
+// // utils
+// t_list *ft_get_list_n(t_list *lst, int num);
+// void	ft_print_list(t_list *lst);
+
+// // Movements
+// void	ft_mov_sb(t_list **lst);
+// void	ft_mov_sa(t_list **lst);
+// void	ft_mov_ss(t_list **l_a, t_list **l_b);
+
+// void	ft_mov_pa(t_list **l_a, t_list **l_b);
+// void	ft_mov_pb(t_list **l_a, t_list **l_b);
+
+// void	ft_mov_ra(t_list **l_a);
+// void	ft_mov_rb(t_list **l_b);
+// void	ft_mov_rr(t_list **l_a, t_list **l_b);
+
+// void	ft_mov_rra(t_list **l_a);
+// void	ft_mov_rrb(t_list **l_a);
+// void	ft_mov_rrr(t_list **l_a, t_list **l_b);
 
 #endif

@@ -6,113 +6,172 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:22:11 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/23 17:23:02 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:03:55 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_arrange_3_format(t_list **l_a, t_list **l_b)
+void	ft_arrange_2_format(t_state *state)
+{
+	if (ft_check_organize(state->l_a, 1, 2) == 1)
+	{
+		return;
+	}
+	ft_mov_sa(state);
+}
+
+void	ft_arrange_3_format(t_state *state)
 {
 	int	num_t1;
 	int	num_t2;
 	int	num_t3;
 
-	(void)l_b;
-	num_t1 = *(int *)(*l_a)->content;
-	num_t2 = *(int *)(*l_a)->next->content;
-	num_t3 = *(int *)(*l_a)->next->next->content;
+	if (ft_check_organize(state->l_a, 1, 3) == 1)
+	{
+		// ft_printf("\n D{%d}\n", ft_check_organize(state->l_a, 1, 3));
+		return;
+	}
+	num_t1 = ft_gnl(state->l_a, 1);
+	num_t2 = ft_gnl(state->l_a, 2);
+	num_t3 = ft_gnl(state->l_a, 3);
 	if (num_t1 > num_t2 && num_t1 < num_t3)
-		ft_mov_sa(l_a);
+		ft_mov_sa(state);
 	else if (num_t1 > num_t2 && num_t1 > num_t3 && num_t2 > num_t3)
 	{
-		ft_mov_sa(l_a);
-		ft_mov_rra(l_a);
+		ft_mov_sa(state);
+		ft_mov_rra(state);
 	}
 	else if (num_t1 > num_t2 && num_t1 > num_t3 && num_t2 < num_t3)
-		ft_mov_ra(l_a);
+		ft_mov_ra(state);
 	else if (num_t1 < num_t2 && num_t2 > num_t3 && num_t1 < num_t3)
 	{
-		ft_mov_sa(l_a);
-		ft_mov_ra(l_a);
+		ft_mov_sa(state);
+		ft_mov_ra(state);
 	}
 	else if (num_t1 > num_t3 && num_t1 < num_t2 && num_t2 > num_t3)
-		ft_mov_rra(l_a);
+		ft_mov_rra(state);
 }
 
-void	ft_arrange_5_format(t_list **l_a, t_list **l_b)
+void	ft_arrange_5_format(t_state *state)
 {
 	int	num_t1;
 	int i;
 
-	i = ft_lstsize(*l_a) - 3;
-	// ft_printf("\n i-1-{%d}", i);
-	while (i > 0)
+	i = ft_lstsize(state->l_a) - 3;
+	while (i > 0 && ft_check_organize(state->l_a, 2, 4) == 0)
 	{
-		ft_mov_pb(l_a, l_b);
+		ft_mov_pb(state);
 		i--;
 	}
-	i = ft_lstsize(*l_b);
-	// ft_printf("\n i-2-{%d}", i);
-	if (i > 1 && *(int *)(*l_b)->content > *(int *)(*l_b)->next->content)
+	i = ft_lstsize(state->l_b);
+	if (i > 1 && ft_gnl(state->l_b, 1) > ft_gnl(state->l_b, 2))
 	{
-		ft_mov_sb(l_b);
+		ft_mov_sb(state);
 	}
-	ft_arrange_3_format(l_a, l_b);
-
-	// ft_printf("\n ++ p l-a");
-	// ft_print_list(*l_a);
-	// ft_printf("\n ++ p l-b");
-	// ft_print_list(*l_b);
-
+	ft_arrange_3_format(state);
 	while (i > 0)
 	{
-		num_t1 = *(int *)(*l_b)->content;
-		// if (num_t1 > *(int *)(ft_get_list_n(*l_a, 3))->content)
-		if (num_t1 > *(int *)(ft_get_list_n(*l_a, ft_lstsize(*l_a)))->content)
+		num_t1 = ft_gnl(state->l_b, 1);
+		if (num_t1 > ft_gnl(state->l_a, ft_lstsize(state->l_a)))
 		{
-			// ft_printf("\n Acctions 1\n");
-			ft_mov_pa(l_a, l_b);
-			ft_mov_ra(l_a);
+			ft_mov_pa(state);
+			ft_mov_ra(state);
 		}
-		else if (num_t1 > *(int *)(ft_get_list_n(*l_a, 1))->content && num_t1 < *(int *)(ft_get_list_n(*l_a, 2))->content)
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, 2))
 		{
-			// ft_printf("\n Acctions 2\n");
-			ft_mov_pa(l_a, l_b);
-			ft_mov_sa(l_a);
+			ft_mov_pa(state);
+			ft_mov_sa(state);
 		}
-		else if (num_t1 < *(int *)(ft_get_list_n(*l_a, 1))->content && num_t1 < *(int *)(ft_get_list_n(*l_a, 2))->content)
+		else if (num_t1 < ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, 2))
 		{
-			// ft_printf("\n Acctions 3\n");
-			ft_mov_pa(l_a, l_b);
+			ft_mov_pa(state);
 		}
-		else if (num_t1 > *(int *)(ft_get_list_n(*l_a, 1))->content && num_t1 < *(int *)(ft_get_list_n(*l_a, ft_lstsize(*l_a)))->content && i == 1 &&  num_t1 > *(int *)(ft_get_list_n(*l_a, 3))->content)
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, ft_lstsize(state->l_a)) && i == 1 &&  num_t1 > ft_gnl(state->l_a, 3))
 		{
-			// ft_printf("\n Acctions 4\n");
-			ft_mov_rra(l_a);
-			ft_mov_pa(l_a, l_b);
-		// 	ft_mov_sa(l_a);
-			ft_mov_ra(l_a);
-			ft_mov_ra(l_a);
+			ft_mov_rra(state);
+			ft_mov_pa(state);
+			ft_mov_ra(state);
+			ft_mov_ra(state);
 		}
-		else if (num_t1 > *(int *)(ft_get_list_n(*l_a, 1))->content && num_t1 < *(int *)(ft_get_list_n(*l_a, ft_lstsize(*l_a)))->content && i == 1)
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, ft_lstsize(state->l_a)) && i == 1)
 		{
-			// ft_printf("\n Acctions 5\n");
-			ft_mov_pb(l_a, l_b);
-			ft_mov_pb(l_a, l_b);
-			ft_mov_rrb(l_a);
-			ft_mov_pa(l_a, l_b);
-			ft_mov_pa(l_a, l_b);
-			ft_mov_pa(l_a, l_b);
+			ft_mov_pb(state);
+			ft_mov_pb(state);
+			ft_mov_rrb(state);
+			ft_mov_pa(state);
+			ft_mov_pa(state);
+			ft_mov_pa(state);
 		}
-		else if (num_t1 > *(int *)(ft_get_list_n(*l_a, 1))->content && num_t1 < *(int *)(ft_get_list_n(*l_a, ft_lstsize(*l_a)))->content && i == 2)
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, ft_lstsize(state->l_a)) && i == 2)
 		{
-			// ft_printf("\n Acctions 6\n");
-			ft_mov_pa(l_a, l_b);
-			ft_mov_rra(l_a);
-			ft_mov_sa(l_a);
-			ft_mov_ra(l_a);
-			ft_mov_ra(l_a);
+			ft_mov_pa(state);
+			ft_mov_rra(state);
+			ft_mov_sa(state);
+			ft_mov_ra(state);
+			ft_mov_ra(state);
+		}
+		i--;
+	}
+}
+
+void	ft_arrange_formats(t_state *state)
+{
+	int	num_t1;
+	int i;
+
+	i = ft_lstsize(state->l_a) - 3;
+	while (i > 0 && ft_check_organize(state->l_a, 2, 4) == 0)
+	{
+		ft_mov_pb(state);
+		i--;
+	}
+	i = ft_lstsize(state->l_b);
+	if (i > 1 && ft_gnl(state->l_b, 1) > ft_gnl(state->l_b, 2))
+	{
+		ft_mov_sb(state);
+	}
+	ft_arrange_3_format(state);
+	while (i > 0)
+	{
+		num_t1 = ft_gnl(state->l_b, 1);
+		if (num_t1 > ft_gnl(state->l_a, ft_lstsize(state->l_a)))
+		{
+			ft_mov_pa(state);
+			ft_mov_ra(state);
+		}
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, 2))
+		{
+			ft_mov_pa(state);
+			ft_mov_sa(state);
+		}
+		else if (num_t1 < ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, 2))
+		{
+			ft_mov_pa(state);
+		}
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, ft_lstsize(state->l_a)) && i == 1 &&  num_t1 > ft_gnl(state->l_a, 3))
+		{
+			ft_mov_rra(state);
+			ft_mov_pa(state);
+			ft_mov_ra(state);
+			ft_mov_ra(state);
+		}
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, ft_lstsize(state->l_a)) && i == 1)
+		{
+			ft_mov_pb(state);
+			ft_mov_pb(state);
+			ft_mov_rrb(state);
+			ft_mov_pa(state);
+			ft_mov_pa(state);
+			ft_mov_pa(state);
+		}
+		else if (num_t1 > ft_gnl(state->l_a, 1) && num_t1 < ft_gnl(state->l_a, ft_lstsize(state->l_a)) && i == 2)
+		{
+			ft_mov_pa(state);
+			ft_mov_rra(state);
+			ft_mov_sa(state);
+			ft_mov_ra(state);
+			ft_mov_ra(state);
 		}
 		i--;
 	}
