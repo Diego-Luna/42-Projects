@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:27:06 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/25 15:20:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/25 18:24:36 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_mov_rr_utils(t_list **l_1)
 	}
 }
 
-// void	ft_mov_rra(t_list **l_a)
 void	ft_mov_rra(t_state *state)
 {
 	ft_mov_rr_utils(&state->l_a);

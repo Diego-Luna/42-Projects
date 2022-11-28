@@ -18,7 +18,9 @@ INC		=	libs/push_swap.h
 
 # Sources are all .c files
 SRCDIR	=	src/
-SRCS =	src/main.c src/ft_sa_sb_ss.c src/ft_pa_pb.c src/ft_rra_rrb_rrr.c src/ft_ra_rb_rr.c src/ft_arrange_3_format.c src/ft_exit.c
+SRCS =	src/main.c src/ft_sa_sb_ss.c src/ft_pa_pb.c src/ft_rra_rrb_rrr.c \
+				src/ft_ra_rb_rr.c src/ft_arrange_2_to_5_format.c src/ft_exit.c \
+				src/ft_arrange_big.c
 
 # Objects are all .o files
 OBJDIR	=	bin/
