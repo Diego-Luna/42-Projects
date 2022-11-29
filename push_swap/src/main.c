@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 16:38:37 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/28 17:45:45 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:52:28 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,6 @@ int	main(int argc, char **argv)
 	state.l_b = NULL;
 	zise =  argc - 1;
 	state.max_number = zise + 1;
-	ft_printf("\n t{%d} \n", state.max_number);
 	if (argc > 2 && ft_check_params(argv) == 1)
 	{
 		if (zise > 250)
@@ -244,7 +243,6 @@ int	main(int argc, char **argv)
 		}
 		else
 		{
-				ft_printf("\n else\n");
 				ft_big_to_b(&state);
 				ft_sort_big_a(&state);
 		}
@@ -255,6 +253,5 @@ int	main(int argc, char **argv)
 	{
 		ft_exit();
 	}
-	ft_printf("\n diego");
 	return (0);
 }

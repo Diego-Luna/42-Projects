@@ -6,13 +6,13 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:17:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/28 17:45:25 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:47:21 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_find_smaller_chunk(t_list *list, int number, int chunk)
+int	ft_find_smaller_chunk(t_list *list, int chunk, int number)
 {
 	int i;
 	int ii;
@@ -20,13 +20,14 @@ int	ft_find_smaller_chunk(t_list *list, int number, int chunk)
 	int last;
 
 	i = 1;
-	while (ft_gnl(list, i) <= ((number / 2) - chunk) || ft_gnl(list, i) >= ((number / 2) + chunk))
+	while (ft_gnl(list, i) <= ((number / 2) - chunk)
+		  || ft_gnl(list, i) >= ((number / 2) + chunk))
 	{
 		i++;
 	}
 	first = ft_gnl(list, i);
-	// ii = ft_lstsize(list) - 1;
-	ii = ft_lstsize(list);
+	ii = ft_lstsize(list) - 1;
+	// ii = ft_lstsize(list);
 	while (ft_gnl(list, ii) <= ((number / 2) - chunk) || ft_gnl(list, ii) >= ((number / 2) + chunk))
 	{
 		ii--;
@@ -64,9 +65,11 @@ void	ft_big_to_b(t_state *state)
 	{
 		state->next = ft_find_smaller_chunk(state->l_a, state->chunk, state->max_number);
 		state->index = ft_git(state->l_a, state->next);
+		// ft_printf("\n state->index{%d}, state->next{%d}", state->index, state->next);
+		// exit(1);
 		while (ft_gnl(state->l_a, 1) != state->next)
 		{
-			if (state->index < ft_lstsize(state->l_a) / 2)
+			if (state->index < (ft_lstsize(state->l_a) / 2))
 			{
 				ft_mov_ra(state);
 			}
