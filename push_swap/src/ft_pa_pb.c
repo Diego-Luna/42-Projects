@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 19:02:18 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/25 18:24:04 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/11/28 19:16:07 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lst_add_front(t_list **orgin, t_list *new)
 	(*orgin)->content = va_tem;
 }
 
-void ft_mov_pa_utils(t_list **l_a, t_list **l_b)
+void	ft_mov_pa_utils(t_list **l_a, t_list **l_b)
 {
 	int		*num;
 	t_list	*tem;
