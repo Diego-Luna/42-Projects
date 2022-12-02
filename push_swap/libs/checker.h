@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:34:41 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/29 15:18:55 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/01 19:11:21 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ void				ft_exit(void);
 void				ft_free_tlist(t_list *lst);
 
 // control
-// void				ft_arrange_2_format(t_state *state);
-// void				ft_arrange_3_format(t_state *state);
-// void				ft_arrange_5_format(t_state *state);
-// void				ft_arrange_big(t_state *state);
+int					ft_check_comand_family_s(t_state *state, char *comand, int *find);
+int					ft_check_comand_family_p(t_state *state, char *comand, int *find);
+int					ft_check_comand_family_r(t_state *state, char *comand, int *find);
+int					ft_check_comand_family_rr(t_state *state, char *comand, int *find);
 
 // utils
 int					ft_check_params(char **argv);
+void				ft_create_lists(t_state *state, char **argv);
 
 // utils tlist
 t_list				*ft_get_list_n(t_list *lst, int num);

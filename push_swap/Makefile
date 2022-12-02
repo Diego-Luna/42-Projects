@@ -28,7 +28,7 @@ SRCS =	src/main.c src/ft_sa_sb_ss.c src/ft_pa_pb.c src/ft_rra_rrb_rrr.c \
 SRCDIR_BONUS	=	bonus/
 SRCS_BONUS =	bonus/checker.c bonus/ft_check_params_bonus.c bonus/ft_exit_bonus.c \
 					bonus/ft_sa_sb_ss_bonus.c bonus/ft_pa_pb_bonus.c bonus/ft_rra_rrb_rrr_bonus.c \
-					bonus/ft_ra_rb_rr_bonus.c bonus/ft_tlist_utils_bonus.c
+					bonus/ft_ra_rb_rr_bonus.c bonus/ft_tlist_utils_bonus.c bonus/checker_utils.c
 
 # Objects are all .o files
 OBJDIR	=	bin/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sa_sb_ss_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:24:04 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/29 13:14:20 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/01 20:12:01 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 void	ft_mov_s_utils(t_list **lst)
 {
 	void	*tem;
-	t_list	*c_first;
 
 	if (ft_lstsize(*lst) < 1)
 	{
 		return ;
 	}
-	c_first = *lst;
 	tem = (*lst)->content;
 	(*lst)->content = (*lst)->next->content;
 	(*lst)->next->content = tem;
