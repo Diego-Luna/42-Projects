@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 16:38:37 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/05 16:46:25 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:43:44 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	main(int argc, char **argv)
 	state.max_number = (argc - 1) + 1;
 	if (argc > 2 && ft_check_params(argv) == 1)
 		ft_push_swap(&state, (argc - 1), argv);
-	else if (argc != 1)
+	else if (ft_check_params(argv) == 0)
 		ft_exit();
 	if (is_str == 2)
 		ft_free_table(argv);
