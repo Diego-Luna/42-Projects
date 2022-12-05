@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 19:27:18 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/05 13:30:19 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:00:10 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_max_int(char **argv)
 
 	while (argv[i])
 	{
-		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+		if (ft_atoilz(argv[i]) > 2147483647 || ft_atoilz(argv[i]) < -2147483648)
 		{
 			return (1);
 		}

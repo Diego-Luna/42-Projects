@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:35:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/28 19:08:04 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:59:56 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int					ft_isascii(int c);
 
 /* change */
 int					ft_atoi(const char *str);
+long int		ft_atoilz(const char *str);
 char				*ft_itoa(int n);
 
 /* Io */

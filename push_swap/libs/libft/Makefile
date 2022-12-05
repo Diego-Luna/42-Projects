@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 14:59:37 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/11/22 08:38:32 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/12/05 16:00:54 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 # Sources are all .c files
 SRCDIR	=	src/
 SRCS	=	src/ft_isalpha.c src/ft_isalnum.c src/ft_isdigit.c src/ft_isprint.c src/ft_isascii.c \
-				src/ft_atoi.c src/ft_itoa.c src/ft_putnbr_fd.c src/ft_putstr_fd.c src/ft_putchar_fd.c \
+				src/ft_atoi.c src/ft_atoilz.c src/ft_itoa.c src/ft_putnbr_fd.c src/ft_putstr_fd.c src/ft_putchar_fd.c \
 				src/ft_putendl_fd.c src/ft_strdup.c src/ft_calloc.c src/ft_substr.c src/ft_memset.c \
 				src/ft_memchr.c src/ft_memcpy.c src/ft_memmove.c src/ft_memcmp.c src/ft_tolower.c \
 				src/ft_toupper.c src/ft_strlen.c src/ft_bzero.c src/ft_strchr.c src/ft_strrchr.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:53:36 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/01 19:08:32 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/12/05 16:05:37 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,10 @@ int	main(int argc, char **argv)
 		ft_checker(&state);
 		ft_free_tlist(state.l_a);
 		ft_free_tlist(state.l_b);
+	}
+	else
+	{
+		ft_exit();
 	}
 	return (0);
 }

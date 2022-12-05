@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:24:04 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/29 17:54:13 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:57:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	ft_mov_sb(t_state *state)
 
 void	ft_mov_sa(t_state *state)
 {
+	if (ft_lstsize(state->l_a) < 1)
+	{
+		return ;
+	}
 	ft_mov_s_utils(&state->l_a);
 	ft_printf("sa\n");
 }
