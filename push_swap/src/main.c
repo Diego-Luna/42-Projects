@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 16:38:37 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/29 18:13:35 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:44:31 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,39 @@ void	ft_print_list(t_list *lst)
 	}
 }
 
+int	ft_find_index_organise(char *str_compare, char **strs)
+{
+	int i = 1;
+	int index = 1;
+
+	while (strs[i])
+	{
+		if (ft_atoi(str_compare) > ft_atoi(strs[i]))
+		{
+			index ++;
+		}
+		i++;
+	}
+	return (index);
+}
+
+void	ft_create_lists_v2(t_state *state, int zise, char **argv)
+{
+	int		i;
+	int		*num;
+	t_list	*tmp;
+
+	i = 1;
+	while (argv[i] && i <= zise)
+	{
+		num = malloc(sizeof(int *));
+		*num = ft_find_index_organise(argv[i], argv);
+		tmp = ft_lstnew((void *)num);
+		ft_lstadd_back(&state->l_a, tmp);
+		i++;
+	}
+}
+
 // This function creates a list with a table of strings.
 // Receives the status of our project and the string
 // of parameters.
@@ -67,14 +100,15 @@ void	ft_create_lists(t_state *state, char **argv)
 	}
 }
 
-void	ft_push_swap(t_state *state, int zise, char **argv)
+// void	ft_push_swap(t_state *state, int zise, char **argv)
+void	ft_push_swap(t_state *state, int zise)
 {
 	if (zise > 250)
 		state->chunk = 30;
 	else
 		state->chunk = 15;
 	state->addchunk = state->chunk;
-	ft_create_lists(state, argv);
+	// ft_create_lists(state, argv);
 	if (zise <= 2)
 		ft_arrange_2_format(state);
 	else if (zise <= 3)
@@ -87,22 +121,61 @@ void	ft_push_swap(t_state *state, int zise, char **argv)
 		ft_arrange_big(state);
 }
 
+int	ft_split_size_number_words(char *src, char sep)
+{
+	int		words;
+	int		i;
+
+	i = 0;
+	words = 0;
+	while (src[i])
+	{
+		while (src[i] == sep)
+			i++;
+		if (src[i] != sep && src[i])
+			words++;
+		while (src[i] != sep && src[i])
+			i++;
+	}
+	return (words);
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_state	state;
 	int		zise;
+	// char	*split;
 
 	state.l_a = NULL;
 	state.l_b = NULL;
 	zise = argc - 1;
 	state.max_number = zise + 1;
-	if (argc > 2 && ft_check_params(argv) == 1)
+
+	// if (argc >= 2)
+	if (argc >= 2 && ft_check_params(argv) == 1)
 	{
-		ft_push_swap(&state, zise, argv);
+		// if (ft_strchr(argv[1], ' ') != NULL && argc == 2)
+		// {
+		// 	split = ft_strjoin("push_swap ", argv[1]);
+		// 	argc = ft_split_size_number_words(split, ' ');
+		// 	ft_printf("\nDiego{%s}, num{%d}\n", split, argc);
+		// 	argv = ft_split(split, ' ');
+		// 	free(split);
+		// 	int i = 0;
+		// 	while (argv[i])
+		// 	{
+		// 		ft_printf("\nd{%s}\n", argv[i]);
+		// 		i++;
+		// 	}
+		// }
+		ft_create_lists_v2(&state, zise, argv);
+		// ft_print_list(state.l_a);
+		ft_push_swap(&state, zise);
 		ft_free_tlist(state.l_a);
 		ft_free_tlist(state.l_b);
 	}
-	else
+	else if (argc != 1)
 	{
 		ft_exit();
 	}

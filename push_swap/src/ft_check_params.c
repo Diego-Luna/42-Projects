@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 19:27:18 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/28 19:28:09 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:30:19 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ int	ft_repeating_numbers(char **argv)
 		while (argv[i + ++ii])
 			if (ft_atoi(argv[i]) == ft_atoi(argv[i + ii]))
 				return (1);
+	}
+	return (0);
+}
+
+int	ft_max_int(char **argv)
+{
+	int i = 1;
+
+	while (argv[i])
+	{
+		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+		{
+			return (1);
+		}
+		i++;
 	}
 	return (0);
 }
@@ -56,7 +71,7 @@ int	ft_check_params(char **argv)
 	}
 	if (i < 1)
 		return (0);
-	if (ft_repeating_numbers(argv) == 1)
+	if (ft_repeating_numbers(argv) == 1 || ft_max_int(argv) == 1)
 		return (0);
 	return (1);
 }
