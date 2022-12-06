@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:53:36 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/05 16:05:37 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:55:04 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 	state.l_b = NULL;
 	zise = argc - 1;
 	state.max_number = zise + 1;
-	if (argc > 2 && ft_check_params(argv) == 1)
+	if (argc > 1 && ft_check_params(argv) == 1)
 	{
 		if (zise > 250)
 			state.chunk = 30;
@@ -98,7 +98,7 @@ int	main(int argc, char **argv)
 		ft_free_tlist(state.l_a);
 		ft_free_tlist(state.l_b);
 	}
-	else
+	else if (ft_check_params(argv) != 1)
 	{
 		ft_exit();
 	}

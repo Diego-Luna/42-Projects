@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 19:03:47 by diegofranci       #+#    #+#             */
-/*   Updated: 2022/12/01 19:06:45 by diegofranci      ###   ########.fr       */
+/*   Updated: 2022/12/06 14:28:07 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ void	ft_create_lists(t_state *state, char **argv)
 	t_list	*tmp;
 
 	i = 1;
-	num = malloc(sizeof(int));
-	*num = ft_atoi(argv[i]);
-	state->l_a = ft_lstnew((void *)num);
-	i++;
 	while (argv[i])
 	{
 		num = malloc(sizeof(int *));

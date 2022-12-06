@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 19:02:18 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/11/29 13:12:48 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:30:35 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_mov_pa_utils(t_list **l_a, t_list **l_b)
 
 void	ft_mov_pa(t_state *state)
 {
-	if (ft_lstsize(state->l_a) < 1 || ft_lstsize(state->l_b) < 1)
+	if (ft_lstsize(state->l_b) < 1)
 	{
 		state->error_tlist = -1;
 		return ;
@@ -55,7 +55,7 @@ void	ft_mov_pa(t_state *state)
 
 void	ft_mov_pb(t_state *state)
 {
-	if (ft_lstsize(state->l_a) < 1 || ft_lstsize(state->l_b) < 1)
+	if (ft_lstsize(state->l_a) < 1)
 	{
 		state->error_tlist = -1;
 		return ;
