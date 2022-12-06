@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:17:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/05 16:16:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:05:11 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,10 @@ void	ft_sort_big_a(t_state *state)
 
 void	ft_arrange_big(t_state *state)
 {
+	if (ft_check_organize(state->l_a, 1, ft_lstsize(state->l_a)) == 1)
+	{
+		return ;
+	}
 	ft_big_to_b(state);
 	state->next = ft_the_bigger_value(state->l_b);
 	ft_sort_big_a(state);
