@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:22:11 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/05 16:15:18 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:26:40 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	ft_arrange_5_format(t_state *state)
 			ft_mov_pb(state);
 		else
 		{
-			if (ft_gnl(state->l_a, ft_lstsize(state->l_a)) < zise)
+			if (ft_gnl(state->l_a, ft_lstsize(state->l_a)) <= zise)
 				ft_mov_rra(state);
 			else
 				ft_mov_ra(state);

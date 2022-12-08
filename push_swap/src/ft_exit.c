@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:06:00 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/05 16:19:23 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:03:42 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,24 @@ int	ft_check_organize(t_list *lst, int start, int end)
 	while (start < end)
 	{
 		if (ft_gnl(lst, start) > ft_gnl(lst, start + 1))
+		{
+			return (0);
+		}
+		start++;
+	}
+	return (1);
+}
+
+int	ft_check_organize_inverse(t_list *lst)
+{
+	int	start;
+	int	end;
+
+	start = 1;
+	end = ft_lstsize(lst);
+	while (start < end)
+	{
+		if (ft_gnl(lst, start) < ft_gnl(lst, start + 1))
 		{
 			return (0);
 		}

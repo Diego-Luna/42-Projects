@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 14:17:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/06 12:05:11 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:03:23 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_remaining_numbers(t_list *list, int chunk, int n_total)
 	int	max;
 
 	i = 1;
-	max = ft_lstsize(list);
+	max = ft_lstsize(list) - 1;
 	while (i <= max)
 	{
 		if (ft_gnl(list, i) > ((n_total / 2) - chunk)
@@ -75,7 +75,7 @@ void	ft_big_to_b(t_state *state)
 		}
 		ft_mov_pb(state);
 		if (ft_gnl(state->l_b, 0) < state->max_number / 2
-			&& ft_lstsize(state->l_b) != 0)
+			&& ft_lstsize(state->l_b) != 1)
 			ft_mov_rb(state);
 		if (ft_remaining_numbers(state->l_a, state->chunk,
 				state->max_number) == 1)
@@ -92,7 +92,7 @@ void	ft_sort_big_a(t_state *state)
 		state->index = ft_git(state->l_b, state->next);
 		while (ft_gnl(state->l_b, 1) != state->next)
 		{
-			if (ft_gnl(state->l_b, 1) == ft_the_bigger_value(state->l_b))
+			if (ft_gnl(state->l_b, 1) == state->next - 1)
 			{
 				ft_mov_pa(state);
 				state->before_last = 1;
@@ -105,7 +105,7 @@ void	ft_sort_big_a(t_state *state)
 		ft_mov_pa(state);
 		if (state->before_last == 1)
 		{
-			state->next = ft_the_bigger_value(state->l_b);
+			state->next -= 2;
 			state->before_last = 0;
 			ft_mov_sa(state);
 		}

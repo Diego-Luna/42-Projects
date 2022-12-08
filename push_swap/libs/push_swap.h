@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:34:41 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/05 16:18:47 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:09:00 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int					ft_git(t_list *lst, int num);
 // get de value in int
 int					ft_gnl(t_list *lst, int num);
 int					ft_check_organize(t_list *lst, int start, int end);
+int					ft_check_organize_inverse(t_list *lst);
 
 void				ft_print_list(t_list *lst);
 
