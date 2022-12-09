@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/08 20:11:27 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/09 13:11:30 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,31 @@
 # define PHILOSOPHERS_H
 
 # include <stdlib.h>
-// # include <string.h>
+# include <string.h>
 # include <pthread.h>
+# include <stdio.h>
 # include <sys/time.h>
 # include <unistd.h>
-# include <stdio.h>
 // # include <stdio.h>
 // # include <errno.h>
+
+#define M_FORK "has taken a fork"
+
+typedef struct s_philo
+{
+	pthread_t		thid;
+	int				id;
+	int				death;
+	int				l_fork;
+	int				r_fork;
+	int				n_of_meal;
+	long long		time_eat;
+	long long		time_dead;
+	long long		time_sleep;
+	long long		time_start;
+	long long		time_working;
+	struct s_state *state;
+}					t_philo;
 
 typedef struct s_state
 {
@@ -35,28 +53,15 @@ typedef struct s_state
 	long long		time_working;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	message;
-	struct s_philo	*philos;
+	t_philo			*philos;
 }					t_state;
 
-typedef struct s_philo
-{
-	int				id;
-	int				death;
-	int				l_fork;
-	int				r_fork;
-	int				n_of_meal;
-	long long		time_eat;
-	long long		time_dead;
-	long long		time_sleep;
-	long long		time_start;
-	long long		time_working;
-}					t_philo;
+int					ft_check_parans(char const **argv);
 
-int	ft_check_parans(char const **argv);
+void				ft_init_state(t_state *state, int argc, char const **argv);
+void				ft_create_mutex(t_state *state);
+long long			ft_get_time(t_state *state);
 
-
-void	ft_init_state(t_state *state, int argc, char const **argv);
-void	ft_create_mutex(t_state *state);
-long long	ft_get_time(t_state *state);
+void				ft_free(t_state *state);
 
 #endif

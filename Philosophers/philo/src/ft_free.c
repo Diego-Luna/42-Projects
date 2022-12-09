@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_create_mutex.c                                  :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 20:05:52 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/09 11:53:02 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/12/09 12:05:02 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	ft_create_mutex(t_state *state)
+void	ft_free(t_state *state)
 {
-	int	i;
-
-	i = 0;
-	pthread_mutex_init(&state->message, NULL);
-	state->forks = malloc(sizeof(pthread_mutex_t) * state->n_philos);
-	while (i < state->n_philos)
+	if (state->philos != NULL)
 	{
-		pthread_mutex_init(state->forks, NULL);
-		i++;
+		free(state->philos);
+		state->philos = NULL;
+	}
+	if (state->forks != NULL)
+	{
+		free(state->forks);
+		state->forks = NULL;
 	}
 }
