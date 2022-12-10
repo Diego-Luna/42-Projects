@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 20:04:23 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/08 20:05:18 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:46:49 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ void	ft_init_state(t_state *state, int argc, char const **argv)
 	{
 		state->ntp_must_eat = -1;
 	}
+	state->philos = NULL;
+	state->forks = NULL;
 }

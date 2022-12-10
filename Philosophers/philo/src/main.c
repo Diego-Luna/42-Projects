@@ -6,48 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/09 13:28:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:35:12 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-long long	ft_get_time(t_state *state)
-{
-	struct timeval	current_time;
-
-	gettimeofday(&current_time, NULL);
-	if (state->time_start == 0)
-	{
-		return ((current_time.tv_sec * 1000) + (current_time.tv_usec / 1000));
-	}
-	return ((current_time.tv_sec * 1000) + (current_time.tv_usec / 1000)
-		- state->time_start);
-}
-
-
-void	ft_create_philos(t_state *state)
-{
-	int	i;
-
-	i = 0;
-	state->philos = malloc(sizeof(t_philo) * state->n_philos);
-	while (i < state->n_philos)
-	{
-		state->philos[i].id = i + 1;
-		state->philos[i].death = 0;
-		state->philos[i].l_fork = i;
-		state->philos[i].r_fork = (i + 1) % state->n_philos;
-		state->philos[i].n_of_meal = state->ntp_must_eat;
-		state->philos[i].time_eat = state->t_eat;
-		state->philos[i].time_dead = state->t_die;
-		state->philos[i].time_sleep = state->t_sleep;
-		state->philos[i].time_start = -1;
-		state->philos[i].time_working = -1;
-		state->philos[i].state = state;
-		i++;
-	}
-}
 
 void	ft_print_state(t_state *state)
 {
@@ -75,36 +38,35 @@ void	ft_print_state(t_state *state)
 	}
 }
 
-void	ft_mutex_message(t_philo *philo, char *str)
-{
-	pthread_mutex_lock(&philo->state->message);
-	printf("%lld %d %s\n", ft_get_time(philo->state), philo->id, str);
-	pthread_mutex_unlock(&philo->state->message);
-
-}
-
-void	ft_taken_fork(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->state->forks[philo->l_fork]);
-	pthread_mutex_lock(&philo->state->forks[philo->r_fork]);
-
-	ft_mutex_message(philo, M_FORK);
-}
-
 void *thread(void *arg) {
 
 	t_philo *philo = arg;
 
-	ft_taken_fork(philo);
-
-	pthread_mutex_unlock(&philo->state->forks[philo->l_fork]);
-	pthread_mutex_unlock(&philo->state->forks[philo->r_fork]);
+	philo->time_start = ft_get_time(philo->state);
+	while ((philo->n_of_meal > 0 || philo->n_of_meal == -1 ) && philo->death == 0)
+	{
+		if (philo->death == 0 && (ft_get_time(philo->state) - philo->t_last_eat) >= philo->time_dead)
+		{
+			philo->death = 1;
+			ft_mutex_message(philo, M_DIED, O_NORMAL);
+		}
+		else
+		{
+			ft_taken_fork(philo);
+			ft_eating(philo);
+			if (philo->n_of_meal > 0 || philo->n_of_meal == -1)
+			{
+				ft_mutex_message(philo, M_SLEE, O_NORMAL);
+				ft_sleep(philo->state, philo->time_sleep);
+				ft_mutex_message(philo, M_THIN, O_NORMAL);
+			}
+		}
+	}
 	return (0);
 }
 
 void	ft_create_threads(t_state *state)
 {
-	// pthread_t thid;
 	int i = 0 ;
 
 	while (i < state->n_philos)
@@ -118,6 +80,7 @@ void	ft_create_threads(t_state *state)
 		pthread_join(state->philos[i].thid, NULL);
 		i++;
 	}
+
   // pthread_create(&thid, NULL, thread, "como estas");
 	// pthread_join(thid, NULL);
 }
@@ -134,14 +97,11 @@ int	main(int argc, char const **argv)
 		ft_create_mutex(&state);
 		// create philos
 		ft_create_philos(&state);
-		
+
 		ft_print_state(&state);
-		
+
 		// create threads
-		// ft_create_threads(&state);
-		// 	check eating, think, etc.
-		// 	todo print state philo
-		// state.time_working = ft_get_time(&state);
+		ft_create_threads(&state);
 		ft_free(&state);
 	}
 	return (0);
