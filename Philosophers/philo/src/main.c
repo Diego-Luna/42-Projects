@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:35:12 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:57:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,33 @@ void *thread(void *arg) {
 
 	t_philo *philo = arg;
 
-	philo->time_start = ft_get_time(philo->state);
-	while ((philo->n_of_meal > 0 || philo->n_of_meal == -1 ) && philo->death == 0)
+	// philo->time_start = ft_get_time(philo->state);
+	if ((ft_get_time(philo->state) - philo->time_start) < philo->time_dead)
 	{
-		if (philo->death == 0 && (ft_get_time(philo->state) - philo->t_last_eat) >= philo->time_dead)
+		while ((philo->n_of_meal > 0 || philo->n_of_meal == -1 ) && philo->death == 0 && ft_check_dead(philo->state) == 0)
 		{
-			philo->death = 1;
-			ft_mutex_message(philo, M_DIED, O_NORMAL);
-		}
-		else
-		{
-			ft_taken_fork(philo);
-			ft_eating(philo);
-			if (philo->n_of_meal > 0 || philo->n_of_meal == -1)
+			if (philo->death == 0 && (ft_get_time(philo->state) - philo->t_last_eat) >= philo->time_dead)
 			{
-				ft_mutex_message(philo, M_SLEE, O_NORMAL);
-				ft_sleep(philo->state, philo->time_sleep);
-				ft_mutex_message(philo, M_THIN, O_NORMAL);
+				philo->death = 1;
+				ft_mutex_message(philo, M_DIED, O_NORMAL);
+			}
+			else
+			{
+				ft_taken_fork(philo);
+				ft_eating(philo);
+				if (philo->n_of_meal > 0 || philo->n_of_meal == -1)
+				{
+					ft_mutex_message(philo, M_SLEE, O_NORMAL);
+					ft_sleep(philo->state, philo->time_sleep);
+					ft_mutex_message(philo, M_THIN, O_NORMAL);
+				}
 			}
 		}
+	}
+	else
+	{
+		philo->death = 1;
+		ft_mutex_message(philo, M_FULL, O_NORMAL);
 	}
 	return (0);
 }
@@ -80,9 +88,12 @@ void	ft_create_threads(t_state *state)
 		pthread_join(state->philos[i].thid, NULL);
 		i++;
 	}
-
-  // pthread_create(&thid, NULL, thread, "como estas");
-	// pthread_join(thid, NULL);
+	i = 0;
+	while (i < state->n_philos)
+	{
+		pthread_detach(state->philos[i].thid);
+		i++;
+	}
 }
 
 int	main(int argc, char const **argv)
@@ -91,52 +102,12 @@ int	main(int argc, char const **argv)
 
 	if (argc >= 5 && argc <= 6 && ft_check_parans(argv) == 1)
 	{
-		// start state
 		ft_init_state(&state, argc, argv);
-		// create mutex
 		ft_create_mutex(&state);
-		// create philos
 		ft_create_philos(&state);
-
 		ft_print_state(&state);
-
-		// create threads
 		ft_create_threads(&state);
 		ft_free(&state);
 	}
 	return (0);
 }
-
-// #define _OPEN_THREADS
-// #include <pthread.h>
-// #include <stdlib.h>
-// #include <stdio.h>
-// #include <string.h>
-
-// void *thread(void *arg) {
-//   char *ret;
-//   printf("thread() entered with argument '%s'\n", arg);
-//   if ((ret = (char*) malloc(20)) == NULL) {
-//     perror("malloc() error");
-//     exit(2);
-//   }
-//   strcpy(ret, "This is a test");
-//   pthread_exit(ret);
-// }
-
-// int main(void) {
-//   pthread_t thid;
-//   void *ret;
-
-//   if (pthread_create(&thid, NULL, thread, "como estas") != 0) {
-//     perror("pthread_create() error");
-//     exit(1);
-//   }
-
-//   if (pthread_join(thid, &ret) != 0) {
-//     perror("pthread_create() error");
-//     exit(3);
-//   }
-
-//   printf("thread exited with '%s'\n", ret);
-// }

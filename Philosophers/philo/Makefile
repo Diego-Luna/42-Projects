@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 17:30:28 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/12/09 18:23:57 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/12/12 12:41:43 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = philo
 NAME_BONUS = philo_bonus
 
 CC		=	gcc
-CFLAGS	=	-g -Wall -Werror -Wextra -I. -I./$(INCDIR) #-fsanitize=thread
+CFLAGS	=	-g -Wall -Werror -Wextra -pthread -I. -I./$(INCDIR) #-fsanitize=thread
 RM		=	rm -f
 RM_F		=	rm -rf
 
