@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/09 18:34:57 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:08:19 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_mutex_message(t_philo *philo, char *str, int opcion)
 	}
 	if(opcion == O_FULL)
 	{
-		printf("%lld %d %s\n", ft_get_time(philo->state), philo->id, str);
+		printf("%lld %s\n", ft_get_time(philo->state), str);
 	}
 	pthread_mutex_unlock(&philo->state->message);
 }
