@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 17:30:28 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/12/12 12:41:43 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/12/13 11:13:11 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ INC_BONUS		=	libs/checker.h
 
 # Sources are all .c files
 SRCDIR	=	src/
-SRCS =	src/main.c src/ft_check_parans.c src/ft_create_mutex.c src/ft_init_state.c \
+SRCS =	src/main.c src/ft_check_parameters.c src/ft_check_parameters_utils.c src/ft_create_mutex.c src/ft_init_state.c \
 				src/ft_free.c src/ft_get_time.c src/ft_philo.c
 
 SRCDIR_BONUS	=	bonus/

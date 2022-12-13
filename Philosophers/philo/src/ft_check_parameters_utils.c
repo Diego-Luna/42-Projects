@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_state.c                                    :+:      :+:    :+:   */
+/*   ft_check_parameters_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 20:04:23 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/13 11:14:10 by dluna-lo         ###   ########.fr       */
+/*   Created: 2022/12/13 11:10:29 by dluna-lo          #+#    #+#             */
+/*   Updated: 2022/12/13 11:13:28 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	ft_atoi(const char *str)
+long int	ft_atoilz(const char *str)
 {
-	size_t	i;
-	int		sign;
-	size_t	result;
+	long int	i;
+	int			sign;
+	long int	result;
 
 	i = 0;
 	sign = 1;
@@ -37,24 +37,11 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-void	ft_init_state(t_state *state, int argc, char const **argv)
+int	ft_isdigit(int c)
 {
-	state->n_philos = ft_atoi(argv[1]);
-	state->t_die = ft_atoi(argv[2]);
-	state->t_eat = ft_atoi(argv[3]);
-	state->t_sleep = ft_atoi(argv[4]);
-	state->death_occured = 0;
-	state->error = 0;
-	state->time_start = 0;
-	state->time_start = ft_get_time(state);
-	if (argc == 6)
+	if (c >= '0' && c <= '9')
 	{
-		state->ntp_must_eat = ft_atoi(argv[5]);
+		return (1);
 	}
-	else
-	{
-		state->ntp_must_eat = -1;
-	}
-	state->philos = NULL;
-	state->forks = NULL;
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/12 16:47:16 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/13 12:01:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_state
 	t_philo			*philos;
 }					t_state;
 
-int					ft_check_parans(char const **argv);
+int					ft_check_parameters(char const **argv);
 
 void				ft_init_state(t_state *state, int argc, char const **argv);
 void				ft_create_mutex(t_state *state);
@@ -83,5 +83,10 @@ void				ft_sleep(t_state *state, int wait_time);
 void				ft_create_philos(t_state *state);
 void				ft_taken_fork(t_philo *philo);
 void				ft_eating(t_philo *philo);
+
+long int			ft_atoilz(const char *str);
+int					ft_isdigit(int c);
+
+void				ft_print_state(t_state *state);
 
 #endif
