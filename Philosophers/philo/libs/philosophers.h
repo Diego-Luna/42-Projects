@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/13 12:01:05 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/13 19:57:42 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define O_NORMAL 1
 # define O_FINIS 2
 # define O_FULL 3
+# define O_DIED 4
 
 typedef struct s_philo
 {
@@ -65,6 +66,7 @@ typedef struct s_state
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	message;
 	t_philo			*philos;
+	pthread_t		check_dead;
 }					t_state;
 
 int					ft_check_parameters(char const **argv);

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/13 12:01:00 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:14:49 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,6 @@ void	ft_create_threads(t_state *state)
 	while (i < state->n_philos)
 	{
 		pthread_join(state->philos[i].thid, NULL);
-		i++;
-	}
-	i = 0;
-	while (i < state->n_philos)
-	{
-		pthread_detach(state->philos[i].thid);
 		i++;
 	}
 }

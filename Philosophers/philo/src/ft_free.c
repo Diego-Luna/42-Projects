@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/13 11:13:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/13 18:15:26 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 void	ft_free(t_state *state)
 {
+	int i = 0;
+	
+	while (i < state->n_philos)
+	{
+		pthread_detach(state->philos[i].thid);
+		i++;
+	}
 	if (state->philos != NULL)
 	{
 		free(state->philos);
