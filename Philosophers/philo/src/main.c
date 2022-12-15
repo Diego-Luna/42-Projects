@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/14 19:55:04 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:59:32 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void	*thread_check(void *arg)
 	state = arg;
 	while (state->death_occured == 0 && state->ntp_must_eat != 0)
 	{
-		// pthread_mutex_lock(&state->m_check_dead);
-		// state->death_occured = ft_check_dead(state);
+		pthread_mutex_lock(&state->m_check_dead);
+		state->death_occured = ft_check_dead(state);
+		// state->death_occured = 1;
+		pthread_mutex_unlock(&state->m_check_dead);
 		// state->death_occured = 0;
 		if (state->death_occured == 1)
 		{
@@ -68,7 +70,6 @@ void	*thread_check(void *arg)
 		{
 			ft_mutex_message(&state->philos[0], M_ALL, O_FULL);
 		}
-		// pthread_mutex_unlock(&state->m_check_dead);
 	}
 	return (0);
 }
@@ -81,17 +82,20 @@ void	*thread(void *arg)
 	philo = arg;
 	state = philo->state;
 	philo->time_start = ft_get_time(state);
-	// pthread_mutex_lock(&state->m_check_dead);
-	// philo->death = state->death_occured;
-	// pthread_mutex_unlock(&state->m_check_dead);
-	// while (philo->death == 0 && state->ntp_must_eat != 0
-	while (state->death_occured == 0 && state->ntp_must_eat != 0
+	pthread_mutex_lock(&state->m_check_dead);
+	philo->death = state->death_occured;
+	pthread_mutex_unlock(&state->m_check_dead);
+	// while (state->death_occured == 0 && state->ntp_must_eat != 0
+	while (philo->death == 0 && state->ntp_must_eat != 0
 		&& (philo->n_of_meal > 0 || philo->n_of_meal == -1))
 	{
 		ft_taken_fork(philo);
 		ft_eating(philo);
 		if (philo->n_of_meal > 0 || philo->n_of_meal == -1)
 			ft_sleep_and_think(philo);
+		pthread_mutex_lock(&state->m_check_dead);
+		philo->death = state->death_occured;
+		pthread_mutex_unlock(&state->m_check_dead);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:21:55 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/14 19:47:49 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/14 20:02:14 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,15 @@ void	ft_eating(t_philo *philo)
 	if (state->death_occured == 0  && state->ntp_must_eat !=0)
 	{
 		ft_mutex_message(philo, M_EAT, O_NORMAL);
+		pthread_mutex_lock(&state->m_check_dead);
 		philo->t_last_eat = ft_get_time(philo->state);
+		pthread_mutex_unlock(&state->m_check_dead);
 		ft_sleep(philo->state, philo->time_eat);
 		if (philo->n_of_meal > 0)
 		{
+			pthread_mutex_lock(&state->m_check_dead);
 			philo->n_of_meal--;
+			pthread_mutex_lock(&state->m_check_dead);
 		}
 		if (philo->n_of_meal == 0)
 		{
