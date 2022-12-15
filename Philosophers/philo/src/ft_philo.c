@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:21:55 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/13 18:11:22 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:47:49 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,14 @@ int	ft_check_dead(t_state *state)
 	i = 0;
 	while (i < state->n_philos)
 	{
-		if (state->philos[i].death == 1)
+		if (state->philos[i].t_last_eat == -1)
+		{
+			if ((ft_get_time(state) - state->philos[i].time_start) > state->philos[i].time_dead)
+			{
+				return (1);
+			}
+		}
+		else if ( state->philos[i].t_last_eat != -1 && (ft_get_time(state) - state->philos[i].t_last_eat) >= state->philos[i].time_dead)
 		{
 			return (1);
 		}
@@ -47,30 +54,32 @@ int	ft_check_finish_eat(t_state *state)
 	finish = 0;
 	while (i < state->n_philos)
 	{
-		if (state->philos[i].n_of_meal == 0)
+		if ( state->philos[i].n_of_meal < 0 || state->philos[i].n_of_meal > 0)
 		{
-			finish = 1;
+			return 0;
 		}
 		i++;
 	}
-	return (finish);
+	return (1);
 }
 
 void	ft_eating(t_philo *philo)
 {
-	ft_mutex_message(philo, M_EAT, O_NORMAL);
-	philo->t_last_eat = ft_get_time(philo->state);
-	ft_sleep(philo->state, philo->time_eat);
-	if (philo->n_of_meal > 0)
+	t_state *state;
+
+	state = philo->state;
+	if (state->death_occured == 0  && state->ntp_must_eat !=0)
 	{
-		philo->n_of_meal--;
-	}
-	if (philo->n_of_meal == 0)
-	{
-		ft_mutex_message(philo, M_FULL, O_NORMAL);
-		if (ft_check_finish_eat(philo->state) == 1)
+		ft_mutex_message(philo, M_EAT, O_NORMAL);
+		philo->t_last_eat = ft_get_time(philo->state);
+		ft_sleep(philo->state, philo->time_eat);
+		if (philo->n_of_meal > 0)
 		{
-			ft_mutex_message(philo, M_ALL, O_FULL);
+			philo->n_of_meal--;
+		}
+		if (philo->n_of_meal == 0)
+		{
+			ft_mutex_message(philo, M_FULL, O_NORMAL);
 		}
 	}
 	pthread_mutex_unlock(&philo->state->forks[philo->l_fork]);
@@ -96,10 +105,11 @@ void	ft_create_philos(t_state *state)
 		state->philos[i].time_eat = state->t_eat;
 		state->philos[i].time_dead = state->t_die;
 		state->philos[i].time_sleep = state->t_sleep;
-		state->philos[i].time_start = ft_get_time(state);
+		// state->philos[i].time_start = ft_get_time(state);
+		state->philos[i].time_start = -1;
 		state->philos[i].time_working = -1;
 		state->philos[i].state = state;
-		state->philos[i].t_last_eat = 0;
+		state->philos[i].t_last_eat = -1;
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/13 19:57:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/14 18:57:40 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_state
 	long long		time_working;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	message;
+	pthread_mutex_t	m_check_dead;
 	t_philo			*philos;
 	pthread_t		check_dead;
 }					t_state;
@@ -74,7 +75,9 @@ int					ft_check_parameters(char const **argv);
 void				ft_init_state(t_state *state, int argc, char const **argv);
 void				ft_create_mutex(t_state *state);
 long long			ft_get_time(t_state *state);
+
 int					ft_check_dead(t_state *state);
+int	ft_check_finish_eat(t_state *state);
 
 void				ft_free(t_state *state);
 void				ft_mutex_message(t_philo *philo, char *str, int opcion);
