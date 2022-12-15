@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/15 12:33:55 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:30:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int					ft_get_index_philo_dead(t_state *state);
 
 void				ft_free(t_state *state);
 void				ft_mutex_message(t_philo *philo, char *str, int opcion);
+void				ft_mutex_message_dead(t_state *state, int i);
+void				ft_mutex_message_eat_all(t_state *state);
 
 long long			ft_get_time(t_state *state);
 void				ft_sleep(t_state *state, int wait_time);

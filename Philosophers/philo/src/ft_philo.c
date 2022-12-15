@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:21:55 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/15 14:39:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/15 18:27:31 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,12 @@ int	ft_check_dead(t_state *state)
 		{
 			if ((ft_get_time(state) - state->philos[i].time_start) > state->philos[i].time_dead)
 			{
-				// printf("\n Diego-{%d} id{%d} time_start{%lld} time{%lld}, time-dead{%lld}\n", 1, i + 1, state->philos[i].time_start, (ft_get_time(state) - state->philos[i].time_start),  state->philos[i].time_dead);
 				state->philos[i].death = 1;
 				return (1);
 			}
 		}
 		else if ( state->philos[i].t_last_eat > 0 && (ft_get_time(state) - state->philos[i].t_last_eat) > state->philos[i].time_dead)
 		{
-			// printf("\n Diego-{%d} id{%d} - t_last_eat{%lld} \n", 2, i, state->philos[i].t_last_eat);
 			state->philos[i].death = 1;
 			return (1);
 		}
@@ -76,11 +74,11 @@ void	ft_eating(t_philo *philo)
 	t_state *state;
 
 	state = philo->state;
-	pthread_mutex_lock(&state->m_check_dead);
-	philo->death = state->death_occured;
-	pthread_mutex_unlock(&state->m_check_dead);
-	if (philo->death == 0  && state->ntp_must_eat !=0)
-	{
+	// pthread_mutex_lock(&state->m_check_dead);
+	// philo->death = state->death_occured;
+	// pthread_mutex_unlock(&state->m_check_dead);
+	// if (philo->death == 0  && state->ntp_must_eat !=0)
+	// {
 		ft_mutex_message(philo, M_EAT, O_NORMAL);
 
 		pthread_mutex_lock(&state->m_check_dead);
@@ -95,11 +93,7 @@ void	ft_eating(t_philo *philo)
 			philo->n_of_meal--;
 			pthread_mutex_unlock(&state->m_check_dead);
 		}
-		if (philo->n_of_meal == 0)
-		{
-			ft_mutex_message(philo, M_FULL, O_NORMAL);
-		}
-	}
+	// }
 	pthread_mutex_unlock(&philo->state->forks[philo->l_fork]);
 	if (philo->l_fork != philo->r_fork)
 	{
@@ -123,7 +117,6 @@ void	ft_create_philos(t_state *state)
 		state->philos[i].time_eat = state->t_eat;
 		state->philos[i].time_dead = state->t_die;
 		state->philos[i].time_sleep = state->t_sleep;
-		// state->philos[i].time_start = ft_get_time(state);
 		state->philos[i].time_start = -1;
 		state->philos[i].time_working = -1;
 		state->philos[i].state = state;
