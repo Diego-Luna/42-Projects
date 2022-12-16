@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:21:55 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/16 12:06:26 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/16 14:39:48 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,16 @@ int	ft_check_dead(t_state *state)
 void	ft_taken_fork(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->state->forks[philo->l_fork]);
+	ft_mutex_message(philo, M_FORK, O_NORMAL);
 	if (philo->l_fork != philo->r_fork)
 	{
 		pthread_mutex_lock(&philo->state->forks[philo->r_fork]);
+		ft_mutex_message(philo, M_FORK, O_NORMAL);
 	}
-	ft_mutex_message(philo, M_FORK, O_NORMAL);
+	else
+	{
+		ft_sleep(philo->state, philo->time_dead);
+	}
 }
 
 int	ft_check_finish_eat(t_state *state)
