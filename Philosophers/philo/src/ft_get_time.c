@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:20:06 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/16 11:00:14 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:11:41 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ long long	ft_get_time(t_state *state)
 void	ft_sleep(t_state *state, int wait_time)
 {
 	long long	start;
-	int dead = 0;
+	int			dead;
 
+	dead = 0;
 	pthread_mutex_lock(&state->m_check_dead);
 	dead = state->death_occured;
 	pthread_mutex_unlock(&state->m_check_dead);
 	start = ft_get_time(state);
-	while ( dead == 0 && (ft_get_time(state) - start) < wait_time)
+	while (dead == 0 && (ft_get_time(state) - start) < wait_time)
 	{
 		usleep(10);
 	}

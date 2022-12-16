@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/16 10:52:43 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:49:12 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	ft_free(t_state *state)
 	}
 }
 
-void ft_mutex_message_dead(t_state	*state, int i)
+void	ft_mutex_message_dead(t_state *state, int i)
 {
 	pthread_mutex_lock(&state->message);
 	printf("%lld %d %s\n", ft_get_time(state), i, M_DIED);
 	pthread_mutex_unlock(&state->message);
 }
 
-void ft_mutex_message_eat_all(t_state	*state)
+void	ft_mutex_message_eat_all(t_state *state)
 {
 	pthread_mutex_lock(&state->message);
 	pthread_mutex_lock(&state->m_check_dead);
@@ -61,11 +61,9 @@ int	ft_mutex_message(t_philo *philo, char *str, int opcion)
 	int		dead;
 
 	state = philo->state;
-
 	pthread_mutex_lock(&state->m_check_dead);
 	dead = state->death_occured;
 	pthread_mutex_unlock(&state->m_check_dead);
-
 	pthread_mutex_lock(&philo->state->message);
 	if (opcion == O_NORMAL && dead == 0 && philo->n_of_meal != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:21:55 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/16 10:56:29 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/16 12:06:26 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,26 @@
 
 int	ft_check_dead(t_state *state)
 {
-	int	i;
+	int			i;
+	t_philo		*philo;
 
 	i = 0;
 	while (i < state->n_philos)
 	{
-		if (state->philos[i].t_last_eat == -1)
+		philo = &state->philos[i];
+		if (philo->t_last_eat == -1)
 		{
-			if ( state->philos[i].death == 0 && (ft_get_time(state) - state->philos[i].time_start) > state->philos[i].time_dead)
+			if (philo->death == 0 && (ft_get_time(state)
+					- philo->time_start) >= philo->time_dead)
 			{
+				ft_mutex_message_dead(state, i + 1);
 				return (i + 1);
 			}
 		}
-		else if (state->philos[i].death == 0 && state->philos[i].t_last_eat > 0 && (ft_get_time(state) - state->philos[i].t_last_eat) > state->philos[i].time_dead)
+		else if (philo->death == 0 && philo->t_last_eat > 0
+			&& (ft_get_time(state) - philo->t_last_eat) >= philo->time_dead)
 		{
+			ft_mutex_message_dead(state, i + 1);
 			return (i + 1);
 		}
 		i++;
@@ -52,15 +58,14 @@ int	ft_check_finish_eat(t_state *state)
 
 	i = 0;
 	number = 0;
-
 	while (i < state->n_philos)
 	{
 		pthread_mutex_lock(&state->m_check_dead);
 		number = state->philos[i].n_of_meal;
 		pthread_mutex_unlock(&state->m_check_dead);
-		if ( number < 0 || number > 0)
+		if (number < 0 || number > 0)
 		{
-			return 0;
+			return (0);
 		}
 		i++;
 	}
@@ -69,7 +74,7 @@ int	ft_check_finish_eat(t_state *state)
 
 void	ft_eating(t_philo *philo)
 {
-	t_state *state;
+	t_state	*state;
 
 	state = philo->state;
 	ft_mutex_message(philo, M_EAT, O_NORMAL);

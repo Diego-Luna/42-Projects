@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 17:30:28 by dluna-lo          #+#    #+#              #
-#    Updated: 2022/12/16 11:06:57 by dluna-lo         ###   ########.fr        #
+#    Updated: 2022/12/16 12:11:01 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,12 @@ RM_F		=	rm -rf
 
 # Includes are all .h files
 INCDIR	=	libs/
-# INC		=	$(wildcard $(INCDIR)*.h)
 INC		=	libs/philosophers.h
 
 # Sources are all .c files
 SRCDIR	=	src/
 SRCS =	src/main.c src/ft_check_parameters.c src/ft_check_parameters_utils.c src/ft_create_mutex.c src/ft_init_state.c \
-				src/ft_free.c src/ft_get_time.c src/ft_philo.c
+				src/ft_free.c src/ft_get_time.c src/ft_philo.c src/ft_threads.c
 
 # Objects are all .o files
 OBJDIR	=	bin/
@@ -59,6 +58,6 @@ fclean: clean
 	@$(RM) $(NAME)
 
 # Removes objects and executables and remakes
-re: fclean all
+re: fclean all 
 
 .PHONY:		all clean fclean re header
