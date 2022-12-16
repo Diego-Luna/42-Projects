@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/15 18:30:05 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:54:52 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_philo
 	int				l_fork;
 	int				r_fork;
 	int				n_of_meal;
+	int				stop;
 	long long		time_eat;
 	long long		time_dead;
 	long long		time_sleep;
@@ -81,7 +82,7 @@ int					ft_check_finish_eat(t_state *state);
 int					ft_get_index_philo_dead(t_state *state);
 
 void				ft_free(t_state *state);
-void				ft_mutex_message(t_philo *philo, char *str, int opcion);
+int				ft_mutex_message(t_philo *philo, char *str, int opcion);
 void				ft_mutex_message_dead(t_state *state, int i);
 void				ft_mutex_message_eat_all(t_state *state);
 
