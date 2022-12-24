@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 20:05:52 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/15 16:20:21 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/23 18:03:13 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_create_mutex(t_state *state)
 
 	i = 0;
 	pthread_mutex_init(&state->message, NULL);
-	pthread_mutex_init(&state->m_check_dead, NULL);
+	pthread_mutex_init(&state->m_dead, NULL);
 	state->forks = malloc(sizeof(pthread_mutex_t) * state->n_philos);
 	while (i < state->n_philos)
 	{
