@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/24 15:43:10 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:54:56 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,11 @@ void	ft_pthreads_join(t_state *state)
 		pthread_join(state->philos[i].thid, NULL);
 		i++;
 	}
-	// pthread_mutex_lock(&state->m_dead);
-	// dead = state->death_occured;
-	// pthread_mutex_unlock(&state->m_dead);
-	// if (ft_check_finish_eat(state) == 1 && dead == 0
-	// 	&& state->ntp_must_eat != -1)
-	// {
-	// 	ft_mutex_message_eat_all(state);
-	// }
 	pthread_join(state->check_dead, NULL);
+	if (state->ntp_must_eat >= 0)
+	{
+		pthread_join(state->check_eats, NULL);
+	}
 }
 
 void	ft_create_threads(t_state *state)
@@ -45,13 +41,13 @@ void	ft_create_threads(t_state *state)
 		pthread_create(&state->philos[i].thid, NULL, thread,
 			(void *)&state->philos[i]);
 		i++;
-		usleep(10);
+		usleep(100);
 	}
 	pthread_create(&state->check_dead, NULL, thread_check, (void *)state);
-	// if (state->ntp_must_eat > 0)
-	// {
-	// 	pthread_create(&state->check_eats, NULL, thread_eat, (void *)state);
-	// }
+	if (state->ntp_must_eat > 0)
+	{
+		pthread_create(&state->check_eats, NULL, thread_eat, (void *)state);
+	}
 	ft_pthreads_join(state);
 }
 
@@ -77,8 +73,8 @@ int	main(int argc, char const **argv)
 	if (argc >= 5 && argc <= 6 && ft_check_parameters(argv) == 1)
 	{
 		ft_init_state(&state, argc, argv);
-		ft_create_mutex(&state);
 		ft_create_philos(&state);
+		ft_create_mutex(&state);
 		if (state.n_philos > 1)
 		{
 			ft_create_threads(&state);
