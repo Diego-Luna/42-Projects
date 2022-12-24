@@ -6,13 +6,13 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 11:16:56 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/23 19:49:48 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:46:59 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	ft_sleep(t_philo *philo)
+int	ft_philo_sleep(t_philo *philo)
 {
 	t_state	*state;
 
@@ -39,22 +39,24 @@ int	ft_think(t_philo *philo)
 void	*thread_check(void *arg)
 {
 	t_state	*state;
+	int i;
 
+	i = 0;
 	state = arg;
-	pthread_mutex_lock(&state->m_dead);
-	state->death_occured = ft_check_dead(state);
-	ntp_must_eat = state->ntp_must_eat;
-	pthread_mutex_unlock(&state->m_dead);
-	while (state->death_occured == 0 && ntp_must_eat != 0)
+	while (ft_state_dead(state) == 0)
 	{
-		pthread_mutex_lock(&state->m_dead);
-		state->death_occured = ft_check_dead(state);
-		ntp_must_eat = state->ntp_must_eat;
-		pthread_mutex_unlock(&state->m_dead);
-		if (state->death_occured > 0)
+		pthread_mutex_lock(&state->m_time);
+		if ((ft_get_time(state) - state->philos[i].t_last_eat) > state->philos[i].time_dead)
 		{
-			break ;
+			pthread_mutex_lock(&state->m_dead);
+			state->death_occured = 1;
+			pthread_mutex_unlock(&state->m_dead);
+			pthread_mutex_unlock(&state->m_time);
+			ft_mutex_message_dead(state, i + 1);
+			return (0);
 		}
+		pthread_mutex_unlock(&state->m_time);
+		i = (i + 1) % state->n_philos;
 	}
 	return (0);
 }
@@ -112,7 +114,7 @@ void	*thread(void *arg)
 		{
 			break;
 		}
-		if (ft_sleep(philo) == 0)
+		if (ft_philo_sleep(philo) == 0)
 		{
 			break;
 		}

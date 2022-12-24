@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/23 19:32:22 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:41:01 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_mutex_message(t_philo *philo, char *str, int opcion)
 	state = philo->state;
 	pthread_mutex_lock(&state->message);
 	pthread_mutex_lock(&state->m_dead);
-	if (state->check_dead == 1)
+	if (state->death_occured == 1)
 	{
 		pthread_mutex_unlock(&state->m_dead);
 		pthread_mutex_unlock(&state->message);

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/23 18:06:47 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:42:59 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,11 @@ void				ft_mutex_message_eat_all(t_state *state);
 
 long long			ft_get_time(t_state *state);
 void				ft_sleep(t_state *state, int wait_time);
+int			ft_state_dead(t_state *state);
 
 void				ft_create_philos(t_state *state);
-void				ft_taken_fork(t_philo *philo);
-void				ft_eating(t_philo *philo);
+int				ft_taken_fork(t_philo *philo);
+int				ft_eating(t_philo *philo);
 
 long int			ft_atoilz(const char *str);
 int					ft_isdigit(int c);
