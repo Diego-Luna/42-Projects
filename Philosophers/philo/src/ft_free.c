@@ -6,13 +6,13 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/24 18:02:33 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:48:33 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	ft_free(t_state *state)
+void	ft_free_philos(t_state *state)
 {
 	int	i;
 
@@ -25,6 +25,11 @@ void	ft_free(t_state *state)
 		pthread_mutex_destroy(&state->philos[i].m_eat);
 		i++;
 	}
+}
+
+void	ft_free(t_state *state)
+{
+	ft_free_philos(state);
 	pthread_mutex_destroy(&state->message);
 	pthread_mutex_destroy(&state->m_dead);
 	if (state->n_philos > 1)
@@ -53,10 +58,7 @@ void	ft_mutex_message_dead(t_state *state, int i)
 void	ft_mutex_message_eat_all(t_state *state)
 {
 	pthread_mutex_lock(&state->message);
-	// pthread_mutex_lock(&state->m_dead);
-	// state->ntp_must_eat = 0;
 	printf("%lld %s\n", ft_get_time(state), M_ALL);
-	// pthread_mutex_unlock(&state->m_dead);
 	pthread_mutex_unlock(&state->message);
 }
 
@@ -66,11 +68,8 @@ int	ft_mutex_message(t_philo *philo, char *str, int opcion)
 
 	state = philo->state;
 	pthread_mutex_lock(&state->message);
-	// pthread_mutex_lock(&state->m_dead);
-	// if (state->death_occured == 1)
 	if (ft_state_dead(state) == 1)
 	{
-		// pthread_mutex_unlock(&state->m_dead);
 		pthread_mutex_unlock(&state->message);
 		return (0);
 	}
@@ -82,32 +81,6 @@ int	ft_mutex_message(t_philo *philo, char *str, int opcion)
 	{
 		printf("%s\n", str);
 	}
-	// pthread_mutex_unlock(&state->m_dead);
 	pthread_mutex_unlock(&state->message);
 	return (1);
 }
-// int	ft_mutex_message(t_philo *philo, char *str, int opcion)
-// {
-// 	t_state	*state;
-
-// 	state = philo->state;
-// 	pthread_mutex_lock(&state->message);
-// 	pthread_mutex_lock(&state->m_dead);
-// 	if (state->death_occured == 1)
-// 	{
-// 		pthread_mutex_unlock(&state->m_dead);
-// 		pthread_mutex_unlock(&state->message);
-// 		return (0);
-// 	}
-// 	if (opcion == O_NORMAL && philo->n_of_meal != 0)
-// 	{
-// 		printf("%lld %d %s\n", ft_get_time(philo->state), philo->id, str);
-// 	}
-// 	else if (opcion == O_FINIS && philo->n_of_meal != 0)
-// 	{
-// 		printf("%s\n", str);
-// 	}
-// 	pthread_mutex_unlock(&state->m_dead);
-// 	pthread_mutex_unlock(&state->message);
-// 	return (1);
-// }

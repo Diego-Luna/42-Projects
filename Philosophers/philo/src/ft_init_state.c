@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 20:04:23 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/24 17:43:53 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:55:10 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,16 @@ void	ft_init_state(t_state *state, int argc, char const **argv)
 	}
 	state->philos = NULL;
 	state->forks = NULL;
+}
+
+int	ft_state_dead(t_state *state)
+{
+	pthread_mutex_lock(&state->m_dead);
+	if (state->death_occured == 1)
+	{
+		pthread_mutex_unlock(&state->m_dead);
+		return (1);
+	}
+	pthread_mutex_unlock(&state->m_dead);
+	return (0);
 }

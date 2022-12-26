@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/24 17:54:56 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:55:42 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	ft_create_threads(t_state *state)
 
 void	*thread_one_philos(void *arg)
 {
-	t_philo *philo;
-	t_state *state;
+	t_philo	*philo;
+	t_state	*state;
 
 	philo = arg;
 	state = philo->state;
@@ -82,7 +82,7 @@ int	main(int argc, char const **argv)
 		else
 		{
 			pthread_create(&state.philos[0].thid, NULL, thread_one_philos,
-			(void *)&state.philos[0]);
+				(void *)&state.philos[0]);
 			pthread_join(state.philos[0].thid, NULL);
 		}
 		ft_free(&state);
