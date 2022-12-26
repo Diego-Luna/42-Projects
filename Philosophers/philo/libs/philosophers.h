@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/24 17:59:32 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:35:57 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ typedef struct s_state
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	message;
 	pthread_mutex_t	m_dead;
-	pthread_mutex_t	m_eat;
-	pthread_mutex_t	m_time;
 	t_philo			*philos;
 	pthread_t		check_dead;
 	pthread_t		check_eats;

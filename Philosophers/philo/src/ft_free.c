@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/26 13:48:33 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:41:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	ft_free(t_state *state)
 	if (state->n_philos > 1)
 	{
 		pthread_detach(state->check_dead);
+	}
+	if (state->ntp_must_eat > 0)
+	{
+		pthread_detach(state->check_eats);
 	}
 	if (state->philos != NULL)
 	{
