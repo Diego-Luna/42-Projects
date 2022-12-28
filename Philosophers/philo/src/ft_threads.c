@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 11:16:56 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/26 13:54:51 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:22:38 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_philo_sleep(t_philo *philo)
 	t_state	*state;
 
 	state = philo->state;
-	if (ft_mutex_message(philo, M_SLEE, O_NORMAL) == 0)
+	if (ft_mutex_message(philo, M_SLEE) == 0)
 	{
 		return (0);
 	}
@@ -30,7 +30,7 @@ int	ft_think(t_philo *philo)
 	t_state	*state;
 
 	state = philo->state;
-	if (ft_mutex_message(philo, M_THIN, O_NORMAL) == 0)
+	if (ft_mutex_message(philo, M_THIN) == 0)
 	{
 		return (0);
 	}
@@ -45,7 +45,7 @@ void	*thread_check(void *arg)
 
 	i = 0;
 	state = arg;
-	while (ft_state_dead(state) == 0)
+	while (1)
 	{
 		pthread_mutex_lock(&state->philos[i].m_time);
 		tmp = state->philos[i].t_last_eat;
@@ -56,8 +56,10 @@ void	*thread_check(void *arg)
 			state->death_occured = 1;
 			pthread_mutex_unlock(&state->m_dead);
 			ft_mutex_message_dead(state, i + 1);
+			// pthread_mutex_unlock(&state->philos[i].m_time);
 			return (0);
 		}
+		// pthread_mutex_unlock(&state->philos[i].m_time);
 		i = (i + 1) % state->n_philos;
 	}
 	return (0);
@@ -92,7 +94,12 @@ void	*thread(void *arg)
 
 	philo = arg;
 	state = philo->state;
-	while (ft_state_dead(state) == 0)
+	// while (ft_state_dead(state) == 0)
+	if (philo->id % 2 == 0)
+	{
+		ft_sleep(state, state->t_eat / 10);
+	}
+	while (1)
 	{
 		if (ft_taken_fork(philo) == 0)
 		{
