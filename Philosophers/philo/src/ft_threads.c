@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 11:16:56 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/27 19:22:38 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:25:37 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void	*thread_check(void *arg)
 		pthread_mutex_lock(&state->philos[i].m_time);
 		tmp = state->philos[i].t_last_eat;
 		pthread_mutex_unlock(&state->philos[i].m_time);
-		if ((ft_get_time(state) - tmp) > state->t_die)
+		if ((ft_get_time(state) - tmp) >= state->t_die)
 		{
 			pthread_mutex_lock(&state->m_dead);
 			state->death_occured = 1;
 			pthread_mutex_unlock(&state->m_dead);
-			ft_mutex_message_dead(state, i + 1);
+			ft_mutex_message_dead(state, state->philos[i].id);
 			// pthread_mutex_unlock(&state->philos[i].m_time);
 			return (0);
 		}
