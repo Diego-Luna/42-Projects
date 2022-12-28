@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/28 12:33:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:52:07 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	ft_create_threads(t_state *state)
 		pthread_create(&state->philos[i].thid, NULL, thread,
 			(void *)&state->philos[i]);
 		i++;
-		// usleep(100);
 	}
 	pthread_create(&state->check_dead, NULL, thread_check, (void *)state);
 	if (state->ntp_must_eat > 0)

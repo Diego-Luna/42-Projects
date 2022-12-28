@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:21:55 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/28 12:28:49 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:49:43 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_check_finish_eat(t_state *state)
 	while (i < state->n_philos)
 	{
 		pthread_mutex_lock(&state->philos[i].m_eat);
-		// 		if (state->philos[i].n_of_meal < 0 || state->philos[i].n_of_meal > 0)
 		if (state->philos[i].n_of_meal > 0)
 		{
 			pthread_mutex_unlock(&state->philos[i].m_eat);
