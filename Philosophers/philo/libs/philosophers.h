@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:32:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/27 19:09:24 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:35:57 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void				*thread_check(void *arg);
 void				*thread(void *arg);
 
 void				ft_free(t_state *state);
-int					ft_mutex_message(t_philo *philo, char *str);
+int					ft_mutex_message(t_philo *philo, char *str, int opcion);
 void				ft_mutex_message_dead(t_state *state, int i);
 void				ft_mutex_message_eat_all(t_state *state);
 

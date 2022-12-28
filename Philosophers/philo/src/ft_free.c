@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:05 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/27 19:25:00 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/26 14:41:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_mutex_message_eat_all(t_state *state)
 	pthread_mutex_unlock(&state->message);
 }
 
-int	ft_mutex_message(t_philo *philo, char *str)
+int	ft_mutex_message(t_philo *philo, char *str, int opcion)
 {
 	t_state	*state;
 
@@ -77,7 +77,14 @@ int	ft_mutex_message(t_philo *philo, char *str)
 		pthread_mutex_unlock(&state->message);
 		return (0);
 	}
-	printf("%lld %d %s\n", ft_get_time(philo->state), philo->id, str);
+	if (opcion == O_NORMAL)
+	{
+		printf("%lld %d %s\n", ft_get_time(philo->state), philo->id, str);
+	}
+	else if (opcion == O_FINIS)
+	{
+		printf("%s\n", str);
+	}
 	pthread_mutex_unlock(&state->message);
 	return (1);
 }

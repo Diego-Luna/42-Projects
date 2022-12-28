@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:33:45 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/27 19:10:03 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2022/12/28 12:33:42 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	ft_create_threads(t_state *state)
 			(void *)&state->philos[i]);
 		i++;
 		// usleep(100);
-		// usleep(10);
-		usleep(1);
 	}
 	pthread_create(&state->check_dead, NULL, thread_check, (void *)state);
 	if (state->ntp_must_eat > 0)
@@ -61,7 +59,7 @@ void	*thread_one_philos(void *arg)
 	philo = arg;
 	state = philo->state;
 	pthread_mutex_lock(&state->forks[philo->l_fork]);
-	ft_mutex_message(philo, M_FORK);
+	ft_mutex_message(philo, M_FORK, O_NORMAL);
 	ft_sleep(state, philo->time_dead);
 	ft_mutex_message_dead(state, 1);
 	pthread_mutex_unlock(&state->forks[philo->l_fork]);
