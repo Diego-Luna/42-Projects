@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:20:06 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/29 18:16:01 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:10:30 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_sleep(t_state *state, int wait_time)
 	while (dead == 0 && (ft_get_time(state) - start) < wait_time)
 	{
 		usleep(500);
-		// usleep(10);
 	}
 	return ;
 }
