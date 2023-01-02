@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 11:16:56 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/28 16:51:00 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/01/02 15:21:45 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	*thread(void *arg)
 	state = philo->state;
 	if (philo->id % 2 == 0)
 	{
-		ft_sleep(state, philo->time_eat / (state->n_philos));
+		ft_sleep(state, 2);
 	}
 	while (ft_state_dead(state) == 0)
 	{
