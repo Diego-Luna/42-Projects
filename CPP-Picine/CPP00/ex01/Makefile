@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile.template                                  :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+         #
+#    By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2021/09/29 18:55:52 by tmatis           ###   ########.fr        #
+#    Updated: 2023/02/09 10:14:13 by diegofranci      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@
 ################################################################################
 
 
-NAME	= My_Awesome
+NAME	= myAwesome
 CC 		= c++
 CFLAGS	= -Wall -Wextra -Werror
 DFLAGS	= -MMD -MF $(@:.o=.d)
 AUTHOR	= diego francisco luna lopez
 DATE	= 08/02/2023
 
-NOVISU 	= 0 # 1 = no progress bar usefull when tty is not available
+NOVISU 	= 1 # 1 = no progress bar usefull when tty is not available
 
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
@@ -34,7 +34,7 @@ SRCS_PATH		= ./src
 
 INCLUDE_PATH	= ./src
 
-SRCS			= 
+SRCS			= PhoneBook.cpp
 
 MAIN			= main.cpp
 
