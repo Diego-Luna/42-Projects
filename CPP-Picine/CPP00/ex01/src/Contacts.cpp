@@ -1,11 +1,11 @@
 #include "Contacts.hpp"
 
 Contact::Contact(void) : _first_name(""), _last_name(""),  _nickname(""), _phone_number(""), 	_darkest_secret("") {
-	std::cout << "Contact created" << std::endl;
+	// std::cout << "Contact created" << std::endl;
 }
 
 Contact::~Contact(void){
-	std::cout << "Contact destroyed" << std::endl;
+	// std::cout << "Contact destroyed" << std::endl;
 }
 
 
@@ -15,39 +15,17 @@ void		Contact::_print_contact_all(int i)
 	std::cout << i;
 	std::cout << "\n";
 
-	std::cout << "-> first_name : "  + this->_first_name  + "\n";
-	std::cout << "-> last_name : "  + this->_last_name  + "\n";
-	std::cout << "-> nickname : "  + this->_nickname  + "\n";
-	std::cout << "-> phone_number : "  + this->_phone_number + "\n";
-	std::cout << "-> darkest_secret : "  + this->_darkest_secret + "\n";
+	std::cout << "-> first_name :"  + this->_first_name  + "\n";
+	std::cout << "-> last_name :"  + this->_last_name  + "\n";
+	std::cout << "-> nickname :"  + this->_nickname  + "\n";
+	std::cout << "-> phone_number :"  + this->_phone_number + "\n";
+	std::cout << "-> darkest_secret :"  + this->_darkest_secret + "\n";
 }
 
-void		Contact::_print_contact(int i)
+void		Contact::_print_info(std::string	buffer)
 {
-	std::cout << "|         ";
-	std::cout << i;
-	std::cout << "|";
-	std::cout << this->_first_name ;
-	std::cout << "|";
-	std::cout << this->_last_name ;
-	std::cout << "|" ;
-	std::cout << this->_nickname  ;
-	std::cout << "|\n" ;
-}
-
-std::string Contact::_get_data(std::string msg)
-{
-	std::string	buffer;
 	std::string	tem;
 
-	buffer = "";
-	while (buffer.length() < 1)
-	{
-		std::cout << "> ";
-		std::cout << msg;
-		std::cout << " : ";
-		std::getline(std::cin, buffer);
-	}
 	if (buffer.length() > 10)
 	{
 		buffer = buffer.substr(0,9);
@@ -62,6 +40,38 @@ std::string Contact::_get_data(std::string msg)
 			buffer.append(" ");
 		}
 		buffer.append(tem);
+	}
+
+	std::cout << buffer;
+}
+
+void		Contact::_print_contact(int i)
+{
+	std::cout << "|         ";
+	std::cout << i;
+	std::cout << "|";
+	// std::cout << this->_first_name ;
+	_print_info(this->_first_name);
+	std::cout << "|";
+	// std::cout << this->_last_name ;
+	_print_info(this->_last_name);
+	std::cout << "|" ;
+	// std::cout << this->_nickname  ;
+	_print_info(this->_nickname );
+	std::cout << "|\n" ;
+}
+
+std::string Contact::_get_data(std::string msg)
+{
+	std::string	buffer;
+
+	buffer = "";
+	while (buffer.length() < 1)
+	{
+		std::cout << "> ";
+		std::cout << msg;
+		std::cout << " : ";
+		std::getline(std::cin, buffer);
 	}
 	return (buffer);
 }

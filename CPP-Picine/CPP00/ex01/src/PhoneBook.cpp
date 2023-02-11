@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 09:47:15 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/10 18:36:28 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/11 15:50:09 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "PhoneBook.hpp"
 
 // constructor
-PhoneBook::PhoneBook(void) : _max_contacts(8), _nb_contacts(0), _nb_contacts_i(0){
-	std::cout << "Phonebook created" << std::endl;
+PhoneBook::PhoneBook(void) : _max_contacts(8), _nb_contacts(0), _nb_contacts_i(-1){
+	// std::cout << "Phonebook created" << std::endl;
 }
 
 // destroyed
 PhoneBook::~PhoneBook(void){
-	std::cout << "Phonebook destroyed" << std::endl;
+	// std::cout << "Phonebook destroyed" << std::endl;
 }
 
 void PhoneBook::start_phonebook(void){
@@ -52,12 +52,12 @@ void PhoneBook::_add_contact(void){
 	if (this->_nb_contacts > this->_max_contacts)
 	{
 		this->_nb_contacts = this->_max_contacts;
-		if (this->_nb_contacts_i > this->_max_contacts)
+		this->_nb_contacts_i++;
+		if (this->_nb_contacts_i >= this->_max_contacts)
 		{
 			this->_nb_contacts_i = 0;
 		}
 		copy = this->_nb_contacts_i;
-		this->_nb_contacts_i++;
 	}
 	else
 	{
