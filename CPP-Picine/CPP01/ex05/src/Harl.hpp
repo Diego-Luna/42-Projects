@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 13:19:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/15 13:02:27 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/15 12:46:22 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/15 13:11:34 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./HumanA.hpp"
+#ifndef HARL_CLASS_HPP
+# define HARL_CLASS_HPP
 
-HumanA::HumanA(std::string 	name, Weapon &_weapon) : _name(name), _weapon(_weapon)  {
-	return;
-}
+# include <iostream>
+# include <string>
 
-HumanA::~HumanA(void){
-	return;
-}
+class Harl
+{
+  public:
+	  // Constructors and destructors
+	  Harl(void);
+	  ~Harl(void);
 
-void HumanA::attack(void){
+		void complain(std::string level);
+		void	(Harl::*pointer_function[4]) (void);
 
-	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
-}
+  private:
+
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+};
+
+#endif

@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 13:19:01 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/15 13:02:27 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/15 13:18:40 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/15 13:27:21 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./HumanA.hpp"
+#include "./Harl.hpp"
 
-HumanA::HumanA(std::string 	name, Weapon &_weapon) : _name(name), _weapon(_weapon)  {
-	return;
-}
+int main(void) {
 
-HumanA::~HumanA(void){
-	return;
-}
+	Harl tem;
+	std::string level;
+	int again = 1;
 
-void HumanA::attack(void){
+	while (again == 1)
+	{
+		std::cout << "\n -> Harl level : ";
+		std::cin >> level;
 
-	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
+		tem.complain(level);
+
+		std::cout << "\n -> try again [yes][no] :";
+		std::cin >> level;
+		if (level == "yes")
+			again = 1;
+		else
+			again = 0;
+	}
 }
