@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:57:59 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/16 15:03:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:26:29 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ Fixed Fixed::operator*(const Fixed &nbr){
 	return Fixed(toFloat() * nbr.toFloat());
 }
 
-Fixed &Fixed::operator++(){
-	_number++;
+Fixed &Fixed::operator++(void){
+	this->_number++;
 	return *this;
 }
 Fixed Fixed::operator++(int){
@@ -87,7 +87,7 @@ Fixed Fixed::operator++(int){
 }
 
 Fixed &Fixed::operator--(){
-	_number--;
+	this->_number--;
 	return *this;
 }
 Fixed Fixed::operator--(int){
@@ -97,45 +97,51 @@ Fixed Fixed::operator--(int){
 }
 
 
-bool Fixed::operator<(const Fixed &nbr){
-	if (this->toFloat() < nbr.toFloat())
+bool Fixed::operator<(const Fixed &nbr) const{
+	// if (this->toFloat() < nbr.toFloat())
+	if (this->_number < nbr.getRawBits())
 	{
 		return true;
 	}
 	return false;
 }
-bool Fixed::operator<=(const Fixed &nbr){
-	if (this->toFloat() <= nbr.toFloat())
-	{
-		return true;
-	}
-	return false;
-}
-
-bool Fixed::operator>(const Fixed &nbr){
-	if (this->toFloat() > nbr.toFloat())
-	{
-		return true;
-	}
-	return false;
-}
-bool Fixed::operator>=(const Fixed &nbr){
-	if (this->toFloat() >= nbr.toFloat())
+bool Fixed::operator<=(const Fixed &nbr) const{
+	// if (this->toFloat() <= nbr.toFloat())
+	if (this->_number <= nbr.getRawBits())
 	{
 		return true;
 	}
 	return false;
 }
 
-bool Fixed::operator==(const Fixed &nbr){
-	if (this->toFloat() == nbr.toFloat())
+bool Fixed::operator>(const Fixed &nbr) const{
+	// if (this->toFloat() > nbr.toFloat())
+	if (this->_number > nbr.getRawBits())
 	{
 		return true;
 	}
 	return false;
 }
-bool Fixed::operator!=(const Fixed &nbr){
-	if (this->toFloat() == nbr.toFloat())
+bool Fixed::operator>=(const Fixed &nbr) const{
+	// if (this->toFloat() >= nbr.toFloat())
+	if (this->_number >= nbr.getRawBits())
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Fixed::operator==(const Fixed &nbr) const{
+	// if (this->toFloat() == nbr.toFloat())
+	if (this->_number == nbr.getRawBits())
+	{
+		return true;
+	}
+	return false;
+}
+bool Fixed::operator!=(const Fixed &nbr) const{
+	// if (this->toFloat() != nbr.toFloat())
+	if (this->_number != nbr.getRawBits())
 	{
 		return true;
 	}
@@ -144,8 +150,21 @@ bool Fixed::operator!=(const Fixed &nbr){
 
 
 // Max -> **********
+Fixed&	Fixed::max(Fixed&a, Fixed&b){
+	return ((a > b)? a:b);
+}
+const Fixed&	Fixed::max(const Fixed&a, const Fixed&b){
+	return ((a > b)? a:b);
+}
 
 // Min -> **********
+
+Fixed&	Fixed::min(Fixed&a, Fixed&b){
+	return ((a < b)? a:b);
+}
+const Fixed&	Fixed::min(const Fixed&a, const Fixed&b){
+	return ((a < b)? a:b);
+}
 
 std::ostream &operator<<(std::ostream &out, Fixed const instance)
 {
