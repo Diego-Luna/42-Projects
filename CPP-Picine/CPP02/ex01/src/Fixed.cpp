@@ -6,12 +6,14 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:57:59 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/16 13:29:57 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:46:07 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Fixed.hpp"
 
+
+// basic
 
 Fixed::Fixed(void) : _number(0){
 	std::cout << "Default constructor called" << std::endl;
@@ -67,3 +69,7 @@ std::ostream &operator<<(std::ostream &out, Fixed const instance)
 	out << instance.toFloat();
 	return out;
 }
+
+// Exercise
+
+
