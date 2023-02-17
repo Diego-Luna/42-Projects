@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:50:46 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/14 11:52:24 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:08:41 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 int main(void) {
 	Zombie	*zombie;
 
-	zombie = newZombie("hello:(newZombie)");
+	zombie = newZombie(" 42 ");
 	zombie->announce();
 	delete zombie;
-	randomChump("hi!, randomChump");
+	randomChump(" quebec ");
 	return (0);
 }

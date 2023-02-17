@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2023/02/14 11:51:13 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/02/17 15:07:44 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS_PATH		= ./src
 
 INCLUDE_PATH	= ./src
 
-SRCS			= Zombie.cpp
+SRCS			= Zombie.cpp newZombie.cpp randomChump.cpp
 
 MAIN			= main.cpp
 

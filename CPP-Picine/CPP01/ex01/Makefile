@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2023/02/14 11:57:54 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/02/17 15:10:05 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ SRCS_PATH		= ./src
 
 INCLUDE_PATH	= ./src
 
-SRCS			= Zombie.cpp
+SRCS			= Zombie.cpp zombieHorde.cpp
 
 MAIN			= main.cpp
 

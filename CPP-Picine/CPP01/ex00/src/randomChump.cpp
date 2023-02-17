@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/14 11:29:02 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/17 15:11:15 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/17 15:05:56 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/17 15:06:12 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Zombie.hpp"
 
-Zombie::Zombie(){
-	// std::cout << "Zombie created" << std::endl;
-	return;
-}
+void randomChump( std::string name ){
+	Zombie tem(name);
 
-Zombie::~Zombie(void){
-	// std::cout  << this->_name << " Zombie destroyed" << std::endl;
-	return;
-}
-
-
-void Zombie::announce(void){
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ" << std::endl;;
-}
-
-void Zombie::set_name(std::string name){
-	this->_name = name;
+	tem.announce();
 }
