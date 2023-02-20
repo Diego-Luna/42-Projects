@@ -6,36 +6,39 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:57:52 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/16 13:28:10 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:11:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_CLASS_HPP
 # define FIXED_CLASS_HPP
 
-# include <iostream>
+#include <iostream>
+#include <cmath>
 
 class Fixed
 {
-  public:
-	  // Constructors and destructors
-	  Fixed(void);
-	  Fixed(const int value);
-	  Fixed(const float value);
-	  Fixed(const Fixed &src);
-	  ~Fixed(void);
+private:
 
-		Fixed &operator=(const Fixed &nbr);
+	int _value;
+	const static int _bits = 8;
 
-		int getRawBits(void) const;
-		float toFloat( void ) const;
-		int toInt( void ) const;
+public:
 
-  private:
-		int _number;
-		static const int _numberBits = 8;
+	Fixed(void);
+	Fixed(const Fixed &newValue);
+	Fixed(const int nbr);
+	Fixed(const float nbr);
+	~Fixed(void);
+	Fixed &operator=(const Fixed &nbr);
+
+	int 	getRawBits(void) const;
+	void 	setRawBits(int const raw);
+	float 	toFloat(void) const;
+	int		toInt(void) const;
+
 };
 
-std::ostream &operator<<(std::ostream &out, Fixed const instance);
+std::ostream &operator<<(std::ostream &out, Fixed const &nbr);
 
 #endif

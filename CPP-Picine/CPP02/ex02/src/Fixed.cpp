@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:57:59 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/16 15:26:29 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:49:05 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ Fixed &Fixed::operator++(void){
 	return *this;
 }
 Fixed Fixed::operator++(int){
-	Fixed tem = *this;
+	Fixed tem(*this);
 	++(*this);
-	return *this;
+	return tem;
 }
 
 Fixed &Fixed::operator--(){
@@ -91,9 +91,9 @@ Fixed &Fixed::operator--(){
 	return *this;
 }
 Fixed Fixed::operator--(int){
-	Fixed tem = *this;
+	Fixed tem(*this);
 	--(*this);
-	return *this;
+	return tem;
 }
 
 

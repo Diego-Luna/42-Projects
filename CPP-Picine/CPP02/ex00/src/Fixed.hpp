@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:57:52 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/16 12:05:59 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:57:59 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Fixed
 		Fixed &operator=(const Fixed &nbr);
 
 		int getRawBits(void) const;
+		void setRawBits(int const raw);
 
   private:
 		int _number;
