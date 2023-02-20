@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:29:02 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/17 15:06:08 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:19:39 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ Zombie::~Zombie(void){
 
 
 void Zombie::announce(void){
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ" << std::endl;
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
