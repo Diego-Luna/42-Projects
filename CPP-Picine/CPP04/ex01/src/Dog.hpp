@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 18:26:57 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/20 18:27:29 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/20 18:30:25 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/20 18:30:40 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
+#ifndef DOG_CLASS_HPP
+# define DOG_CLASS_HPP
 
-int main(void) {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+# include <iostream>
 
-	return 0;
-}
+class Dog
+{
+  public:
+	  // Constructors and destructors
+	  Dog(void);
+	  Dog(const int value);
+	  Dog(const float value);
+	  Dog(const Dog &src);
+	  ~Dog(void);
+
+  protected:
+		std::string type;
+};
+
+#endif
