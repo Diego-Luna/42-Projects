@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 11:56:04 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 12:40:31 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:14:46 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,51 +19,18 @@
 
 int main(void) {
 
-	int number;
+	// Animal	*ani1 = new Animal();
+	Cat		*cat1 = new Cat();
+	Dog		*dog1 = new Dog();
 
-	std::cout << "*************** Animals ***************" << std::endl;
-	std::cout << "How many animals? (only positive and even numbers): ";
-	std::cin >> number;
+	std::cout  << " -> Cat" << std::endl;
+	cat1->makeSound();
+	std::cout << std::endl;
+	std::cout  << " -> Dog" << std::endl;
+	dog1->makeSound();
+	std::cout << std::endl;
 
-
-	if (number <= 1){
-		std::cout << "only positive and even numbers" << std::endl;
-		return 0;
-	}
-	if (number % 2 == 1){
-		std::cout << "only positive and even numbers" << std::endl;
-		return 0;
-	}
-
-	Animal *animals[number];
-
-	std::cout << "\n-> create dogs" << std::endl;
-	for(int i = 0; i < (number / 2); i++){
-		animals[i] = new Dog();
-	}
-	std::cout << "\n-> create cats" << std::endl;
-	for(int i = (number / 2); i < number; i++){
-		animals[i] = new Cat();
-	}
-
-	std::cout << "\n--> makeSound dogs" << std::endl;
-	for(int i = 0; i < (number / 2); i++){
-		animals[i]->makeSound();
-	}
-	std::cout << "\n--> makeSound cats" << std::endl;
-	for(int i = (number / 2); i < number; i++){
-		animals[i]->makeSound();
-	}
-
-
-	std::cout << "\n---> clean dogs" << std::endl;
-	for(int i = 0; i < (number / 2); i++){
-		delete animals[i];
-	}
-	std::cout << "\n---> clean cats" << std::endl;
-	for(int i = (number / 2); i < number; i++){
-		delete animals[i];
-	}
-
+	delete cat1;
+	delete dog1;
 	return 0;
 }
