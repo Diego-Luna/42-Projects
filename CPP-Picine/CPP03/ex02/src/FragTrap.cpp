@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:47:57 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/18 19:18:42 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 10:42:49 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ FragTrap::FragTrap(void) : ClapTrap()
     _hit = 100;
     _energy = 100;
     _attack = 30;
+    _type = "FragTrap";
 
     return ;
 }
@@ -30,6 +31,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
     _hit = 100;
     _energy = 100;
     _attack = 30;
+    _type = "FragTrap";
 
     return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:26:44 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/18 16:35:38 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 10:34:07 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Basic
 
-ClapTrap::ClapTrap(void) : _name(""), _type("ClapTrap"), _hit(10), _energy(10), _attack(0){
+ClapTrap::ClapTrap(void) : _name("No name"), _type("ClapTrap"), _hit(10), _energy(10), _attack(0){
 	std::cout << "ClapTrap Default constructor called" << std::endl;
 	return;
 }
@@ -33,12 +33,11 @@ ClapTrap::~ClapTrap(void) {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &src){
-	if (!(this == &src)){
-		this->_name = src._name;
-		this->_hit = src._hit;
-		this->_energy = src._energy;
-		this->_attack = src._attack;
-	}
+	this->_name = src._name;
+	this->_type = src._type;
+	this->_hit = src._hit;
+	this->_energy = src._energy;
+	this->_attack = src._attack;
 	return (*this);
 }
 
@@ -57,13 +56,12 @@ void ClapTrap::attack(const std::string& target){
 
 void ClapTrap::takeDamage(unsigned int amount){
 
-	this->_hit -= amount;
 	if (this->_hit <= 0){
 		std::cout << this->_type << " " << this->_name << " is already dead!" << std::endl;
 		return;
 	}
 	std::cout << this->_type << " " << this->_name << " takes " << amount << " points of damage!" << std::endl;
-		// this->_hit -= amount;
+		this->_hit -= amount;
 }
 
 void ClapTrap::beRepaired(unsigned int amount){

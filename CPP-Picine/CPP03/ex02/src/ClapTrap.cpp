@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 12:26:44 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/18 16:35:38 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 10:39:16 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Basic
 
-ClapTrap::ClapTrap(void) : _name(""), _type("ClapTrap"), _hit(10), _energy(10), _attack(0){
+ClapTrap::ClapTrap(void) : _name("No name"), _type("ClapTrap"), _hit(10), _energy(10), _attack(0){
 	std::cout << "ClapTrap Default constructor called" << std::endl;
 	return;
 }

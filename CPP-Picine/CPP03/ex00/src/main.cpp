@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 17:11:32 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/17 17:52:25 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 10:25:50 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main(void) {
 	ClapTrap poitine("Poutine");
 	ClapTrap spaghetti("Spaghetti");
 	ClapTrap hamburger("Hamburger");
-
 
 	taco.attack(taco.getName());
 	taco.takeDamage(2);
