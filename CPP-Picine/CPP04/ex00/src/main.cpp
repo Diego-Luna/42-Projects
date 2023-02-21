@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:26:57 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 11:18:30 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:20:42 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int main(void) {
 	const Animal* animal = new Animal();
 	const Animal* c = new Cat();
 	const Animal* d = new Dog();
-	std::cout << " -> getType : " << c->getType() << " " << std::endl;
-	std::cout << " -> getType : " << d->getType() << " " << std::endl;
+	std::cout << " -> Cat -> getType : " << c->getType() << " " << std::endl;
+	std::cout << " -> Dog -> getType : " << d->getType() << " " << std::endl;
 	c->makeSound(); //will output the cat sound!
 	d->makeSound();
 	animal->makeSound();

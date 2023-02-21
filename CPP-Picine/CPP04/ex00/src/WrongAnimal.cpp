@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 21:29:44 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/21 12:11:47 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:24:54 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ WrongAnimal::WrongAnimal(void) : _type("None") {
 }
 
 WrongAnimal::WrongAnimal(std::string type) : _type(type) {
-	std::cout << "WrongAnimal default constructor called" << std::endl;
+	std::cout << "WrongAnimal type constructor called" << std::endl;
 	return;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 20:05:26 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/20 20:11:05 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 13:23:20 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Animal::Animal(void) : _type("NONE") {
 }
 
 Animal::Animal(std::string type) : _type(type) {
-	std::cout << "Animal default constructor called" << std::endl;
+	std::cout << "Animal type constructor called" << std::endl;
 	return;
 }
 
@@ -41,7 +41,7 @@ std::string Animal::getType(void) const {
 }
 
 void Animal::makeSound(void) const {
-	std::cout << "Animal sound" << std::endl;
+	// std::cout << "Animal sound!!" << std::endl;
 	return;
 }
 

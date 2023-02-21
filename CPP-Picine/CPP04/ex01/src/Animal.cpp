@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 20:05:26 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/21 12:10:36 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:25:30 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ std::string Animal::getType(void) const {
 }
 
 void Animal::makeSound(void) const {
-	std::cout << "Animal sound" << std::endl;
+	// std::cout << "Animal sound" << std::endl;
 	return;
 }
 

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 20:53:20 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/21 12:19:46 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:29:21 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ std::string Cat::getType(void) const {
 }
 
 void Cat::makeSound(void) const {
-	std::cout << "Cat sound!!" << std::endl;
+	std::cout << "Cat sound -> Meow!!" << std::endl;
 	return;
 }
 

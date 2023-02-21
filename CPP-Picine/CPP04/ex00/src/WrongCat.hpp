@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 08:34:10 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/21 08:34:15 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 13:25:22 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	virtual ~WrongCat(void);
 
 	WrongCat		&operator=(const WrongCat &src);
-	
+
 	std::string			getType(void) const;
 	void		makeSound(void) const;
 };
