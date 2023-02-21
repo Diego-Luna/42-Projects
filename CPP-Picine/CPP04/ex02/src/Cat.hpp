@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:26:52 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 12:21:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 12:24:36 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal
 {
@@ -28,7 +29,8 @@ class Cat : public Animal
 		std::string			getType(void) const;
 
 		Cat		&operator=(const Cat &src);
-
+	private:
+		Brain	*_brain;
 };
 
 #endif

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 18:26:52 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 12:21:39 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/20 18:30:25 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/21 12:25:14 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_CLASS_HPP
-# define CAT_CLASS_HPP
+#ifndef DOG_CLASS_HPP
+# define DOG_CLASS_HPP
 
 # include <iostream>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
-class Cat : public Animal
+class Dog : public Animal
 {
   public:
 	  // Constructors and destructors
-	  Cat(void);
-	  Cat(const Cat &src);
-	  virtual ~Cat(void);
+	  Dog(void);
+	  Dog(const Dog &src);
+	  virtual ~Dog(void);
 		virtual void		makeSound(void) const;
 
 		std::string			getType(void) const;
 
-		Cat		&operator=(const Cat &src);
+		Dog		&operator=(const Dog &src);
 
+	private:
+		Brain	*_brain;
 };
 
 #endif

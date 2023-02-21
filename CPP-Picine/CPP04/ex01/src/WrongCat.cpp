@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 08:34:22 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/21 12:11:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 11:10:22 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ std::string WrongCat::getType(void) const {
 }
 
 void WrongCat::makeSound(void) const {
-	std::cout << "WrongCat sound!!" << std::endl;
+	std::cout << "WrongCat sound" << std::endl;
 	return;
 }

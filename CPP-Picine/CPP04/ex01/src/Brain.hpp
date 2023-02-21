@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 18:26:52 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 12:21:39 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/02/21 12:03:47 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/21 12:23:11 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_CLASS_HPP
-# define CAT_CLASS_HPP
+#ifndef BRAIN_CLASS_HPP
+# define BRAIN_CLASS_HPP
 
 # include <iostream>
-# include "Animal.hpp"
 
-class Cat : public Animal
+class Brain
 {
   public:
 	  // Constructors and destructors
-	  Cat(void);
-	  Cat(const Cat &src);
-	  virtual ~Cat(void);
-		virtual void		makeSound(void) const;
+	  Brain(void);
+	  Brain(const Brain &src);
+		~Brain(void);
 
-		std::string			getType(void) const;
+		std::string	ideas[100];
 
-		Cat		&operator=(const Cat &src);
-
+		Brain		&operator=(Brain const & src);
 };
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:30:25 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/20 21:22:47 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 12:21:34 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ class Dog : public Animal
 
 		Dog		&operator=(const Dog &src);
 
-  protected:
-		std::string type;
 };
 
 #endif

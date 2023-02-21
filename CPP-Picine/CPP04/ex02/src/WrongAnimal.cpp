@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 21:29:44 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/21 12:11:47 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 08:34:00 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ std::string WrongAnimal::getType(void) const {
 }
 
 void WrongAnimal::makeSound(void) const {
-	std::cout << "WrongAnimal sound!!" << std::endl;
+	std::cout << "WrongAnimal sound" << std::endl;
 	return;
 }
 

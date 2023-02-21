@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:26:57 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/20 18:27:29 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/21 11:18:30 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,37 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+
 int main(void) {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+
+	std::cout << "*************** Animals ***************" << std::endl;
+	const Animal* animal = new Animal();
+	const Animal* c = new Cat();
+	const Animal* d = new Dog();
+	std::cout << " -> getType : " << c->getType() << " " << std::endl;
+	std::cout << " -> getType : " << d->getType() << " " << std::endl;
+	c->makeSound(); //will output the cat sound!
+	d->makeSound();
+	animal->makeSound();
+
+	std::cout << " -> clean" << std::endl;
+	delete animal;
+	delete c;
+	delete d;
+
+	std::cout << "\n *************** WrongAnimal ***************" << std::endl;
+
+	const WrongAnimal* wrongAnimal = new WrongAnimal();
+	const WrongAnimal* wc = new WrongCat();
+	std::cout << " -> getType : " << wc->getType() << " " << std::endl;
+	wc->makeSound();
+	wrongAnimal->makeSound();
+
+	std::cout << " -> clean" << std::endl;
+	delete wrongAnimal;
+	delete wc;
 
 	return 0;
 }
