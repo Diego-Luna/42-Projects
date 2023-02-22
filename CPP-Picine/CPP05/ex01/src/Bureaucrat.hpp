@@ -3,40 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:53:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 21:27:08 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/22 14:16:55 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_CLASS_HPP
-# define BUREAUCRAT_CLASS_HPP
+#ifndef BUREAUCRATCLASS_HPP
+# define BUREAUCRATCLASS_HPP
 
 # include <iostream>
 # include <exception>
+#	include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
   public:
 	  // Constructors and destructors
 	  Bureaucrat(void);
-	  Bureaucrat(std::string _name, int	_grade);
+		Bureaucrat(std::string const & _name, int _grade);
 	  Bureaucrat(const Bureaucrat &src);
-		~Bureaucrat();
+		~Bureaucrat(void);
 
 		// basic
-		void        	setName(const std::string &name);
-    std::string 	getName() const;
-		int getGrade(void);
-		int         	getGrade() const;
+    std::string 	getName(void) const;
+		int         	getGrade(void) const;
+		void        	incrementGrade(int increment);
+    void        	decrementGrade(int decrement);
+		void					signForm(Form &src) const;
+
 
 		// operator
 		Bureaucrat		&operator=(Bureaucrat const & src);
-
-
-		void        	minusGrade(int increment);
-    void        	addGrade(int decrement);
 
 		// try cath
 		class GradeTooHighException : public std::exception {
@@ -50,7 +51,7 @@ class Bureaucrat
     };
 
   protected:
-		std::string	_name;
+		std::string const	_name;
 		int	_grade;
 };
 
