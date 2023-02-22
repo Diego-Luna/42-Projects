@@ -6,7 +6,7 @@
 /*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:53:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 21:41:54 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 21:27:08 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Bureaucrat
   public:
 	  // Constructors and destructors
 	  Bureaucrat(void);
-		Bureaucrat(std::string const & name, int grade);
+	  Bureaucrat(std::string _name, int	_grade);
 	  Bureaucrat(const Bureaucrat &src);
 		~Bureaucrat();
 
@@ -50,7 +50,7 @@ class Bureaucrat
     };
 
   protected:
-		std::string const	_name;
+		std::string	_name;
 		int	_grade;
 };
 

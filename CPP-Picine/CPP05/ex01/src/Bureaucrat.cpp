@@ -6,13 +6,11 @@
 /*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:53:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/21 21:44:11 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/21 21:38:47 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-
 
 // Constructors
 Bureaucrat::Bureaucrat(void) : _name("NONE"), _grade(150) {
@@ -20,7 +18,7 @@ Bureaucrat::Bureaucrat(void) : _name("NONE"), _grade(150) {
 	return;
 }
 
-Bureaucrat::Bureaucrat(std::string const & name, int grade): _name(_name), _grade(_grade) {
+Bureaucrat::Bureaucrat(std::string _name, int	_grade) : _name(_name), _grade(_grade) {
 	std::cout << "Bureaucrat name nad greade constructor called" << std::endl;
 	if (_grade < 1)
         throw GradeTooHighException();
@@ -80,15 +78,12 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 
 // operators
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj) {
-    if (this->_grade < 1)
-        throw GradeTooHighException();
-    else if (this->_grade > 150)
-        throw GradeTooLowException();
-	else
-   		this->_grade = obj.getGrade();
-	this->_name = obj.getName();
-    return *this;
+Bureaucrat		&Bureaucrat::operator=(Bureaucrat const & src)
+{
+	std::cout << "Bureaucrat assignation operator called" << std::endl;
+	this->_name = src._name;
+	this->_grade = src._grade;
+	return *this;
 }
 
 // ostream
