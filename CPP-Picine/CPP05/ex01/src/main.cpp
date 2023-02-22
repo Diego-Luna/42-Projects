@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 20:42:18 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/22 13:37:02 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:04:24 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,57 +15,31 @@
 
 int main() {
     std::cout << "--------Creating and presenting everyone--------" << std::endl;
-    Bureaucrat nobody;
+    Form form;
+    Form sauce("super sauce", 100, 100);
     Bureaucrat taco("taco", 10);
-    std::cout << nobody << std::endl;
+    Bureaucrat zombie("zombie", 110);
+    std::cout << form << std::endl;
     std::cout << taco << std::endl;
 
-    std::cout << "\n----incrementGrade 10 to the grade------" << std::endl;
+    std::cout << "\n----teste------" << std::endl;
     try {
-      std::cout << "\n----> incrementGrade: taco" << std::endl;
-      taco.incrementGrade(10);
-      std::cout << taco << std::endl;
-      std::cout << "\n----> incrementGrade: nobody" << std::endl;
-      nobody.incrementGrade(10);
-      std::cout << nobody << std::endl;
+      form.beSigned(zombie);
+      zombie.signForm(form);
     }
-    catch (Bureaucrat::GradeTooLowException&ex){
-      std::cout << ex.what() << std::endl;
-    }
-    catch (Bureaucrat::GradeTooHighException& ex) {
+    catch (std::exception& ex){
       std::cout << ex.what() << std::endl;
     }
 
-    std::cout << "\n----add 100 to the grade------" << std::endl;
+    std::cout << "\n----teste------" << std::endl;
     try {
-      std::cout << "\n----> incrementGrade: nobody" << std::endl;
-      nobody.incrementGrade(100);
-      std::cout << nobody << std::endl;
-      std::cout << "\n----> incrementGrade: taco" << std::endl;
-      taco.incrementGrade(100);
-      std::cout << taco << std::endl;
+      sauce.beSigned(taco);
+      std::cout << "-sauce.beSigned(taco)" << std::endl;
+      taco.signForm(sauce);
     }
-    catch (Bureaucrat::GradeTooLowException&ex){
+     catch (std::exception& ex){
       std::cout << ex.what() << std::endl;
     }
-    catch (Bureaucrat::GradeTooHighException& ex) {
-      std::cout << ex.what() << std::endl;
-    }
-
-    std::cout << "\n---remove 110 to the grade------" << std::endl;
-    try {
-      std::cout << "\n----> decrementGrade: nobody" << std::endl;
-      nobody.decrementGrade(110);
-      std::cout << nobody << std::endl;
-      std::cout << "\n----> decrementGrade: taco" << std::endl;
-      taco.decrementGrade(110);
-      std::cout << taco << std::endl;
-    }
-    catch (std::exception& ex) {
-      std::cout << ex.what() << std::endl;
-    }
-
-    std::cout << "\n---Error" << std::endl;
 
     return 0;
 }
