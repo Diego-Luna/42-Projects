@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 20:39:51 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/22 20:49:51 by diegofranci      ###   ########.fr       */
+/*   Created: 2023/02/23 14:21:38 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/23 14:22:13 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@
 # include "Form.hpp"
 
 class ShrubberyCreationForm: public Form {
-	
+
 public:
 
 		ShrubberyCreationForm();
-        ShrubberyCreationForm(const ShrubberyCreationForm&);
+    ShrubberyCreationForm(const ShrubberyCreationForm&);
 		ShrubberyCreationForm(const std::string target);
-        virtual ~ShrubberyCreationForm();
-        ShrubberyCreationForm &operator=(const ShrubberyCreationForm&);
-		
+		virtual ~ShrubberyCreationForm();
 		virtual void execute(Bureaucrat const & user) const;
+
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm&);
+
 };
 
 #endif

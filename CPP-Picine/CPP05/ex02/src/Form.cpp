@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:47:41 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 20:12:24 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/23 14:20:51 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ _gradeExecute(150)
 	return;
 }
 
-Form::Form(std::string const & _name, std::string const & _target,bool	_signed, int _gradeSingIn, int _gradeExecute): 
+Form::Form(std::string const & _name, std::string const & _target,bool	_signed, int _gradeSingIn, int _gradeExecute):
 _name(_name),
 _target(_target),
 _signed(_signed),
@@ -106,10 +106,12 @@ const char* Form::FormIsNotSignException::what() const throw() {
 
 
 void Form::validateExecute(Bureaucrat const & user) const {
-	if (!getSigned())
+	if (!getSigned()){
 		throw FormIsNotSignException();
-	else if (user.getGrade() > getGradeExecute())
+	}
+	else if (user.getGrade() > getGradeExecute()){
 		throw GradeTooLowException();
+	}
 }
 
 // operators

@@ -6,13 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:53:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 12:44:16 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:26:51 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-
 
 // Constructors
 Bureaucrat::Bureaucrat(void) : _name("NONE"), _grade(150) {

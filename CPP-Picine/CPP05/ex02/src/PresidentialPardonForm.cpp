@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 21:13:29 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/23 09:37:51 by diegofranci      ###   ########.fr       */
+/*   Created: 2023/02/23 14:21:10 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/02/23 14:21:12 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : 
+PresidentialPardonForm::PresidentialPardonForm() :
 		Form("PresidentialPardonForm", "Default", false, 25, 5) {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src) : 
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src) :
 		Form(
 		src.getName(),
 		src.getTarget(),
@@ -26,7 +26,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src
 	) {
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target): 
+PresidentialPardonForm::PresidentialPardonForm(const std::string target):
 		Form("PresidentialPardonForm", target, false, 25, 5) {
 }
 

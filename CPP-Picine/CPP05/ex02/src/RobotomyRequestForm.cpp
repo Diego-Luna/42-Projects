@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:24:35 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 20:10:10 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/02/23 14:21:22 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ RobotomyRequestForm::~RobotomyRequestForm(void){
 	return;
 }
 
-// RobotomyRequestForm		&RobotomyRequestForm::operator=(Bureaucrat const & src){
-// 	return *this;
-// }
-
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm&src) {
 	(void)src;
 	return *this;
@@ -61,11 +57,11 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm&sr
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 
 	validateExecute(executor);
-	std::cout << "ZZZZZZZZZZZZZ crack oups.... ZZZzZZZZZZZZZZZzZZ ok...c'Est bon...ZZZZZzZZZZZZZZZZZZzZZZZZzZZ" << std::endl;
+	std::cout << "ZZZZZZZZZZZZZ crack ups.... ZZZzZZZZZZZZZZZzZZ ok. crack ups.....rarararRARARARararararaRARARARA " << std::endl;
 	srand(time(NULL));
 	bool rand = (std::rand() % 2);
 	if (rand)
-		std::cout << getTarget() << " the terminator have been robotomizated" << std::endl;
+		std::cout << getTarget() << " the terminator have been robotomy" << std::endl;
 	else
-		std::cout << getTarget() << " robotomization failed" << std::endl;
+		std::cout << getTarget() << " robotomy failed" << std::endl;
 }
