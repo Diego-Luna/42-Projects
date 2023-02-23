@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:47:33 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 17:35:46 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:12:41 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ class Form
 		int         	getGradeExecute(void) const;
 		void beSigned(const Bureaucrat &src);
 
+		void validateExecute(Bureaucrat const & user) const;
+
 		// operator
 		Form		&operator=(Form const & src);
 
@@ -49,6 +51,11 @@ class Form
         virtual const char* what() const throw();
     };
 
+		class FormIsNotSignException: public std::exception{
+			public:
+					virtual const char* what() const throw();
+		};
+
   private:
 		std::string const	_name;
 		std::string const	_target;
@@ -58,6 +65,7 @@ class Form
 
 };
 
-std::ostream& operator<<(std::ostream& out, const Form& src);
+// std::ostream& operator<<(std::ostream& out, const Form& src);
+std::ostream& operator<<(std::ostream&, const Form&);
 
 #endif

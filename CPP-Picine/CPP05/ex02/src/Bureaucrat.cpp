@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:53:22 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 13:38:33 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:00:30 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,18 @@ void Bureaucrat::signForm(Form &src) const{
     std::cout << this->getName() << " cannot sign " << src.getName() << " because " << e.what() << std::endl;
   }
 }
+
+// execute
+void Bureaucrat::executeForm(Form const & form) {
+	try{
+		std::cout << getName() << " executes " << form.getName() << std::endl;
+		form.execute(*this);
+	}
+	catch(std::exception& e){
+		std::cout << getName() << " could not executes " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 
 // try{} cath{}
 const char* Bureaucrat::GradeTooHighException::what() const throw() {

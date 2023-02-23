@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:47:41 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 17:17:56 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:12:24 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,18 @@ const char* Form::GradeTooLowException::what() const throw() {
     return "User can't acces file, grade is too low";
 }
 
+const char* Form::FormIsNotSignException::what() const throw() {
+	return "The form is not signed.";
+}
+
+
+void Form::validateExecute(Bureaucrat const & user) const {
+	if (!getSigned())
+		throw FormIsNotSignException();
+	else if (user.getGrade() > getGradeExecute())
+		throw GradeTooLowException();
+}
+
 // operators
 
 Form& Form::operator=(const Form& obj) {
@@ -108,9 +120,21 @@ Form& Form::operator=(const Form& obj) {
 }
 
 // ostream
-std::ostream& operator<<(std::ostream& out, const Form& value) {
-    out << "form name:" << value.getName() << " require " << value.getGradeSingIn() << "\n"
-      << "to be signed and require " << value.getGradeExecute() << " to be executed and it "
-      << (value.getSigned() ? "is signed" : "is not signed");
-    return out;
+// std::ostream& operator<<(std::ostream& out, const Form& value) {
+//     out << "form name:" << value.getName() << " require " << value.getGradeSingIn() << "\n"
+//       << "to be signed and require " << value.getGradeExecute() << " to be executed and it "
+//       << (value.getSigned() ? "is signed" : "is not signed");
+//     return out;
+// }
+
+std::ostream& operator<<(std::ostream& out, const Form& doc) {
+	out << "Form \"" << doc.getName();
+	if (doc.getSigned())
+		std::cout << "\" is signed.";
+	else
+		std::cout << "\" is not signed.";
+	std::cout << " Required grade to sign is " << doc.getGradeSingIn()
+	<< " and to execute is " << doc.getGradeExecute() << "." << std::endl;
+
+	return out;
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
+#    By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2023/02/22 16:15:25 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/02/23 09:48:09 by diegofranci      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ SRCS_PATH		= ./src
 
 INCLUDE_PATH	= ./src
 
-SRCS			= Bureaucrat.cpp Form.cpp
+SRCS			= Bureaucrat.cpp Form.cpp \
+						RobotomyRequestForm.cpp \
+						PresidentialPardonForm.cpp \
+						ShrubberyCreationForm.cpp \
 
 MAIN			= main.cpp
 

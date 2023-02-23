@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:24:35 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 17:39:52 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:10:10 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ RobotomyRequestForm::RobotomyRequestForm(void):
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src):
 	Form(
 		src.getName(),
-		src.getTarge(),
+		src.getTarget(),
 		src.getSigned(),
 		src.getGradeSingIn(),
 		src.getGradeExecute()
@@ -48,7 +48,24 @@ RobotomyRequestForm::~RobotomyRequestForm(void){
 	return;
 }
 
-RobotomyRequestForm		&RobotomyRequestForm::operator=(Bureaucrat const & src){
+// RobotomyRequestForm		&RobotomyRequestForm::operator=(Bureaucrat const & src){
+// 	return *this;
+// }
+
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm&src) {
+	(void)src;
 	return *this;
 }
 
+
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
+
+	validateExecute(executor);
+	std::cout << "ZZZZZZZZZZZZZ crack oups.... ZZZzZZZZZZZZZZZzZZ ok...c'Est bon...ZZZZZzZZZZZZZZZZZZzZZZZZzZZ" << std::endl;
+	srand(time(NULL));
+	bool rand = (std::rand() % 2);
+	if (rand)
+		std::cout << getTarget() << " the terminator have been robotomizated" << std::endl;
+	else
+		std::cout << getTarget() << " robotomization failed" << std::endl;
+}

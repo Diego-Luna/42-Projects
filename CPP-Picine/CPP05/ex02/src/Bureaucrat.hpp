@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 17:53:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/02/22 14:16:55 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/02/22 20:00:06 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ class Bureaucrat
 		void        	incrementGrade(int increment);
     void        	decrementGrade(int decrement);
 		void					signForm(Form &src) const;
+
+		void 					executeForm(Form const & form);
 
 
 		// operator
