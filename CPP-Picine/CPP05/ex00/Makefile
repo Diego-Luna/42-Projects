@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+         #
+#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2023/02/21 20:12:16 by diegofranci      ###   ########.fr        #
+#    Updated: 2023/03/08 13:55:28 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 
 NAME	= ex00
-CC 		= clang++
+CC 		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
 AUTHOR	= dluna-lo
