@@ -5,66 +5,79 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 20:42:18 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/02/23 14:25:03 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/03/08 13:51:10 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/08 13:51:12 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "Intern.hpp"
+#include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
 int main() {
-  std::cout << "-----------------ShrubberyCreationForm-----------------" << std::endl;
-	Bureaucrat dixie("dixie", 20);
-	ShrubberyCreationForm form1("Christmas_tree");
+
+	std::cout << "-----------------create-----------------" << std::endl;
+  Intern user;
+	Form* newForm;
+
+
+	std::cout << "\n\n-----------------teste 1 : robotomy request-----------------" << std::endl;
 	try
 	{
-		std::cout << dixie;
-		dixie.signForm(form1);
-		dixie.executeForm(form1);
-		std::cout << std::endl;
-
-		std::cout << form1 << std::endl;
+		newForm = user.makeForm("robotomy request", "Ramen");
+		Bureaucrat Paco("Paco", 20);
+		std::cout << Paco << std::endl;
+		Paco.signForm(*newForm);
+		Paco.executeForm(*newForm);
+		delete newForm;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << "\n-----------------RobotomyRequestForm-----------------" << std::endl;
-	Bureaucrat lala("lala", 46);
-	RobotomyRequestForm form2("po");
+	std::cout << "\n\n-----------------teste 2 : ShrubberyCreationForm-----------------" << std::endl;
 	try
 	{
-		std::cout << lala << std::endl;
-		lala.signForm(form2);
-		lala.executeForm(form2);
-		dixie.executeForm(form2);
-		std::cout << std::endl;
+		newForm = user.makeForm("shrubbery request", "Taco");
+		Bureaucrat Diego("Diego", 20);
+		Diego.signForm(*newForm);
+		Diego.executeForm(*newForm);
+		delete newForm;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-	std::cout << "\n-----------------PresidentialPardonForm-----------------" << std::endl;
+	std::cout << "\n\n-----------------teste 3 :ShrubberyCreationForm-----------------" << std::endl;
 	try
 	{
-		Bureaucrat tinky("tinky", 25200);
-		PresidentialPardonForm form3("winky");
-		std::cout << tinky;
-		lala.signForm(form3);
-		tinky.signForm(form3);
-		tinky.executeForm(form3);
-		form3.execute(tinky);
+		newForm = user.makeForm("presidential request", "Putting");
+		Bureaucrat Francisco("Francisco", 20);
+		Francisco.signForm(*newForm);
+		Francisco.executeForm(*newForm);
+		delete newForm;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 
-    return 0;
+
+	std::cout << "\n\n-----------------teste 4 : name no valid-----------------" << std::endl;
+	try
+	{
+		newForm = user.makeForm("hello World", "42");
+		delete newForm;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+  return 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 07:25:13 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/03/08 09:33:46 by diegofranci      ###   ########.fr       */
+/*   Created: 2023/03/08 12:32:58 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/08 13:51:19 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,27 @@ Form *Intern::makeForm(std::string name, std::string target) {
 	for (int i = 0; i < 3; i++) {
 		if (name == this->_form[i]) {
 			std::cout << "Intern creates " << name << std::endl;
-			if (i == 0)
-				return new PresidentialPardonForm(target);
-			else if (i == 1)
-				return new RobotomyRequestForm(target);
-			else if (i == 2)
-				return new ShrubberyCreationForm(target);
+			switch(i) {
+			  case 0:
+			    return new PresidentialPardonForm(target);
+			    break;
+			  case 1:
+			    return new RobotomyRequestForm(target);
+			    break;
+			  case 2:
+			    return new ShrubberyCreationForm(target);
+			    break;
+			  default:
+			    break;
+			}
 		}
 	}
-	std::cout << "Intern can't create " << name << std::endl;
+	// std::cout << "Sorry, Intern can't create name: " << name << " not valid" << std::endl;
+	throw Intern::NotValid();
 	return NULL;
+}
+
+
+const char* Intern::NotValid::what() const throw() {
+    return "Sorry, Intern can't create name not valid";
 }
