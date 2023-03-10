@@ -3,28 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   Conversion.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:52:46 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/03/07 18:23:55 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/03/10 08:45:56 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef CONVERSION_H
-#define CONVERSION_H
+#ifndef CONVERSION_H
+#	define CONVERSION_H
 
 # include <iostream>
 
 class Conversion
 {
 private:
-	/* data */
+	private:
+		std::string			_str;
+		long double			_nbr;
+		bool				_isNumber;
+
 public:
-	Conversion(void);
-	Conversion(char *str);
+	Conversion(std::string str);
 	Conversion(const Conversion & src);
 	~Conversion();
+
+	Conversion&	operator=(Conversion const&);
+
+	void				detectType() const;
+	void				printResult() const;
 };
 
-
-#ifdef
+#endif
