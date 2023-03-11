@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Conversion.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 17:52:46 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/03/10 08:45:56 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/03/10 15:12:42 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,28 @@
 #	define CONVERSION_H
 
 # include <iostream>
+# include <cmath>
 
 class Conversion
 {
 private:
 	private:
+		bool				_isValid;
 		std::string			_str;
-		long double			_nbr;
-		bool				_isNumber;
+		std::string				_type;
 
-public:
-	Conversion(std::string str);
-	Conversion(const Conversion & src);
-	~Conversion();
+		void				printResult_all();
+		void				printResult_in_c(char c);
 
-	Conversion&	operator=(Conversion const&);
+	public:
+		Conversion(std::string str);
+		Conversion(const Conversion & src);
+		~Conversion();
 
-	void				detectType() const;
-	void				printResult() const;
+		Conversion&	operator=(Conversion const&);
+
+		void				detectType();
+		void				printResult();
 };
 
 #endif

@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   C.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 17:06:35 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/03/10 16:58:23 by dluna-lo         ###   ########.fr       */
+/*   Created: 2023/03/10 17:48:40 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/10 17:48:48 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <iostream>
-# include "Conversion.hpp"
+#ifndef C_H
+#define C_H
 
-int main(int n_arg, char **t_string) {
+#include "Base.hpp"
 
-	(void)n_arg;
-	(void)t_string;
-	if (n_arg != 2 || !t_string[1][0])
-	{
-		std::cerr << "Error only one argument" << std::endl;
-		return (1);
-	}
+// Class declaration
+class C : public Base {};
 
-	Conversion con(t_string[1]);
-	con.printResult();
-}
+#endif

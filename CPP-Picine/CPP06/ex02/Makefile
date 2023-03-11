@@ -6,7 +6,7 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2023/03/10 12:38:53 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/03/10 18:09:53 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@
 ################################################################################
 
 
-NAME	= ex00
+NAME	= ex02
 CC 		= c++
 CFLAGS	= -Wall -Wextra -Werror
 DFLAGS	= -MMD -MF $(@:.o=.d)
 AUTHOR	= dluna-lo
-DATE	= 07/03/2023
+DATE	= 10/03/2023
 
 NOVISU 	= 0 # 1 = no progress bar usefull when tty is not available
 
@@ -34,7 +34,7 @@ SRCS_PATH		= ./src
 
 INCLUDE_PATH	= ./src
 
-SRCS			= Conversion.cpp
+SRCS			= Base.cpp
 
 MAIN			= main.cpp
 
@@ -243,8 +243,5 @@ fclean:		header clean
 			@printf "%-53b%b" "$(COM_COLOR)fclean:" "$(OK_COLOR)[✓]$(NO_COLOR)\n"
 
 re:			fclean all
-
-run:			all
-			@ ./${NAME}
 
 .PHONY:		all clean fclean re header
