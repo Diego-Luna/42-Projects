@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/11 10:29:55 by diegofranci       #+#    #+#             */
-/*   Updated: 2023/03/11 10:41:19 by diegofranci      ###   ########.fr       */
+/*   Created: 2023/03/12 15:55:19 by dluna-lo          #+#    #+#             */
+/*   Updated: 2023/03/12 16:57:55 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(void) {
 
     std::cout << "\n -> value a ?:";
 	  std::cin >> a;
-    std::cout << "\n -> value a ?:";
+    std::cout << "\n -> value b ?:";
 	  std::cin >> b;
 
     std::cout << "\n -- test 1 --" << std::endl;

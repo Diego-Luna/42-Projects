@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile.template                                  :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+         #
+#    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/14 10:00:31 by tmatis            #+#    #+#              #
-#    Updated: 2021/09/29 18:55:52 by tmatis           ###   ########.fr        #
+#    Updated: 2023/03/12 16:57:37 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 
 NAME	= ex02
 CC 		= c++
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
 AUTHOR	= dluna-lo
 DATE	= 11/03/2023
