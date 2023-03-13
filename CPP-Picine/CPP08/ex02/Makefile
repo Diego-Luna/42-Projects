@@ -3,12 +3,12 @@
 ################################################################################
 
 
-NAME	= ex00
+NAME	= ex02
 CC 		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98
 DFLAGS	= -MMD -MF $(@:.o=.d)
 AUTHOR	= dluna-lo
-DATE	= 12/03/2023
+DATE	= 13/03/2023
 
 NOVISU 	= 0 # 1 = no progress bar usefull when tty is not available
 
