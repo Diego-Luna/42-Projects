@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/19 19:14:32 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/20 09:57:39 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@
 #include <stack>
 #include <algorithm>
 
+// container arrai.
+// check file
+// chec info.
+// save info.
 class BitcoinExchange
 {
   public:
 		BitcoinExchange(void);
+		BitcoinExchange(const std::string& databaseFile);
+    virtual ~BitcoinExchange(void);
+
+
 
   private:
 };
