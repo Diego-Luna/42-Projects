@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/20 19:41:27 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:34:25 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ BitcoinExchange::BitcoinExchange(void)
 
 BitcoinExchange::BitcoinExchange(const std::string& databaseFile)
 {
-
 	this->max = 0;
 
   char* c_line = nullptr;
@@ -29,7 +28,7 @@ BitcoinExchange::BitcoinExchange(const std::string& databaseFile)
 	std::ifstream input_file(databaseFile);
 
 	while ((std::getline(input_file, c_line)) != -1) {
-     this->setData(c_line);
+		if ()
 	}
   return ;
 }
@@ -38,26 +37,19 @@ BitcoinExchange::~BitcoinExchange(void) {
 	return;
 }
 
-std::string BitcoinExchange::setData(char* data){
+bool checkMount(std::string& data){
 
-	this->m1.insert(std::pair<int, std::string>(this->getMax(), data));
+	if (str.find('|') == std::string::npos){ // find caracter
+		throw formatWrong();
+	}
+	else if (str.find('|') != 11  ){ // find caracter
+		throw formatWrong();
+	}
+	else if ((str.length() - str.find('|'))  ){ // find caracter
+		throw formatWrong();
+	}
 
-	this->setMax(this->getMax() + 1);
-	this->setIndex(m1.begin());
-}
 
-int BitcoinExchange::getIndex(void){
-	return this->itr;
-}
-int BitcoinExchange::setIndex(std::map<int, std::string>::iterator &itr){
-	this->itr = itr;
-}
-
-int BitcoinExchange::getMax(void){
-	return this->max;
-}
-int BitcoinExchange::setMax(int newMax){
-	this->max = newMax;
 }
 
 

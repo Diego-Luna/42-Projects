@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/20 19:40:55 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:20:11 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <fstream>
 
 
-// container map.
-// check file
-// chec info.
-// save info.
+
+// container map. en el constructor chechar datos
+// save info y correr.
+
 class BitcoinExchange
 {
   public:
@@ -29,15 +30,10 @@ class BitcoinExchange
 		BitcoinExchange(const std::string& databaseFile);
     ~BitcoinExchange(void);
 
-    //set and get
-    std::string setData(std::string& data);
-    int setIndex(std::map<int, std::string>::iterator &itr);
-
-    int getIndex(void);
-    int getMax(void);
+    std::string runData(std::string& data);
 
     // check
-    bool checkMount();
+    bool checkMount(std::string& data);
 
     // Error -> try cath
 		class formatWrong : public std::exception {
@@ -60,7 +56,7 @@ class BitcoinExchange
     std::map<int, std::string> m1;
     std::map<int, std::string>::iterator itr;
 
-    int setMax(int newMax);
+
 };
 
 #endif
