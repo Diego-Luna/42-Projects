@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/21 18:20:11 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/22 17:47:54 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class BitcoinExchange
 		BitcoinExchange(const std::string& databaseFile);
     ~BitcoinExchange(void);
 
-    std::string runData(std::string& data);
+    void runData(void);
 
     // check
     bool checkMount(std::string& data);
@@ -41,7 +41,7 @@ class BitcoinExchange
         virtual const char* what() const throw();
     };
 
-    class dateError : public std::exception {
+    class dataError : public std::exception {
     public:
         virtual const char* what() const throw();
     };
@@ -52,10 +52,14 @@ class BitcoinExchange
     };
 
   private:
-    int max;
+    size_t max;
+    std::string name;
     std::map<int, std::string> m1;
     std::map<int, std::string>::iterator itr;
 
+    int numberCaracterRepeat(std::string& data, char c);
+    bool _checkdata(std::string& data);
+    bool _checkvalue(std::string& data);
 
 };
 

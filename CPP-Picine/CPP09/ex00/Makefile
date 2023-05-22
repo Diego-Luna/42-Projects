@@ -6,13 +6,13 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 11:34:29 by dluna-lo          #+#    #+#              #
-#    Updated: 2023/05/20 18:23:43 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/05/22 15:46:32 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME    = btc
 CC      = c++
-CFLAGS  = -Wall -Wextra -Werror -std=c++98
+CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 AUTHOR  = dluna-lo
 
 SRCS    = src/main.cpp src/BitcoinExchange.cpp
