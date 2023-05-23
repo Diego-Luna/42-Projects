@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/23 16:41:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:58:39 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RPN::RPN(void)
 {
 	this->result = 0;
 	this->error = false;
-	// this->numberNumbers = 0;
+	this->numberNumbers = 0;
 	return;
 }
 
@@ -27,7 +27,7 @@ RPN::~RPN(void) {
 
 void RPN::saveInfo(std::string& data){
 	std::string& save = data;
-	// this->numberNumbers = 0;
+	this->numberNumbers = 0;
 	size_t i = 0;
 
 	size_t cut_start = 0;
@@ -77,25 +77,28 @@ void RPN::getResult(void){
 				i++;
 				this->numberNumbers++;
 			}
-			else if ((*this->it).length() > 1) {
+			else if ((*this->it).length() > 0) {
 
 				if ((*this->it) == "+" ){
-					this->tem_arr[i - 1] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
+					this->tem_arr[i - 2] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
 				}
 				else if ((*this->it) == "-" ){
-					this->tem_arr[i - 1] = this->tem_arr[i - 2] - this->tem_arr[i - 1];
+					this->tem_arr[i - 2] = this->tem_arr[i - 2] - this->tem_arr[i - 1];
 				}else if ((*this->it) == "*" ){
-					this->tem_arr[i - 1] = this->tem_arr[i - 2] * this->tem_arr[i - 1];
+					this->tem_arr[i - 2] = this->tem_arr[i - 2] * this->tem_arr[i - 1];
 				}else if ((*this->it) == "/" ){
-					this->tem_arr[i - 1] = this->tem_arr[i - 2] / this->tem_arr[i - 1];
+					this->tem_arr[i - 2] = this->tem_arr[i - 2] / this->tem_arr[i - 1];
 				}
-				this->result = this->tem_arr[i - 1];
+				this->result = this->tem_arr[i - 2];
+				this->tem_arr[i - 1] = 0;
+				i--;
 			}
 		}
-		if (i > 1)
+		if (i != 1)
 		{
-					for(this->it = this->arr.begin(); this->it < this->arr.end(); this->it++)
-
+			for(this->tem_it = this->tem_arr.begin(); this->tem_it < this->tem_arr.end(); this->tem_it++){
+				(*this->tem_it > 0 )? std::cout << *this->tem_it: true;
+			}
 		}
 		else{
 			std::cout << this->result << std::endl;

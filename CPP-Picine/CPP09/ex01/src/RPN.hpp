@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/23 16:40:58 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:27:42 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class RPN
   private:
     int long long result;
     bool error;
-    // int numberNumbers;
+    int numberNumbers;
 
     std::array<std::string, 20> arr;
     std::array<std::string, 20>::iterator it;
