@@ -6,33 +6,35 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:00:50 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/23 11:00:38 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:45:44 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
-#include <fstream>
 #include <iostream>
+#include <array>
 
 int main(int argc, char const *argv[])
 {
 	if (argc != 2)
 	{
-		std::cerr << "Error: could not open file." << std::endl;
-
+		std::cerr << "Error" << std::endl;
 		return (1);
 	}
-	std::ifstream inputFile(argv[1]);
-	if (inputFile.is_open() == false)
+
+  std::string data(argv[1]);
+
+	if (data.length() == 0)
 	{
-		std::cerr << "Error: could not open file." << std::endl;
+		std::cerr << "Error" << std::endl;
 		return (1);
 	}
 
-	BitcoinExchange bitcon(argv[1]);
+	RPN promgram;
 
-	bitcon.runData();
+	promgram.saveInfo(data);
+	promgram.getResult();
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/22 17:47:54 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/23 08:36:13 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ class BitcoinExchange
     };
 
     class valueError : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
+    class fileError : public std::exception {
     public:
         virtual const char* what() const throw();
     };

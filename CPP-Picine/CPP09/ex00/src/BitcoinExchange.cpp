@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/22 21:29:44 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/05/23 08:38:56 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ BitcoinExchange::BitcoinExchange(const std::string& databaseFile)
 	std::ifstream input_file(databaseFile);
 
 	while (std::getline(input_file, c_line)) {
-		m1.insert(std::pair<int, std::string>(len, c_line));
+		if (len > 0)
+		{
+			m1.insert(std::pair<int, std::string>(len, c_line));
+		}
 		len++;
 	}
 
@@ -40,6 +43,17 @@ void BitcoinExchange::runData(void){
 	// std::string read;
 	std::string date;
 	std::string number;
+
+	try{
+		if (this->max <= 1)
+		{
+			throw fileError();
+		}
+	}	catch(const std::exception& e){
+		std::cerr << e.what() << '\n';
+		return;
+	}
+
 
 	std::ifstream input_file(this->name);
 
@@ -182,5 +196,9 @@ const char* BitcoinExchange::dataError::what() const throw() {
 
 const char* BitcoinExchange::valueError::what() const throw() {
     return "A valid value must be either a float or a positive integer between 0 and 1000.";
+}
+
+const char* BitcoinExchange::fileError::what() const throw() {
+    return "Error: could not open file.";
 }
 
