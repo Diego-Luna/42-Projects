@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/22 17:49:57 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/22 21:29:44 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ BitcoinExchange::BitcoinExchange(const std::string& databaseFile)
 	std::ifstream input_file(databaseFile);
 
 	while (std::getline(input_file, c_line)) {
+		m1.insert(std::pair<int, std::string>(len, c_line));
 		len++;
 	}
 
@@ -36,27 +37,25 @@ BitcoinExchange::BitcoinExchange(const std::string& databaseFile)
 }
 
 void BitcoinExchange::runData(void){
-	std::string data;
-  size_t len = 0;
+	// std::string read;
+	std::string date;
+	std::string number;
 
-		std::ifstream input_file(this->name);
+	std::ifstream input_file(this->name);
 
-	for (size_t i = 0; i < this->max; i++)
+	for (itr = m1.begin(); itr != m1.end(); ++itr)
 	{
-		std::getline(input_file, data);
 		try
 		{
-			if (i > 0){
-				checkMount(data);
-				std:string date = (data.substr(0, data.find(' ')));
-				std:string number = (data.substr(data.find('|'), data.strlen()));
-			}
+				checkMount(itr->second);
+				date = (itr->second.substr(0, itr->second.find(' ')));
+				number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
+				std::cout << date << " => " << std::stoi(number) << " = " << 0.9 << std::endl;
 		}
 		catch(const std::exception& e)
 		{
 			std::cerr << e.what() << '\n';
 		}
-		len++;
 	}
 }
 
