@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/24 09:24:32 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:02:59 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void RPN::getResult(void){
 				this->numberNumbers++;
 			}
 			else if ((*this->it).length() > 0) {
-
 				if ((*this->it) == "+" ){
 					this->tem_arr[i - 2] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
 				}
