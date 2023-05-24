@@ -6,16 +6,16 @@
 #    By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 11:34:29 by dluna-lo          #+#    #+#              #
-#    Updated: 2023/05/23 11:08:37 by dluna-lo         ###   ########.fr        #
+#    Updated: 2023/05/24 15:25:07 by dluna-lo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = RPN
+NAME    = PmergeMe
 CC      = c++
 CFLAGS  = -g -Wall -Wextra -Werror -std=c++98
 AUTHOR  = dluna-lo
 
-SRCS    = src/main.cpp src/RPN.cpp
+SRCS    = src/main.cpp src/PmergeMe.cpp
 SRCDIR  = src/
 
 RM 			= rm -f
