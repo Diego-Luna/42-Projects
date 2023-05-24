@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/23 08:38:56 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:49:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void BitcoinExchange::runData(void){
 				checkMount(itr->second);
 				date = (itr->second.substr(0, itr->second.find(' ')));
 				number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
-				std::cout << date << " => " << std::stoi(number) << " = " << 0.9 << std::endl;
+				std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
 		}
 		catch(const std::exception& e)
 		{
@@ -98,17 +98,21 @@ bool BitcoinExchange::checkMount(std::string& data){
 bool BitcoinExchange::_checkvalue(std::string& data){
 	std::string value = data.substr(data.find('|') + 1, data.length());
 
-	int numberMount = std::stoi(value);
+	int numberMount = std::stoll(value);
+	int number_point = 0;
 
 	for (size_t i = 0; i < value.length(); i++)
 	{
-		if (!(value[i] == ' '))
+		if (value[i] == '.'){
+				number_point++;
+		}
+		else if (!(value[i] == ' '))
 		{
-				if (!(value[i] >= '0' && value[i] <= '9'))
-					return false;
+			if (!(value[i] >= '0' && value[i] <= '9') || number_point > 1)
+				return false;
 		}
 	}
-	if (numberMount > 1000 )
+	if (numberMount > 1000  || numberMount < 0)
 	{
 		return false;
 	}
@@ -116,9 +120,11 @@ bool BitcoinExchange::_checkvalue(std::string& data){
 }
 
 bool BitcoinExchange::_checkdata(std::string& data){
+	
+	// (void)data;
 	int numberYear = std::stoi(data.substr(0, 4));
-	int numberMount = std::stoi(data.substr(5, 7));
-	int numberDay = std::stoi(data.substr(8, 10));
+	int numberMount = std::stoi(data.substr(5, 2));
+	int numberDay = std::stoi(data.substr(8, 2));
 
   // // Convertir el fragmento a un valor entero
 	if (data[4] != '-' || data[7] != '-'){
@@ -184,6 +190,56 @@ int BitcoinExchange::numberCaracterRepeat(std::string& data, char c){
 	return (caracterRepit);
 }
 
+float BitcoinExchange::getNumberOfDataset(std::string& date){
+
+	std::string c_year = date.substr(0, 4);
+	std::string c_mount = date.substr(5, 2);
+	std::string c_day = date.substr(8, 2);
+
+	std::string c_line;
+	std::string temp = "";
+
+	std::ifstream input_file("data.csv");
+
+	std::getline(input_file, c_line);
+	while (std::getline(input_file, c_line)) {
+		if (std::stoi(c_line.substr(0, 4)) >= std::stoi(c_year) &&
+				std::stoi(c_line.substr(5, 2)) >= std::stoi(c_mount) &&
+				std::stoi(c_line.substr(8, 2)) >= std::stoi(c_day))
+		{
+			if (std::stoi(c_line.substr(0, 4)) == std::stoi(c_year) &&
+				std::stoi(c_line.substr(5, 2)) == std::stoi(c_mount) &&
+				std::stoi(c_line.substr(8, 2)) == std::stoi(c_day))
+			{
+				return (std::stof(c_line.substr(11, c_line.length())));
+			}
+			// std::cout << "fecha : " << c_line << ": final" << std::endl;
+			if (
+					aNumbers(std::stoi(temp.substr(0, 4)) - std::stoi(c_year)) > aNumbers(std::stoi(c_line.substr(0, 4)) - std::stoi(c_year)) ||
+					aNumbers(std::stoi(temp.substr(5, 2)) - std::stoi(c_mount)) > aNumbers(std::stoi(c_line.substr(5, 2)) - std::stoi(c_mount)) ||
+					aNumbers(std::stoi(temp.substr(8, 2)) - std::stoi(c_day)) > aNumbers(std::stoi(c_line.substr(8, 2)) - std::stoi(c_day))
+				)
+			{
+				return (std::stof(temp.substr(11, temp.length())));
+			}
+			return (std::stof(c_line.substr(11, c_line.length())));
+		}else
+		{
+			temp = c_line;
+		}
+	}
+
+	throw databaseError();
+	return -1;
+}
+
+int BitcoinExchange::aNumbers(int number){
+	if (number < 0 )
+	{
+		return (-number);
+	}
+	return number;
+}
 
 // try{} cath{}
 const char* BitcoinExchange::formatWrong::what() const throw() {
@@ -200,5 +256,9 @@ const char* BitcoinExchange::valueError::what() const throw() {
 
 const char* BitcoinExchange::fileError::what() const throw() {
     return "Error: could not open file.";
+}
+
+const char* BitcoinExchange::databaseError::what() const throw() {
+    return "Error: database error.";
 }
 

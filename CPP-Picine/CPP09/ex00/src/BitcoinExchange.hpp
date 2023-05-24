@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/23 08:36:13 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:40:44 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ class BitcoinExchange
         virtual const char* what() const throw();
     };
 
+    class databaseError : public std::exception {
+    public:
+        virtual const char* what() const throw();
+    };
+
   private:
     size_t max;
     std::string name;
@@ -65,6 +70,8 @@ class BitcoinExchange
     bool _checkdata(std::string& data);
     bool _checkvalue(std::string& data);
 
+    float getNumberOfDataset(std::string& date);
+    int aNumbers(int number);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/23 18:58:39 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/24 09:24:32 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,21 @@ RPN::~RPN(void) {
 void RPN::saveInfo(std::string& data){
 	std::string& save = data;
 	this->numberNumbers = 0;
-	size_t i = 0;
 
 	size_t cut_start = 0;
 	size_t cut_end = 0;
+
+	this->it = this->arr.begin();
 	try{
 		checkData(data);
 		// save in array;
 		while(cut_end < save.length())
 		{
 			positionFind(data, &cut_start, &cut_end);
-			this->arr[i] = data.substr(cut_start, cut_end - cut_start);
+			*this->it = data.substr(cut_start, cut_end - cut_start);
 			(data.length() == 0)? throw Error() : true ;
 			cut_start = cut_end;
-			i++;
+			this->it++;
 		}
 		this->it = this->arr.begin();
 	}	catch(const std::exception& e){
