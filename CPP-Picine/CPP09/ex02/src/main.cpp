@@ -6,11 +6,11 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:00:50 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/25 10:40:18 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:25:58 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+// #include "PmergeMe.hpp"
 
 #include <iostream>
 #include <array>
@@ -23,12 +23,12 @@ int main(int argc, char const *argv[])
 		return (1);
 	}
 
-  std::string data(argv[1]);
+  // std::string data(argv[1]);
 
-	PmergeMe program;
+	// PmergeMe program;
 
-	program.saveData(data);
-	program.runOrganiseData();
+	// program.saveData(data);
+	// program.runOrganiseData();
 
 	return 0;
 }

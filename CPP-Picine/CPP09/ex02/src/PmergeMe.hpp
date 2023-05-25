@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/25 10:38:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/25 13:12:04 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <iostream>
 #include <ctime>
 #include <vector>
-#include <forward_list>
+#include <deque>
 #include <chrono>
 
 // container map. en el constructor chechar datos
@@ -49,14 +49,18 @@ class PmergeMe
     std::chrono::high_resolution_clock::time_point start_1;
     std::chrono::high_resolution_clock::time_point end_1;
 
-    std::forward_list<int> fr_lst;
+    std::deque<int> dq;
     std::chrono::high_resolution_clock::time_point start_2;
     std::chrono::high_resolution_clock::time_point end_2;
 
-    void runContainer_one(std::string original_numbers);
-    void runContainer_two(std::string original_numbers);
+    // Bubble Sort
+    void runContainer_one(void);
+    void runContainer_two(void);
     void printResult(void);
     void check(std::string str);
+
+    int findSpace(std::string str);
+    int findNumber(std::string str);
 };
 
 #endif
