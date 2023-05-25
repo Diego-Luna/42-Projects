@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/25 13:12:04 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:16:52 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ class PmergeMe
 {
   public:
 		PmergeMe(void);
-		PmergeMe(std::string data);
     ~PmergeMe(void);
 
-    void saveData(std::string data);
+    void saveData(char *argv[], int argc);
     void runOrganiseData(void);
 
 
@@ -59,8 +58,10 @@ class PmergeMe
     void printResult(void);
     void check(std::string str);
 
-    int findSpace(std::string str);
+    int findSpace(std::string str,size_t  start);
     int findNumber(std::string str);
+
+    void saveData_algorithme(std::string data);
 };
 
 #endif

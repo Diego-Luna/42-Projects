@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/25 13:20:15 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:18:29 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,22 @@ PmergeMe::PmergeMe(void)
 	return;
 }
 
-PmergeMe::PmergeMe(std::string data)
-{
-	this->numberNumbers = 0;
-	this->error = false;
-  this->organized_numbers = "";
-
-	this->original_numbers = data;
-	check(data);
-	return;
+void PmergeMe::saveData(char *argv[], int argc){
+	if (argc == 2){
+		std::string str(argv[1]);
+		saveData_algorithme(str);
+	}else{
+		std::string tem;
+		for(int i = 1; i < argc; i++){
+			tem.append(" ");
+			tem.append(argv[i]);
+		}
+		std::cout << "-> tem :" << tem << std::endl;
+		saveData_algorithme(tem);
+	}
 }
 
-void PmergeMe::saveData(std::string data){
+void PmergeMe::saveData_algorithme(std::string data){
 	std::string tem = data;
 	size_t cut_start;
 	size_t cut_end;
@@ -48,18 +52,14 @@ void PmergeMe::saveData(std::string data){
 	for (int i = 0; i < this->numberNumbers; i++)
 	{
 		cut_start = findNumber(tem);
-		cut_end = findSpace(tem);
+		cut_end = findSpace(tem, cut_start);
 		number = std::stoll(tem.substr(cut_start, cut_end - cut_start));
-		std::cout << "number :" << number  << std::endl;
 		this->vec.push_back(number);
 		this->dq.push_back(number);
-
 		if (cut_end < tem.length()){
 			tem = tem.substr(cut_end + 1, tem.length() + 1);
 		}
-		std::cout << "tem :" << tem  << std::endl;
 	}
-	std::cout << std::endl;
 }
 
 void PmergeMe::runOrganiseData(void){
@@ -76,6 +76,7 @@ void PmergeMe::runOrganiseData(void){
 	printResult();
 }
 
+// Bubble Sort
 void PmergeMe::runContainer_one(void){ // vector
 
 	int temp;
@@ -94,6 +95,7 @@ void PmergeMe::runContainer_one(void){ // vector
 	}
 }
 
+// Bubble Sort
 void PmergeMe::runContainer_two(void){ // vector
 
 	int temp;
@@ -112,9 +114,9 @@ void PmergeMe::runContainer_two(void){ // vector
 	}
 }
 
-int PmergeMe::findSpace(std::string str){
+int PmergeMe::findSpace(std::string str, size_t start){
 	for (size_t i = 0; i < str.length(); i++){
-		if (str[i] == ' ' || str[i] == '\t'){
+		if (i >= start && (str[i] == ' ' || str[i] == '\t')){
 			return (i);
 		}
 	}
