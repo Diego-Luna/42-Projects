@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:00:50 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/24 15:25:18 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/25 10:40:18 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,18 @@
 
 int main(int argc, char const *argv[])
 {
-	if (argc != 2)
+	if (argc < 2 || argv[0] == '\0' )
 	{
-		std::cerr << "Error" << std::endl;
+		std::cout << "Error" << std::endl;
 		return (1);
 	}
 
   std::string data(argv[1]);
 
-	if (data.length() == 0)
-	{
-		std::cerr << "Error" << std::endl;
-		return (1);
-	}
+	PmergeMe program;
 
-	RPN promgram;
-
-	promgram.saveInfo(data);
-	promgram.getResult();
+	program.saveData(data);
+	program.runOrganiseData();
 
 	return 0;
 }

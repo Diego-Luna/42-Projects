@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:00:50 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/24 10:19:50 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/25 09:46:09 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
 {
 	if (argc != 2)
 	{
-		std::cerr << "Error" << std::endl;
+		std::cout << "Error" << std::endl;
 		return (1);
 	}
 
@@ -27,7 +27,7 @@ int main(int argc, char const *argv[])
 
 	if (data.length() == 0)
 	{
-		std::cerr << "Error" << std::endl;
+		std::cout << "Error" << std::endl;
 		return (1);
 	}
 
