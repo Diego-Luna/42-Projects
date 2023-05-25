@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/24 14:02:59 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:12:37 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,29 @@ void RPN::getResult(void){
 			throw Error();
 		}
 
-		for (size_t full = 0; full < 20; full++)
-		{
-			this->tem_arr[full] = 0;
+		// for (size_t full = 0; full < 20; full++)
+		// {
+		// 	this->tem_arr[full] = 0;
+		// }
+		for (this->tem_it = this->tem_arr.begin(); this->tem_it != this->tem_arr.end(); this->tem_it++)
+    {
+				*this->tem_it = 0;
 		}
+
+		this->tem_it = this->tem_arr.begin();
 
 		for(this->it = this->arr.begin(); this->it < this->arr.end(); this->it++)
 		{
 			if (isStringNumber(*this->it) == true)
 			{
-				this->tem_arr[i] = std::stoi(*this->it);
-				i++;
+				*this->tem_it = std::stoi(*this->it);
+				this->tem_it++;
 				this->numberNumbers++;
 			}
 			else if ((*this->it).length() > 0) {
 				if ((*this->it) == "+" ){
-					this->tem_arr[i - 2] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
+					// this->tem_arr[i - 2] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
+					*(this->tem_it - 2) = *(this->tem_it - 2) + *(this->tem_it - 1);
 				}
 				else if ((*this->it) == "-" ){
 					this->tem_arr[i - 2] = this->tem_arr[i - 2] - this->tem_arr[i - 1];
@@ -89,11 +96,39 @@ void RPN::getResult(void){
 				}else if ((*this->it) == "/" ){
 					this->tem_arr[i - 2] = this->tem_arr[i - 2] / this->tem_arr[i - 1];
 				}
-				this->result = this->tem_arr[i - 2];
-				this->tem_arr[i - 1] = 0;
-				i--;
+				this->result = *(this->tem_it - 2);
+				*( this->tem_it - 1) = 0;
+				this->tem_it--;
+				// i--;
+				// this->result = this->tem_arr[i - 2];
+				// this->tem_arr[i - 1] = 0;
+				// i--;
 			}
 		}
+		// for(this->it = this->arr.begin(); this->it < this->arr.end(); this->it++)
+		// {
+		// 	if (isStringNumber(*this->it) == true)
+		// 	{
+		// 		this->tem_arr[i] = std::stoi(*this->it);
+		// 		i++;
+		// 		this->numberNumbers++;
+		// 	}
+		// 	else if ((*this->it).length() > 0) {
+		// 		if ((*this->it) == "+" ){
+		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
+		// 		}
+		// 		else if ((*this->it) == "-" ){
+		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] - this->tem_arr[i - 1];
+		// 		}else if ((*this->it) == "*" ){
+		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] * this->tem_arr[i - 1];
+		// 		}else if ((*this->it) == "/" ){
+		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] / this->tem_arr[i - 1];
+		// 		}
+		// 		this->result = this->tem_arr[i - 2];
+		// 		this->tem_arr[i - 1] = 0;
+		// 		i--;
+		// 	}
+		// }
 		if (i != 1)
 		{
 			for(this->tem_it = this->tem_arr.begin(); this->tem_it < this->tem_arr.end(); this->tem_it++){
