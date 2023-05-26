@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/25 21:58:44 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/05/26 11:40:50 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,21 @@ void RPN::getResult(void){
 
 	int i = 0;
 
-	if (error == true){
+	if (this->error == true){
 			return;
 	}
 	try
 	{
-		if (isStringNumber(this->arr[0]) == false || ( this->arr[1].length() > 0 && isStringNumber(this->arr[1]) == false))
+		this->it = this->arr.begin();
+		if (isStringNumber(*this->it) == false || ( (*(this->it + 1)).length() > 0 && isStringNumber((*(this->it + 1))) == false))
 		{
 			throw Error();
 		}
-
-		// for (size_t full = 0; full < 20; full++)
-		// {
-		// 	this->tem_arr[full] = 0;
+		// for (this->tem_it = this->tem_arr.begin(); this->tem_it != this->tem_arr.end(); this->tem_it++)
+    // {
+		// 	// *this->tem_it = 0;
+		// 	// *this->tem_it = "";
 		// }
-		for (this->tem_it = this->tem_arr.begin(); this->tem_it != this->tem_arr.end(); this->tem_it++)
-    {
-				*this->tem_it = 0;
-		}
 
 		this->tem_it = this->tem_arr.begin();
 
@@ -80,58 +77,36 @@ void RPN::getResult(void){
 		{
 			if (isStringNumber(*this->it) == true)
 			{
-				*this->tem_it = std::stoi(*this->it);
+				// *this->tem_it = std::stoi(*this->it);
+				*this->tem_it = *this->it;
 				this->tem_it++;
 				this->numberNumbers++;
+				i++;
 			}
-			else if ((*this->it).length() > 0) {
+			else if ((*this->it).length() == 1 && i > 1) {
+			// else if ((*this->it).length() > 0) {
 				if ((*this->it) == "+" ){
-					// this->tem_arr[i - 2] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
-					*(this->tem_it - 2) = *(this->tem_it - 2) + *(this->tem_it - 1);
+					*(this->tem_it - 2) = std::to_string(std::stoll(*(this->tem_it - 2)) + std::stoll(*(this->tem_it - 1)));
 				}
 				else if ((*this->it) == "-" ){
-					// this->tem_arr[i - 2] = this->tem_arr[i - 2] - this->tem_arr[i - 1];
-					*(this->tem_it - 2) = *(this->tem_it - 2) - *(this->tem_it - 1);
+					*(this->tem_it - 2) = std::to_string(std::stoll((*(this->tem_it - 2))) - std::stoll((*(this->tem_it - 1))));
 				}else if ((*this->it) == "*" ){
-					// this->tem_arr[i - 2] = this->tem_arr[i - 2] * this->tem_arr[i - 1];
-					*(this->tem_it - 2) = *(this->tem_it- 2) * *(this->tem_it - 1);
+					*(this->tem_it - 2) = std::to_string(std::stoll((*(this->tem_it- 2))) * std::stoll((*(this->tem_it - 1))));
 				}else if ((*this->it) == "/" ){
-					// this->tem_arr[i - 2] = this->tem_arr[i - 2] / this->tem_arr[i - 1];
-					*(this->tem_it - 2) = *(this->tem_it - 2) / *(this->tem_it- 1);
+					*(this->tem_it - 2) = std::to_string(std::stoll((*(this->tem_it - 2))) / std::stoll((*(this->tem_it- 1))));
 				}
-				this->result = *(this->tem_it - 2);
-				*( this->tem_it - 1) = 0;
+				this->result = std::stoll(*(this->tem_it - 2));
+				*( this->tem_it - 1) = "\0";
 				this->tem_it--;
+				i--;
 			}
 		}
-		// for(this->it = this->arr.begin(); this->it < this->arr.end(); this->it++)
-		// {
-		// 	if (isStringNumber(*this->it) == true)
-		// 	{
-		// 		this->tem_arr[i] = std::stoi(*this->it);
-		// 		i++;
-		// 		this->numberNumbers++;
-		// 	}
-		// 	else if ((*this->it).length() > 0) {
-		// 		if ((*this->it) == "+" ){
-		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] + this->tem_arr[i - 1];
-		// 		}
-		// 		else if ((*this->it) == "-" ){
-		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] - this->tem_arr[i - 1];
-		// 		}else if ((*this->it) == "*" ){
-		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] * this->tem_arr[i - 1];
-		// 		}else if ((*this->it) == "/" ){
-		// 			this->tem_arr[i - 2] = this->tem_arr[i - 2] / this->tem_arr[i - 1];
-		// 		}
-		// 		this->result = this->tem_arr[i - 2];
-		// 		this->tem_arr[i - 1] = 0;
-		// 		i--;
-		// 	}
-		// }
-		if (i != 1)
+
+		if (i != 1 || this->numberNumbers == 1)
 		{
 			for(this->tem_it = this->tem_arr.begin(); this->tem_it < this->tem_arr.end(); this->tem_it++){
-				(*this->tem_it > 0 )? std::cout << *this->tem_it: true;
+				// (*this->tem_it > 0 )? std::cout << *this->tem_it << " ": true;
+				((*this->tem_it).empty() == false )? std::cout << *this->tem_it << " ": true;
 			}
 		}
 		else{
@@ -148,10 +123,20 @@ void RPN::getResult(void){
 
 
 bool RPN::isStringNumber(std::string& str){
-	if (str.length() == 0)
+	bool isNegative = false;
+
+	if (str.length() == 0 || (str[0] == '-' && str.length() == 1 ))
 		return false;
 	for(size_t i = 0; i < str.length(); i++){
-		if (!(str[i] >= '0' && str[i] <= '9'))
+
+		if (str[i] == '-'){
+			if (isNegative == false)
+			{
+				isNegative = true;
+			}else{
+				return false;
+			}
+		}else if (!(str[i] >= '0' && str[i] <= '9'))
 		{
 			return false;
 		}
@@ -173,6 +158,11 @@ void RPN::positionFind(std::string& data, size_t *cut_start, size_t *cut_end)
 }
 
 bool RPN::checkData(std::string& data){
+
+	bool number = false;
+	bool signo = false;
+	size_t tem = 0;
+
 	int numberOfNumbers = 0;
 	// check number y space,
 	(data.length() == 0)? throw Error() : true ;
@@ -190,7 +180,32 @@ bool RPN::checkData(std::string& data){
 			numberOfNumbers++;
 		}
 	}
-	(numberOfNumbers >= 10)? throw Error() : true ;
+
+	for (size_t i = 0; i < data.length(); i++){
+		if (((data[i] >= '0' && data[i] <= '9') || data[i] == '-'))
+		{
+			if (number  == false){
+				number = true;
+				tem++;
+			}
+			signo = false;
+		}
+		if (data[i] == ' ' || data[i] == '\0' )
+		{
+			if (number == true){
+				number = false;
+			}
+		}
+		if (data[i] == '+' || data[i] == '-' || data[i] == '/' || data[i] == '*'){
+			if (signo == false){
+				signo = true;
+			}else {
+				throw Error();
+			}
+		}
+	}
+
+	(numberOfNumbers > 10)? throw Error() : true ;
 
 	return true;
 }

@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/24 13:49:03 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/26 10:21:53 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,16 @@ void BitcoinExchange::runData(void){
 	{
 		try
 		{
-				checkMount(itr->second);
-				date = (itr->second.substr(0, itr->second.find(' ')));
-				number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
-				std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
+				if (checkMount(itr->second) == true)
+				{
+					date = (itr->second.substr(0, itr->second.find(' ')));
+					number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
+					std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
+				}
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << '\n';
+			std::cerr << e.what() << date << " | "<< number << '\n';
 		}
 	}
 }
@@ -78,20 +80,27 @@ BitcoinExchange::~BitcoinExchange(void) {
 }
 
 bool BitcoinExchange::checkMount(std::string& data){
-
-	if (data.find('|') == std::string::npos ||
+	try{
+		if (_checkdata(data) == false){ // find caracter, check data
+			throw dataError();
+		}
+		if (_checkvalue(data) == false){ // find caracter, check number
+			throw valueError();
+		}
+		if (data.find('|') == std::string::npos ||
 				numberCaracterRepeat(data, '|') != 1 ||
 				numberCaracterRepeat(data, '-') != 2 ||
 				numberCaracterRepeat(data, ' ') != 2 ||
 				data.find('|') != 11){
 		throw formatWrong();
+		}
 	}
-	if (_checkdata(data) == false){ // find caracter, check data
-		throw dataError();
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << data << '\n';
+		return false;
 	}
-	if (_checkvalue(data) == false){ // find caracter, check number
-		throw formatWrong();
-	}
+
 	return true;
 }
 
@@ -191,42 +200,61 @@ int BitcoinExchange::numberCaracterRepeat(std::string& data, char c){
 }
 
 float BitcoinExchange::getNumberOfDataset(std::string& date){
+	int  c_year = std::stoi(date.substr(0, 4));
+	int  c_mount = std::stoi(date.substr(5, 2));
+	int  c_day = std::stoi(date.substr(8, 2));
 
-	std::string c_year = date.substr(0, 4);
-	std::string c_mount = date.substr(5, 2);
-	std::string c_day = date.substr(8, 2);
+	size_t i = 0;
 
 	std::string c_line;
 	std::string temp = "";
 
 	std::ifstream input_file("data.csv");
 
+	// read
 	std::getline(input_file, c_line);
+
+	// value in int
+	int c_line_year = 0;
+	int c_line_mount = 0;
+	int c_line_day = 0;
+
 	while (std::getline(input_file, c_line)) {
-		if (std::stoi(c_line.substr(0, 4)) >= std::stoi(c_year) &&
-				std::stoi(c_line.substr(5, 2)) >= std::stoi(c_mount) &&
-				std::stoi(c_line.substr(8, 2)) >= std::stoi(c_day))
+
+		c_line_year = std::stoi(c_line.substr(0, 4));
+		c_line_mount = std::stoi(c_line.substr(5, 2));
+		c_line_day = std::stoi(c_line.substr(8, 2));
+
+		if (i == 0 && c_year < c_line_year){
+			throw databaseError();
+		}
+		i++;
+
+		if (c_line_year == c_year &&
+				c_line_mount == c_mount &&
+				c_line_day == c_day)
 		{
-			if (std::stoi(c_line.substr(0, 4)) == std::stoi(c_year) &&
-				std::stoi(c_line.substr(5, 2)) == std::stoi(c_mount) &&
-				std::stoi(c_line.substr(8, 2)) == std::stoi(c_day))
-			{
 				return (std::stof(c_line.substr(11, c_line.length())));
-			}
-			// std::cout << "fecha : " << c_line << ": final" << std::endl;
-			if (
-					aNumbers(std::stoi(temp.substr(0, 4)) - std::stoi(c_year)) > aNumbers(std::stoi(c_line.substr(0, 4)) - std::stoi(c_year)) ||
-					aNumbers(std::stoi(temp.substr(5, 2)) - std::stoi(c_mount)) > aNumbers(std::stoi(c_line.substr(5, 2)) - std::stoi(c_mount)) ||
-					aNumbers(std::stoi(temp.substr(8, 2)) - std::stoi(c_day)) > aNumbers(std::stoi(c_line.substr(8, 2)) - std::stoi(c_day))
+		}
+		else if(
+				c_line_year >= c_year &&
+				c_line_mount >= c_mount &&
+				c_line_day >= c_day
 				)
-			{
-				return (std::stof(temp.substr(11, temp.length())));
-			}
-			return (std::stof(c_line.substr(11, c_line.length())));
-		}else
+		{
+			return (std::stof(temp.substr(11, temp.length())));
+		}
+		else
 		{
 			temp = c_line;
 		}
+	}
+
+	if (
+		c_line_year < c_year
+	)
+	{
+		return (std::stof(temp.substr(11, temp.length())));
 	}
 
 	throw databaseError();
@@ -243,15 +271,15 @@ int BitcoinExchange::aNumbers(int number){
 
 // try{} cath{}
 const char* BitcoinExchange::formatWrong::what() const throw() {
-    return "Each line in this file must use the following format: 'data | value' ";
+  return "Each line in this file must use the following format: 'data | value' :  ";
 }
 
 const char* BitcoinExchange::dataError::what() const throw() {
-    return "A valid data will always be in the following format: Year-Month-Day.";
+    return "A valid data will always be in the following format: Year-Month-Day : ";
 }
 
 const char* BitcoinExchange::valueError::what() const throw() {
-    return "A valid value must be either a float or a positive integer between 0 and 1000.";
+    return "A valid value must be either a float or a positive integer between 0 and 1000 : ";
 }
 
 const char* BitcoinExchange::fileError::what() const throw() {
@@ -259,6 +287,6 @@ const char* BitcoinExchange::fileError::what() const throw() {
 }
 
 const char* BitcoinExchange::databaseError::what() const throw() {
-    return "Error: database error.";
+    return "Error: database error :" ;
 }
 

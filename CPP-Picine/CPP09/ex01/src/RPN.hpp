@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/23 18:27:42 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:24:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,17 @@ class RPN
     };
 
   private:
-    int long long result;
+    long long result;
     bool error;
     int numberNumbers;
 
-    std::array<std::string, 20> arr;
-    std::array<std::string, 20>::iterator it;
+    std::array<std::string, 30> arr;
+    std::array<std::string, 30>::iterator it;
 
-    std::array<int, 10> tem_arr;
-    std::array<int, 10>::iterator tem_it;
+    // std::array<long long, 12> tem_arr;
+    // std::array<long long, 12>::iterator tem_it;
+    std::array<std::string, 30> tem_arr;
+    std::array<std::string, 30>::iterator tem_it;
 
     // check
     bool checkData(std::string& data);

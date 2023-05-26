@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/24 13:40:44 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/26 10:00:09 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class BitcoinExchange
     bool checkMount(std::string& data);
 
     // Error -> try cath
+
 		class formatWrong : public std::exception {
     public:
         virtual const char* what() const throw();
@@ -63,6 +64,8 @@ class BitcoinExchange
   private:
     size_t max;
     std::string name;
+    std::string _errorMessage;
+
     std::map<int, std::string> m1;
     std::map<int, std::string>::iterator itr;
 
