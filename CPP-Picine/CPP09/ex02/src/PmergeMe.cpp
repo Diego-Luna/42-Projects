@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/25 16:18:29 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:46:26 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ PmergeMe::PmergeMe(void)
 void PmergeMe::saveData(char *argv[], int argc){
 	if (argc == 2){
 		std::string str(argv[1]);
-		saveData_algorithme(str);
+		// saveData_algorithme(str);
+		this->original_numbers = str;
+		check(str);
 	}else{
 		std::string tem;
 		for(int i = 1; i < argc; i++){
@@ -36,18 +38,20 @@ void PmergeMe::saveData(char *argv[], int argc){
 			tem.append(argv[i]);
 		}
 		std::cout << "-> tem :" << tem << std::endl;
-		saveData_algorithme(tem);
+		// saveData_algorithme(tem);
+		this->original_numbers = tem;
+		check(tem);
 	}
 }
 
-void PmergeMe::saveData_algorithme(std::string data){
+void PmergeMe::saveData_algorithme_one(std::string data){
 	std::string tem = data;
 	size_t cut_start;
 	size_t cut_end;
 	int number;
 
-	this->original_numbers = data;
-	check(data);
+	// this->original_numbers = data;
+	// check(data);
 
 	for (int i = 0; i < this->numberNumbers; i++)
 	{
@@ -55,6 +59,26 @@ void PmergeMe::saveData_algorithme(std::string data){
 		cut_end = findSpace(tem, cut_start);
 		number = std::stoll(tem.substr(cut_start, cut_end - cut_start));
 		this->vec.push_back(number);
+		if (cut_end < tem.length()){
+			tem = tem.substr(cut_end + 1, tem.length() + 1);
+		}
+	}
+}
+
+void PmergeMe::saveData_algorithme_two(std::string data){
+	std::string tem = data;
+	size_t cut_start;
+	size_t cut_end;
+	int number;
+
+	// this->original_numbers = data;
+	// check(data);
+
+	for (int i = 0; i < this->numberNumbers; i++)
+	{
+		cut_start = findNumber(tem);
+		cut_end = findSpace(tem, cut_start);
+		number = std::stoll(tem.substr(cut_start, cut_end - cut_start));
 		this->dq.push_back(number);
 		if (cut_end < tem.length()){
 			tem = tem.substr(cut_end + 1, tem.length() + 1);
@@ -63,55 +87,153 @@ void PmergeMe::saveData_algorithme(std::string data){
 }
 
 void PmergeMe::runOrganiseData(void){
+
+	if(this->error == true){
+		return;
+	}
+
 	this->start_1 = std::chrono::high_resolution_clock::now();
 	// container 1
-	runContainer_one();
+	saveData_algorithme_one(this->original_numbers);
+	this->vec_2 = this->vec;
+	runContainer_one(this->vec_2);
 	this->end_1 = std::chrono::high_resolution_clock::now();
 
 	this->start_2 = std::chrono::high_resolution_clock::now();
 	// // container 2
-	runContainer_two();
+	saveData_algorithme_two(this->original_numbers);
+	this->dq_2 = this->dq;
+	runContainer_two(this->dq_2);
 	this->end_2 = std::chrono::high_resolution_clock::now();
 
 	printResult();
 }
 
-// Bubble Sort
-void PmergeMe::runContainer_one(void){ // vector
+// merge-insert sort vec
+void PmergeMe::runContainer_one(std::vector<int> &vec_data){ // vector
+	size_t limit = 5;
 
-	int temp;
-	std::vector<int>::iterator i;
-	std::vector<int>::iterator j;
+	if (vec_data.size() == 1)
+		return;
 
-	for(i = this->vec.begin(); i < this->vec.end(); i++) {
-  	for(j = i + 1; j < this->vec.end(); j++)
-  	{
-  		if(*j < *i) {
-  		   temp = *i;
-  		   *i = *j;
-  		   *j = temp;
-  		}
-  	}
+	if (vec_data.size() < limit)
+	{
+		// organzar
+		for(size_t i = 1; i < vec_data.size(); i++)
+		{
+			int tmp = vec_data[i];
+			int j = i - 1; //accedemos a la posicion anteroir
+			while(j >= 0 && vec_data[j] > tmp)
+			{
+				vec_data[j + 1] = vec_data[j];
+				j--;
+			}
+			vec_data[j + 1] =  tmp;
+		}
 	}
+	else
+	{
+		std::vector<int> v_L(vec_data.begin(), vec_data.begin() + (vec_data.size() / 2)); // Subvector izquierdo
+		std::vector<int> v_R(vec_data.begin() + (vec_data.size() / 2), vec_data.end() ); // Subvector derecho
+
+		// organizar
+		runContainer_one(v_L);
+		runContainer_one(v_R);
+
+		// unir
+		size_t i_v_L = 0;
+		size_t i_v_R = 0;
+		size_t i_vec_data = 0;
+
+		while(i_v_L < v_L.size() && i_v_R < v_R.size()){
+			if (v_L[i_v_L] < v_R[i_v_R]){
+				vec_data[i_vec_data] = v_L[i_v_L];
+				i_v_L++;
+			}else{
+				vec_data[i_vec_data] = v_R[i_v_R];
+				i_v_R++;
+			}
+			i_vec_data++;
+		}
+
+
+		while(i_v_L < v_L.size()){
+			vec_data[i_vec_data] = v_L[i_v_L];
+			i_vec_data++;
+			i_v_L++;
+		}
+		while(i_v_R < v_R.size()){
+			vec_data[i_vec_data] = v_R[i_v_R];
+			i_vec_data++;
+			i_v_R++;
+		}
+	}
+
+	this->vec = vec_data;
 }
 
-// Bubble Sort
-void PmergeMe::runContainer_two(void){ // vector
+// merge-insert sort  deque
+void PmergeMe::runContainer_two(std::deque<int> dq_data){ // vector
 
-	int temp;
-	std::deque<int>::iterator i;
-	std::deque<int>::iterator j;
+	size_t limit = 5;
 
-	for(i = this->dq.begin(); i < this->dq.end(); i++) {
-  	for(j = i + 1; j < this->dq.end(); j++)
-  	{
-  		if(*j < *i) {
-  		   temp = *i;
-  		   *i = *j;
-  		   *j = temp;
-  		}
-  	}
+	if (dq_data.size() == 1)
+		return;
+
+	if (dq_data.size() < limit)
+	{
+		// organzar
+		for(size_t i = 1; i < dq_data.size(); i++)
+		{
+			int tmp = dq_data[i];
+			int j = i - 1; //accedemos a la posicion anteroir
+			while(j >= 0 && dq_data[j] > tmp)
+			{
+				dq_data[j + 1] = dq_data[j];
+				j--;
+			}
+			dq_data[j + 1] =  tmp;
+		}
 	}
+	else
+	{
+		std::vector<int> v_L(dq_data.begin(), dq_data.begin() + (dq_data.size() / 2)); // Subvector izquierdo
+		std::vector<int> v_R(dq_data.begin() + (dq_data.size() / 2), dq_data.end() ); // Subvector derecho
+
+		// organizar
+		runContainer_one(v_L);
+		runContainer_one(v_R);
+
+		// unir
+		size_t i_v_L = 0;
+		size_t i_v_R = 0;
+		size_t i_vec_data = 0;
+
+		while(i_v_L < v_L.size() && i_v_R < v_R.size()){
+			if (v_L[i_v_L] < v_R[i_v_R]){
+				dq_data[i_vec_data] = v_L[i_v_L];
+				i_v_L++;
+			}else{
+				dq_data[i_vec_data] = v_R[i_v_R];
+				i_v_R++;
+			}
+			i_vec_data++;
+		}
+
+
+		while(i_v_L < v_L.size()){
+			dq_data[i_vec_data] = v_L[i_v_L];
+			i_vec_data++;
+			i_v_L++;
+		}
+		while(i_v_R < v_R.size()){
+			dq_data[i_vec_data] = v_R[i_v_R];
+			i_vec_data++;
+			i_v_R++;
+		}
+	}
+
+	this->dq_2 = dq_data;
 }
 
 int PmergeMe::findSpace(std::string str, size_t start){

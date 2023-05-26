@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/25 16:16:52 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:30:16 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,27 @@ class PmergeMe
     std::string organized_numbers;
 
     std::vector<int> vec;
+    std::vector<int> vec_2;
     std::chrono::high_resolution_clock::time_point start_1;
     std::chrono::high_resolution_clock::time_point end_1;
 
     std::deque<int> dq;
+    std::deque<int> dq_2;
     std::chrono::high_resolution_clock::time_point start_2;
     std::chrono::high_resolution_clock::time_point end_2;
 
     // Bubble Sort
-    void runContainer_one(void);
-    void runContainer_two(void);
+    void runContainer_one(std::vector<int> &vec_data);
+    void runContainer_two(std::deque<int> dq_data);
     void printResult(void);
     void check(std::string str);
 
     int findSpace(std::string str,size_t  start);
     int findNumber(std::string str);
 
-    void saveData_algorithme(std::string data);
+    void saveData_algorithme_one(std::string data);
+    void saveData_algorithme_two(std::string data);
+
 };
 
 #endif
