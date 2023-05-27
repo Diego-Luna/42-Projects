@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/26 10:21:53 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:44:18 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ BitcoinExchange::BitcoinExchange(void)
 	this->max = 0;
 	this->name = "none";
 	return ;
+}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &copy){
+	this->max = copy.max ;
+  this->name = copy.name ;
+  this->_errorMessage = copy._errorMessage ;
+
+  this->m1 = copy.m1 ;
+  this->itr = copy.itr ;
 }
 
 BitcoinExchange::BitcoinExchange(const std::string& databaseFile)
@@ -50,7 +58,8 @@ void BitcoinExchange::runData(void){
 			throw fileError();
 		}
 	}	catch(const std::exception& e){
-		std::cerr << e.what() << '\n';
+		// std::cout << e.what() << '\n';
+		std::cout << e.what() << std::endl;;
 		return;
 	}
 
@@ -59,19 +68,19 @@ void BitcoinExchange::runData(void){
 
 	for (itr = m1.begin(); itr != m1.end(); ++itr)
 	{
-		try
-		{
+		// try
+		// {
 				if (checkMount(itr->second) == true)
 				{
 					date = (itr->second.substr(0, itr->second.find(' ')));
 					number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
 					std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
 				}
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << date << " | "<< number << '\n';
-		}
+		// }
+		// catch(const std::exception& e)
+		// {
+		// 	std::cout << e.what() << date << " | "<< number << '\n';
+		// }
 	}
 }
 
@@ -80,24 +89,52 @@ BitcoinExchange::~BitcoinExchange(void) {
 }
 
 bool BitcoinExchange::checkMount(std::string& data){
-	try{
+
+	if (data.length() == 0){
+		return false;
+	}
+
+	try
+	{
 		if (_checkdata(data) == false){ // find caracter, check data
-			throw dataError();
+			throw formatWrong();
 		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << data << std::endl;
+		return false;
+	}
+
+	try{
+		if (data.length() == 0){
+			return false;
+		}
+
 		if (_checkvalue(data) == false){ // find caracter, check number
 			throw valueError();
 		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+		// std::cout << e.what() << data << '\n';
+		return false;
+	}
+
+	try
+	{
 		if (data.find('|') == std::string::npos ||
 				numberCaracterRepeat(data, '|') != 1 ||
 				numberCaracterRepeat(data, '-') != 2 ||
 				numberCaracterRepeat(data, ' ') != 2 ||
 				data.find('|') != 11){
-		throw formatWrong();
-		}
+					throw formatWrong();
+			}
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << data << '\n';
+		std::cout << e.what() << std::endl;
 		return false;
 	}
 
@@ -106,9 +143,17 @@ bool BitcoinExchange::checkMount(std::string& data){
 
 bool BitcoinExchange::_checkvalue(std::string& data){
 	std::string value = data.substr(data.find('|') + 1, data.length());
-
 	int numberMount = std::stoll(value);
 	int number_point = 0;
+
+
+	if (value.length() > 3){
+		return false;
+	}
+	if (numberMount < 0)
+	{
+			throw negativetWrong();
+	}
 
 	for (size_t i = 0; i < value.length(); i++)
 	{
@@ -121,7 +166,7 @@ bool BitcoinExchange::_checkvalue(std::string& data){
 				return false;
 		}
 	}
-	if (numberMount > 1000  || numberMount < 0)
+	if (numberMount > 1000)
 	{
 		return false;
 	}
@@ -129,11 +174,11 @@ bool BitcoinExchange::_checkvalue(std::string& data){
 }
 
 bool BitcoinExchange::_checkdata(std::string& data){
-	
+
 	// (void)data;
-	int numberYear = std::stoi(data.substr(0, 4));
-	int numberMount = std::stoi(data.substr(5, 2));
-	int numberDay = std::stoi(data.substr(8, 2));
+	int numberYear = std::stoll(data.substr(0, 4));
+	int numberMount = std::stoll(data.substr(5, 2));
+	int numberDay = std::stoll(data.substr(8, 2));
 
   // // Convertir el fragmento a un valor entero
 	if (data[4] != '-' || data[7] != '-'){
@@ -174,12 +219,11 @@ bool BitcoinExchange::_checkdata(std::string& data){
 		return false;
 	}
 
-
-	if (numberYear % 4 == 0 && numberMount == 2 && numberDay != 29)
+	if (numberYear % 4 == 0 && numberMount == 2 && numberDay > 29)
 	{
 		return false;
 	}
-	else if (numberMount == 2 && numberDay != 28) {
+	else if ( numberYear % 4 == 1  && numberMount == 2 && numberDay != 28) {
 		return false;
 	}
 
@@ -200,9 +244,9 @@ int BitcoinExchange::numberCaracterRepeat(std::string& data, char c){
 }
 
 float BitcoinExchange::getNumberOfDataset(std::string& date){
-	int  c_year = std::stoi(date.substr(0, 4));
-	int  c_mount = std::stoi(date.substr(5, 2));
-	int  c_day = std::stoi(date.substr(8, 2));
+	int  c_year = std::stoll(date.substr(0, 4));
+	int  c_mount = std::stoll(date.substr(5, 2));
+	int  c_day = std::stoll(date.substr(8, 2));
 
 	size_t i = 0;
 
@@ -221,9 +265,9 @@ float BitcoinExchange::getNumberOfDataset(std::string& date){
 
 	while (std::getline(input_file, c_line)) {
 
-		c_line_year = std::stoi(c_line.substr(0, 4));
-		c_line_mount = std::stoi(c_line.substr(5, 2));
-		c_line_day = std::stoi(c_line.substr(8, 2));
+		c_line_year = std::stoll(c_line.substr(0, 4));
+		c_line_mount = std::stoll(c_line.substr(5, 2));
+		c_line_day = std::stoll(c_line.substr(8, 2));
 
 		if (i == 0 && c_year < c_line_year){
 			throw databaseError();
@@ -271,15 +315,15 @@ int BitcoinExchange::aNumbers(int number){
 
 // try{} cath{}
 const char* BitcoinExchange::formatWrong::what() const throw() {
-  return "Each line in this file must use the following format: 'data | value' :  ";
+  return "Error: bad input => ";
 }
 
 const char* BitcoinExchange::dataError::what() const throw() {
-    return "A valid data will always be in the following format: Year-Month-Day : ";
+    return "Error: A valid data will always be in the following format: Year-Month-Day : ";
 }
 
 const char* BitcoinExchange::valueError::what() const throw() {
-    return "A valid value must be either a float or a positive integer between 0 and 1000 : ";
+    return "Error: too large a number.";
 }
 
 const char* BitcoinExchange::fileError::what() const throw() {
@@ -290,3 +334,21 @@ const char* BitcoinExchange::databaseError::what() const throw() {
     return "Error: database error :" ;
 }
 
+const char* BitcoinExchange::negativetWrong::what() const throw() {
+    return "Error: not a positive number." ;
+}
+
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy)
+{
+    if (this != &copy)
+    {
+      this->max = copy.max;
+  		this->name = copy.name;
+  		this->_errorMessage = copy._errorMessage;
+
+  		this->m1 = copy.m1;
+  		this->itr = copy.itr;
+    }
+    return *this;
+}

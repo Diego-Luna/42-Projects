@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/26 11:24:03 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:20:45 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ class RPN
 {
   public:
 		RPN(void);
-		RPN(const std::string& databaseFile);
+		RPN(const RPN& copy);
     ~RPN(void);
 
     void saveInfo(std::string& data);
     void getResult(void);
 
+    RPN &operator=(const RPN &copy);
 
     // Error -> try cath
 		class Error : public std::exception {

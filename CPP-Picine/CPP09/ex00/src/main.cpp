@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 19:00:50 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/24 10:24:29 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 17:46:45 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@ int main(int argc, char const *argv[])
 	}
 
 	BitcoinExchange bitcon(argv[1]);
+	BitcoinExchange bitcon_2("ini2.txt");
+	BitcoinExchange bitcon_3(bitcon);
 
-	bitcon.runData();
+	bitcon = bitcon_2;
+
+
+	bitcon_3.runData();
 
 	return 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/27 12:42:51 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:50:11 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ class PmergeMe
 {
   public:
 		PmergeMe(void);
+    PmergeMe(const PmergeMe &copy);
     ~PmergeMe(void);
 
     void saveData(char *argv[], int argc);
     void runOrganiseData(void);
 
+    PmergeMe &operator=(const PmergeMe &copy);
 
     // Error -> try cath
 		class Error : public std::exception {
@@ -42,7 +44,6 @@ class PmergeMe
     int numberNumbers;
     bool error;
     std::string original_numbers;
-    std::string organized_numbers;
 
     std::vector<int> vec;
     std::vector<int> vec_2;

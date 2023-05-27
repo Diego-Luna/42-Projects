@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/26 11:40:50 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:21:17 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,22 @@
 RPN::RPN(void)
 {
 	this->result = 0;
-	this->error = false;
+	this->error = true;
 	this->numberNumbers = 0;
+	return;
+}
+
+RPN::RPN(const RPN& copy)
+{
+  this->error = copy.error;
+	this->result = copy.result;
+  this->numberNumbers = copy.numberNumbers;
+
+  this->arr = copy.arr;
+  this->it = copy.it;
+
+  this->tem_arr = copy.tem_arr;
+  this->tem_it = copy.tem_it;
 	return;
 }
 
@@ -45,6 +59,7 @@ void RPN::saveInfo(std::string& data){
 			this->it++;
 		}
 		this->it = this->arr.begin();
+		this->error = false;
 	}	catch(const std::exception& e){
 		std::cerr << e.what() << '\n';
 		this->error = true;
@@ -106,7 +121,10 @@ void RPN::getResult(void){
 		{
 			for(this->tem_it = this->tem_arr.begin(); this->tem_it < this->tem_arr.end(); this->tem_it++){
 				// (*this->tem_it > 0 )? std::cout << *this->tem_it << " ": true;
-				((*this->tem_it).empty() == false )? std::cout << *this->tem_it << " ": true;
+				// ((*this->tem_it).empty() == false )? std::cout << *this->tem_it << " " : "true";
+				if ((*this->tem_it).empty() == false ){
+					std::cout << *this->tem_it << " ";
+				}
 			}
 		}
 		else{
@@ -161,7 +179,7 @@ bool RPN::checkData(std::string& data){
 
 	bool number = false;
 	bool signo = false;
-	size_t tem = 0;
+	// size_t tem = 0;
 
 	int numberOfNumbers = 0;
 	// check number y space,
@@ -186,7 +204,7 @@ bool RPN::checkData(std::string& data){
 		{
 			if (number  == false){
 				number = true;
-				tem++;
+				// tem++;
 			}
 			signo = false;
 		}
@@ -212,4 +230,20 @@ bool RPN::checkData(std::string& data){
 
 const char* RPN::Error::what() const throw() {
     return "Error";
+}
+
+
+RPN &RPN::operator=(const RPN &copy)
+{
+  if (this != &copy)
+  {
+		this->error = copy.error;
+		this->result = copy.result;
+  	this->numberNumbers = copy.numberNumbers;
+  	this->arr = copy.arr;
+  	this->it = copy.it;
+  	this->tem_arr = copy.tem_arr;
+  	this->tem_it = copy.tem_it;
+  }
+    return *this;
 }

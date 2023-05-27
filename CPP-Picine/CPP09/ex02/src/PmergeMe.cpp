@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/27 12:43:06 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 18:57:13 by diegofranci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,31 @@ PmergeMe::~PmergeMe(void) {
 PmergeMe::PmergeMe(void)
 {
 	this->numberNumbers = 0;
-	this->error = false;
+	this->error = true;
   this->original_numbers = "";
-  this->organized_numbers = "";
+	return;
+}
+PmergeMe::PmergeMe(const PmergeMe &copy)
+{
+	this->numberNumbers = copy.numberNumbers;
+  this->error = copy.error;
+  this->original_numbers = copy.original_numbers;
+
+  this->vec = copy.vec;
+  this->vec_2 = copy.vec_2;
+  this->start_1 = copy.start_1;
+  this->end_1 = copy.end_1;
+
+  this->dq = copy.dq;
+  this->dq_2 = copy.dq_2;
+  this->start_2 = copy.start_2;
+  this->end_2 = copy.end_2;
 	return;
 }
 
 void PmergeMe::saveData(char *argv[], int argc){
 	if (argc == 2){
 		std::string str(argv[1]);
-		// saveData_algorithme(str);
 		this->original_numbers = str;
 		check(str);
 	}else{
@@ -37,8 +52,6 @@ void PmergeMe::saveData(char *argv[], int argc){
 			tem.append(" ");
 			tem.append(argv[i]);
 		}
-		std::cout << "-> tem :" << tem << std::endl;
-		// saveData_algorithme(tem);
 		this->original_numbers = tem;
 		check(tem);
 	}
@@ -58,6 +71,11 @@ void PmergeMe::saveData_algorithme_one(std::string data){
 		cut_start = findNumber(tem);
 		cut_end = findSpace(tem, cut_start);
 		number = std::stoll(tem.substr(cut_start, cut_end - cut_start));
+		if (tem.substr(cut_start, cut_end - cut_start).length() > 10 ||
+				(tem.substr(cut_start, cut_end - cut_start).length() == 10 && tem.substr(cut_start, cut_end - cut_start) > "2147483647"))
+		{
+			throw Error();
+		}
 		this->vec.push_back(number);
 		if (cut_end < tem.length()){
 			tem = tem.substr(cut_end + 1, tem.length() + 1);
@@ -79,6 +97,12 @@ void PmergeMe::saveData_algorithme_two(std::string data){
 		cut_start = findNumber(tem);
 		cut_end = findSpace(tem, cut_start);
 		number = std::stoll(tem.substr(cut_start, cut_end - cut_start));
+
+		if (tem.substr(cut_start, cut_end - cut_start).length() > 10 ||
+				(tem.substr(cut_start, cut_end - cut_start).length() == 10 && tem.substr(cut_start, cut_end - cut_start) > "2147483647"))
+		{
+			throw Error();
+		}
 		this->dq.push_back(number);
 		if (cut_end < tem.length()){
 			tem = tem.substr(cut_end + 1, tem.length() + 1);
@@ -92,26 +116,36 @@ void PmergeMe::runOrganiseData(void){
 		return;
 	}
 
-	// this->start_1 = std::chrono::high_resolution_clock::now();
-	// // container 1
-	// saveData_algorithme_one(this->original_numbers);
-	// this->vec_2 = this->vec;
-	// runContainer_one(this->vec_2);
-	// this->end_1 = std::chrono::high_resolution_clock::now();
+	try
+	{
+		this->start_1 = std::chrono::high_resolution_clock::now();
+		// container 1
+		saveData_algorithme_one(this->original_numbers);
+		this->vec_2 = this->vec;
+		runContainer_one(this->vec_2);
+		this->end_1 = std::chrono::high_resolution_clock::now();
 
-	this->start_2 = std::chrono::high_resolution_clock::now();
-	// // // container 2
-	saveData_algorithme_two(this->original_numbers);
-	this->dq_2 = this->dq;
-	runContainer_two(this->dq);
-	this->end_2 = std::chrono::high_resolution_clock::now();
+		this->start_2 = std::chrono::high_resolution_clock::now();
+		// container 2
+		saveData_algorithme_two(this->original_numbers);
+		this->dq_2 = this->dq;
+		runContainer_two(this->dq);
+		this->end_2 = std::chrono::high_resolution_clock::now();
+		}
+		catch(const std::exception& e)
+		{
+			std::cout << e.what() << std::endl;;
+			this->error = true;
+		}
+	
 
 	printResult();
 }
 
 // merge-insert sort vec
 void PmergeMe::runContainer_one(std::vector<int> &vec_data){ // vector
-	size_t limit = 5;
+	// size_t limit = 5;
+	size_t limit = this->numberNumbers / 10;
 
 	if (vec_data.size() == 1)
 		return;
@@ -175,7 +209,8 @@ void PmergeMe::runContainer_one(std::vector<int> &vec_data){ // vector
 // merge-insert sort  deque
 void PmergeMe::runContainer_two(std::deque<int> &dq_data){ // vector
 
-	size_t limit = 5;
+	// size_t limit = 5;
+	size_t limit = this->numberNumbers / 10;
 
 	if (dq_data.size() == 1)
 		return;
@@ -273,7 +308,7 @@ void PmergeMe::check(std::string str){
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << std::endl;
 		this->error = true;
 	}
 }
@@ -291,13 +326,34 @@ void PmergeMe::printResult(void){
 	}
 	std::cout << std::endl;
 
-	// std::chrono::duration<long long, std::ratio<1, 1000000000> > duration_1 = std::chrono::duration_cast<std::chrono::nanoseconds>(this->end_1 - this->start_1);
+	std::chrono::duration<long long, std::ratio<1, 1000000000> > duration_1 = std::chrono::duration_cast<std::chrono::nanoseconds>(this->end_1 - this->start_1);
 	std::chrono::duration<long long, std::ratio<1, 1000000000> > duration_2 = std::chrono::duration_cast<std::chrono::nanoseconds>(this->end_2 - this->start_2);
 
-	// std::cout << " Time to process a range of "<< this->numberNumbers << " elements with std::vector : " << duration_1.count() << " us" << std::endl;
+	std::cout << " Time to process a range of "<< this->numberNumbers << " elements with std::vector : " << duration_1.count() << " us" << std::endl;
 	std::cout << " Time to process a range of "<< this->numberNumbers << " elements with std::deque  : " << duration_2.count() << " us" << std::endl;
 }
 
 const char* PmergeMe::Error::what() const throw() {
     return "Error";
+}
+
+PmergeMe &PmergeMe::operator=(const PmergeMe &copy)
+{
+  if (this != &copy)
+  {
+		this->numberNumbers = copy.numberNumbers;
+  	this->error = copy.error;
+  	this->original_numbers = copy.original_numbers;
+
+  	this->vec = copy.vec;
+  	this->vec_2 = copy.vec_2;
+  	this->start_1 = copy.start_1;
+  	this->end_1 = copy.end_1;
+
+  	this->dq = copy.dq;
+  	this->dq_2 = copy.dq_2;
+  	this->start_2 = copy.start_2;
+  	this->end_2 = copy.end_2;
+  }
+    return *this;
 }
