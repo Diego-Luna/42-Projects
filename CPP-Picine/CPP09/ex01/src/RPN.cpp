@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/27 18:21:17 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/05/27 19:53:26 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,12 @@ void RPN::getResult(void){
 
 		for(this->it = this->arr.begin(); this->it < this->arr.end(); this->it++)
 		{
+
 			if (isStringNumber(*this->it) == true)
 			{
+				if (std::stoll((*this->it)) > 2147483647){
+					throw Error();
+				}
 				// *this->tem_it = std::stoi(*this->it);
 				*this->tem_it = *this->it;
 				this->tem_it++;

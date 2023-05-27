@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/27 17:44:18 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/05/27 19:48:03 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ BitcoinExchange::BitcoinExchange(const std::string& databaseFile)
 }
 
 void BitcoinExchange::runData(void){
-	// std::string read;
 	std::string date;
 	std::string number;
 
@@ -58,7 +57,6 @@ void BitcoinExchange::runData(void){
 			throw fileError();
 		}
 	}	catch(const std::exception& e){
-		// std::cout << e.what() << '\n';
 		std::cout << e.what() << std::endl;;
 		return;
 	}
@@ -68,19 +66,12 @@ void BitcoinExchange::runData(void){
 
 	for (itr = m1.begin(); itr != m1.end(); ++itr)
 	{
-		// try
-		// {
-				if (checkMount(itr->second) == true)
-				{
-					date = (itr->second.substr(0, itr->second.find(' ')));
-					number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
-					std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
-				}
-		// }
-		// catch(const std::exception& e)
-		// {
-		// 	std::cout << e.what() << date << " | "<< number << '\n';
-		// }
+		if (checkMount(itr->second) == true)
+		{
+			date = (itr->second.substr(0, itr->second.find(' ')));
+			number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
+			std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
+		}
 	}
 }
 
@@ -143,12 +134,12 @@ bool BitcoinExchange::checkMount(std::string& data){
 
 bool BitcoinExchange::_checkvalue(std::string& data){
 	std::string value = data.substr(data.find('|') + 1, data.length());
+	std::string tem = value.substr(1, value.length());
 	int numberMount = std::stoll(value);
 	int number_point = 0;
 
-
-	if (value.length() > 3){
-		return false;
+	if (tem.length() > 4 || (tem.length() == 4 && tem > "1000")){
+		throw valueError();
 	}
 	if (numberMount < 0)
 	{

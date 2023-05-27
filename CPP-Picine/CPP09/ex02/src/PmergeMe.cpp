@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/27 18:57:13 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/05/27 19:55:01 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,6 @@ void PmergeMe::saveData_algorithme_one(std::string data){
 	size_t cut_start;
 	size_t cut_end;
 	int number;
-
-	// this->original_numbers = data;
-	// check(data);
 
 	for (int i = 0; i < this->numberNumbers; i++)
 	{
