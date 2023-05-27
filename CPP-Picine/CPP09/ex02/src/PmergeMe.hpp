@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/26 15:30:16 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 12:42:51 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ class PmergeMe
 
     // Bubble Sort
     void runContainer_one(std::vector<int> &vec_data);
-    void runContainer_two(std::deque<int> dq_data);
+    void runContainer_two(std::deque<int> &dq_data);
     void printResult(void);
     void check(std::string str);
 

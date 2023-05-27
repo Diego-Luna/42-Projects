@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/26 15:46:26 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/27 12:43:06 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,18 +92,18 @@ void PmergeMe::runOrganiseData(void){
 		return;
 	}
 
-	this->start_1 = std::chrono::high_resolution_clock::now();
-	// container 1
-	saveData_algorithme_one(this->original_numbers);
-	this->vec_2 = this->vec;
-	runContainer_one(this->vec_2);
-	this->end_1 = std::chrono::high_resolution_clock::now();
+	// this->start_1 = std::chrono::high_resolution_clock::now();
+	// // container 1
+	// saveData_algorithme_one(this->original_numbers);
+	// this->vec_2 = this->vec;
+	// runContainer_one(this->vec_2);
+	// this->end_1 = std::chrono::high_resolution_clock::now();
 
 	this->start_2 = std::chrono::high_resolution_clock::now();
-	// // container 2
+	// // // container 2
 	saveData_algorithme_two(this->original_numbers);
 	this->dq_2 = this->dq;
-	runContainer_two(this->dq_2);
+	runContainer_two(this->dq);
 	this->end_2 = std::chrono::high_resolution_clock::now();
 
 	printResult();
@@ -173,7 +173,7 @@ void PmergeMe::runContainer_one(std::vector<int> &vec_data){ // vector
 }
 
 // merge-insert sort  deque
-void PmergeMe::runContainer_two(std::deque<int> dq_data){ // vector
+void PmergeMe::runContainer_two(std::deque<int> &dq_data){ // vector
 
 	size_t limit = 5;
 
@@ -197,12 +197,12 @@ void PmergeMe::runContainer_two(std::deque<int> dq_data){ // vector
 	}
 	else
 	{
-		std::vector<int> v_L(dq_data.begin(), dq_data.begin() + (dq_data.size() / 2)); // Subvector izquierdo
-		std::vector<int> v_R(dq_data.begin() + (dq_data.size() / 2), dq_data.end() ); // Subvector derecho
+		std::deque<int> v_L(dq_data.begin(), dq_data.begin() + (dq_data.size() / 2)); // Subvector izquierdo
+		std::deque<int> v_R(dq_data.begin() + (dq_data.size() / 2), dq_data.end() ); // Subvector derecho
 
 		// organizar
-		runContainer_one(v_L);
-		runContainer_one(v_R);
+		runContainer_two(v_L);
+		runContainer_two(v_R);
 
 		// unir
 		size_t i_v_L = 0;
@@ -226,6 +226,7 @@ void PmergeMe::runContainer_two(std::deque<int> dq_data){ // vector
 			i_vec_data++;
 			i_v_L++;
 		}
+
 		while(i_v_R < v_R.size()){
 			dq_data[i_vec_data] = v_R[i_v_R];
 			i_vec_data++;
@@ -233,7 +234,7 @@ void PmergeMe::runContainer_two(std::deque<int> dq_data){ // vector
 		}
 	}
 
-	this->dq_2 = dq_data;
+	// this->dq = dq_data;
 }
 
 int PmergeMe::findSpace(std::string str, size_t start){
@@ -281,19 +282,19 @@ void PmergeMe::printResult(void){
 	if (this->error == true)
 		return;
 
-	std::vector<int>::iterator i;
+	std::deque<int>::iterator i;
 
 	std::cout << "Before:	" << this->original_numbers << std::endl;
 	std::cout << "After:	";
-	for (i = this->vec.begin(); i < this->vec.end(); i++){
+	for (i = this->dq.begin(); i < this->dq.end(); i++){
 		std::cout << *i << " ";
 	}
 	std::cout << std::endl;
 
-	std::chrono::duration<long long, std::ratio<1, 1000000000> > duration_1 = std::chrono::duration_cast<std::chrono::nanoseconds>(this->end_1 - this->start_1);
+	// std::chrono::duration<long long, std::ratio<1, 1000000000> > duration_1 = std::chrono::duration_cast<std::chrono::nanoseconds>(this->end_1 - this->start_1);
 	std::chrono::duration<long long, std::ratio<1, 1000000000> > duration_2 = std::chrono::duration_cast<std::chrono::nanoseconds>(this->end_2 - this->start_2);
 
-	std::cout << " Time to process a range of "<< this->numberNumbers << " elements with std::vector : " << duration_1.count() << " us" << std::endl;
+	// std::cout << " Time to process a range of "<< this->numberNumbers << " elements with std::vector : " << duration_1.count() << " us" << std::endl;
 	std::cout << " Time to process a range of "<< this->numberNumbers << " elements with std::deque  : " << duration_2.count() << " us" << std::endl;
 }
 
