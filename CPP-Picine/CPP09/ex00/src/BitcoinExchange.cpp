@@ -6,11 +6,15 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/27 19:48:03 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/28 18:45:10 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+BitcoinExchange::~BitcoinExchange(void) {
+	return;
+}
 
 BitcoinExchange::BitcoinExchange(void)
 {
@@ -70,13 +74,13 @@ void BitcoinExchange::runData(void){
 		{
 			date = (itr->second.substr(0, itr->second.find(' ')));
 			number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
-			std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
+			try{
+				std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
+			}catch(const std::exception& e){
+				std::cout << e.what() << std::endl;;
+			}
 		}
 	}
-}
-
-BitcoinExchange::~BitcoinExchange(void) {
-	return;
 }
 
 bool BitcoinExchange::checkMount(std::string& data){
@@ -87,7 +91,7 @@ bool BitcoinExchange::checkMount(std::string& data){
 
 	try
 	{
-		if (_checkdata(data) == false){ // find caracter, check data
+		if (_checkdata(data) == false){
 			throw formatWrong();
 		}
 	}
@@ -102,24 +106,23 @@ bool BitcoinExchange::checkMount(std::string& data){
 			return false;
 		}
 
-		if (_checkvalue(data) == false){ // find caracter, check number
+		if (_checkvalue(data) == false){
 			throw valueError();
 		}
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
-		// std::cout << e.what() << data << '\n';
 		return false;
 	}
 
 	try
 	{
+				// data.find('|') != 11){
 		if (data.find('|') == std::string::npos ||
 				numberCaracterRepeat(data, '|') != 1 ||
 				numberCaracterRepeat(data, '-') != 2 ||
-				numberCaracterRepeat(data, ' ') != 2 ||
-				data.find('|') != 11){
+				numberCaracterRepeat(data, ' ') != 2 ){
 					throw formatWrong();
 			}
 	}
@@ -135,10 +138,11 @@ bool BitcoinExchange::checkMount(std::string& data){
 bool BitcoinExchange::_checkvalue(std::string& data){
 	std::string value = data.substr(data.find('|') + 1, data.length());
 	std::string tem = value.substr(1, value.length());
-	int numberMount = std::stoll(value);
+	// int numberMount = std::stoll(value);
+	float numberMount = std::stof(value);
 	int number_point = 0;
 
-	if (tem.length() > 4 || (tem.length() == 4 && tem > "1000")){
+	if (numberMount > 1000.0){
 		throw valueError();
 	}
 	if (numberMount < 0)
@@ -164,19 +168,57 @@ bool BitcoinExchange::_checkvalue(std::string& data){
 	return true;
 }
 
+int BitcoinExchange::lengCut(std::string str, size_t start, char find){
+
+	size_t end = 0;
+
+	if (numberCaracterRepeat(str, find) < 1 ){
+		throw formatWrong();
+	}
+
+	for (size_t i = start; i < str.length(); i++){
+		if (str[i] == find)
+		{
+			end = i;
+			break;
+		}
+	}
+	if (end == 0)
+	{
+		// throw formatWrong();
+		std::cout << " ------- no ------- " << std::endl;
+	}
+	return (end - start);
+}
+
 bool BitcoinExchange::_checkdata(std::string& data){
 
-	// (void)data;
-	int numberYear = std::stoll(data.substr(0, 4));
-	int numberMount = std::stoll(data.substr(5, 2));
-	int numberDay = std::stoll(data.substr(8, 2));
+	// int numberYear = std::stoll(data.substr(0, 4));
+	// int numberMount = std::stoll(data.substr(5, 2));
+	// int numberDay = std::stoll(data.substr(8, 2));
 
-  // // Convertir el fragmento a un valor entero
-	if (data[4] != '-' || data[7] != '-'){
-		return (false);
-	}
+	size_t year_lengt = lengCut(data, 0, '-');
+	size_t mount_lengt = lengCut(data, year_lengt + 1, '-');
+	size_t day_lengt = lengCut(data, mount_lengt + year_lengt + 2, ' ');
+
+	std::cout << "\nyear_lengt =" << year_lengt << "= =" << data.substr(0, year_lengt) << std::endl;;
+	std::cout << "mount_lengt =" << mount_lengt << "= =" << data.substr(year_lengt + 1, mount_lengt) << std::endl;;
+	std::cout << "day_lengt =" << day_lengt << "= =" << data.substr(mount_lengt + year_lengt + 2, day_lengt) << "\n" << std::endl;;
+
+	// int numberYear = std::stoll(data.substr(0, year_lengt));
+	int numberMount = std::stoll(data.substr(mount_lengt + year_lengt + 1, day_lengt));
+	// int numberDay = std::stoll(data.substr(year_lengt + 1, mount_lengt));
+	// int numberYear = std::stoll(data.substr(0, 4));
+	// int numberDay = std::stoll(data.substr(5, 7));
+	// int numberMount = std::stoll(data.substr(7, 3));
+
+	// if (data[4] != '-' || data[7] != '-'){
+		// return (false);
+	// }
+
 	// // year
-	for (size_t i = 0; i < 4; i++)
+	// for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < year_lengt; i++)
 	{
 		if (!(data[i] >= '0' && data[i] <= '9'))
 		{
@@ -184,7 +226,8 @@ bool BitcoinExchange::_checkdata(std::string& data){
 		}
 	}
 	// // mount
-	for (size_t i = 5; i <= 6; i++)
+	// for (size_t i = 5; i <= 6; i++)
+	for (size_t i = year_lengt + 1; i <= (mount_lengt + year_lengt + day_lengt + 1); i++)
 	{
 		if (!(data[i] >= '0' && data[i] <= '9'))
 		{
@@ -195,28 +238,29 @@ bool BitcoinExchange::_checkdata(std::string& data){
 	{
 		return (false);
 	}
-	// day
-	for (size_t i = 8; i <= 9; i++)
-	{
-		if (!(data[i] >= '0' && data[i] <= '9'))
-		{
-			return (false);
-		}
-	}
-	if ((numberMount == 1 || numberMount == 3 || numberMount == 5 || numberMount == 7 || numberMount == 8 || numberMount == 10 || numberMount == 12 ) && numberDay > 31){
-		return false;
-	}
-	if ((numberMount == 4 || numberMount == 6 || numberMount == 9 || numberMount == 11 ) && numberDay > 30){
-		return false;
-	}
+	// // day
+	// // for (size_t i = 8; i <= 9; i++)
+	// for (size_t i = (mount_lengt + year_lengt + 2); i <= (mount_lengt + year_lengt + 2); i++)
+	// {
+	// 	if (!(data[i] >= '0' && data[i] <= '9'))
+	// 	{
+	// 		return (false);
+	// 	}
+	// }
+	// if ((numberMount == 1 || numberMount == 3 || numberMount == 5 || numberMount == 7 || numberMount == 8 || numberMount == 10 || numberMount == 12 ) && numberDay > 31){
+	// 	return false;
+	// }
+	// if ((numberMount == 4 || numberMount == 6 || numberMount == 9 || numberMount == 11 ) && numberDay > 30){
+	// 	return false;
+	// }
 
-	if (numberYear % 4 == 0 && numberMount == 2 && numberDay > 29)
-	{
-		return false;
-	}
-	else if ( numberYear % 4 == 1  && numberMount == 2 && numberDay != 28) {
-		return false;
-	}
+	// if (numberYear % 4 == 0 && numberMount == 2 && numberDay > 29)
+	// {
+	// 	return false;
+	// }
+	// else if ( numberYear % 4 == 1  && numberMount == 2 && numberDay != 28) {
+	// 	return false;
+	// }
 
 	return true;
 }

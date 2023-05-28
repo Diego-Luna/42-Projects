@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/27 19:53:26 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/28 17:49:01 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,16 +218,16 @@ bool RPN::checkData(std::string& data){
 				number = false;
 			}
 		}
-		if (data[i] == '+' || data[i] == '-' || data[i] == '/' || data[i] == '*'){
-			if (signo == false){
-				signo = true;
-			}else {
-				throw Error();
-			}
-		}
+		// if (data[i] == '+' || data[i] == '-' || data[i] == '/' || data[i] == '*'){
+		// 	if (signo == false){
+		// 		signo = true;
+		// 	}else {
+		// 		throw Error();
+		// 	}
+		// }
 	}
 
-	(numberOfNumbers > 10)? throw Error() : true ;
+	// (numberOfNumbers > 10)? throw Error() : true ;
 
 	return true;
 }
