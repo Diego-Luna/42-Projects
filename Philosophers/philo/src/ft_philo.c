@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 18:21:55 by dluna-lo          #+#    #+#             */
-/*   Updated: 2022/12/28 15:49:43 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/29 08:53:17 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,18 @@ int	ft_eating(t_philo *philo)
 	t_state	*state;
 
 	state = philo->state;
+
 	pthread_mutex_lock(&philo->m_time);
 	philo->t_last_eat = ft_get_time(state);
 	pthread_mutex_unlock(&philo->m_time);
+	
 	if (ft_mutex_message(philo, M_EAT, O_NORMAL) == 0)
 	{
 		ft_mutex_unlock_forks(state, philo);
 		return (0);
 	}
 	ft_sleep(philo->state, philo->time_eat);
+
 	pthread_mutex_lock(&philo->m_eat);
 	philo->n_of_meal--;
 	if (philo->n_of_meal == 0)
@@ -78,6 +81,7 @@ int	ft_eating(t_philo *philo)
 		return (0);
 	}
 	pthread_mutex_unlock(&philo->m_eat);
+
 	ft_mutex_unlock_forks(state, philo);
 	return (1);
 }

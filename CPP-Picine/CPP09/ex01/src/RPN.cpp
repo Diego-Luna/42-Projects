@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/28 17:49:01 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:35:04 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,6 @@ void RPN::getResult(void){
 		if (i != 1 || this->numberNumbers == 1)
 		{
 			for(this->tem_it = this->tem_arr.begin(); this->tem_it < this->tem_arr.end(); this->tem_it++){
-				// (*this->tem_it > 0 )? std::cout << *this->tem_it << " ": true;
-				// ((*this->tem_it).empty() == false )? std::cout << *this->tem_it << " " : "true";
 				if ((*this->tem_it).empty() == false ){
 					std::cout << *this->tem_it << " ";
 				}

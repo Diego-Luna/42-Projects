@@ -6,7 +6,7 @@
 /*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:28 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/28 18:20:30 by dluna-lo         ###   ########.fr       */
+/*   Updated: 2023/05/29 15:35:09 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <map>
 #include <fstream>
+#include <iomanip>
 
 
 class BitcoinExchange
@@ -77,7 +78,8 @@ class BitcoinExchange
     bool _checkdata(std::string& data);
     bool _checkvalue(std::string& data);
 
-    float getNumberOfDataset(std::string& date);
+    // float getNumberOfDataset(std::string& date);
+    double getNumberOfDataset(std::string& date);
     int aNumbers(int number);
 
     int lengCut(std::string str, size_t start, char find);

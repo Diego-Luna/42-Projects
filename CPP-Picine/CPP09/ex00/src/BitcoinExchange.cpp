@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: diegofranciscolunalopez <diegofrancisco    +#+  +:+       +#+        */
+/*   By: dluna-lo <dluna-lo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 18:11:26 by dluna-lo          #+#    #+#             */
-/*   Updated: 2023/05/29 06:41:14 by diegofranci      ###   ########.fr       */
+/*   Updated: 2023/05/29 15:35:10 by dluna-lo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,13 @@ void BitcoinExchange::runData(void){
 	{
 		if (checkMount(itr->second) == true)
 		{
-			// date = (itr->second.substr(0, itr->second.find(' ')));
-			// number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
-			// try{
-			// 	std::cout << date << " => " << std::stof(number) << " = " << (std::stof(number) * getNumberOfDataset(date)) << std::endl;
-			// }catch(const std::exception& e){
-			// 	std::cout << e.what() << std::endl;;
-			// }
+			date = (itr->second.substr(0, itr->second.find(' ')));
+			number = itr->second.substr(itr->second.find('|') + 1, itr->second.length());
+			try{
+				std::cout << date << " => " << std::stof(number) << " = " << (std::stod(number) * getNumberOfDataset(date)) << std::endl;
+			}catch(const std::exception& e){
+				std::cout << e.what() << std::endl;;
+			}
 		}
 	}
 }
@@ -112,13 +112,12 @@ bool BitcoinExchange::checkMount(std::string& data){
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << data << std::endl;
 		return false;
 	}
 
 	try
 	{
-				// data.find('|') != 11){
 		if (data.find('|') == std::string::npos ||
 				numberCaracterRepeat(data, '|') != 1 ||
 				numberCaracterRepeat(data, '-') != 2 ||
@@ -128,7 +127,7 @@ bool BitcoinExchange::checkMount(std::string& data){
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << e.what() << data << std::endl;
 		return false;
 	}
 
@@ -138,7 +137,6 @@ bool BitcoinExchange::checkMount(std::string& data){
 bool BitcoinExchange::_checkvalue(std::string& data){
 	std::string value = data.substr(data.find('|') + 1, data.length());
 	std::string tem = value.substr(1, value.length());
-	// int numberMount = std::stoll(value);
 	float numberMount = std::stof(value);
 	int number_point = 0;
 
@@ -185,39 +183,26 @@ int BitcoinExchange::lengCut(std::string str, size_t start, char find){
 	}
 	if (end == 0)
 	{
-		// throw formatWrong();
-		std::cout << " ------- no ------- " << std::endl;
+		throw formatWrong();
 	}
 	return (end - start);
 }
 
 bool BitcoinExchange::_checkdata(std::string& data){
 
-	// int numberYear = std::stoll(data.substr(0, 4));
-	// int numberMount = std::stoll(data.substr(5, 2));
-	// int numberDay = std::stoll(data.substr(8, 2));
-
 	size_t year_lengt = lengCut(data, 0, '-');
 	size_t mount_lengt = lengCut(data, year_lengt + 1, '-');
 	size_t day_lengt = lengCut(data, mount_lengt + year_lengt + 2, ' ');
 
-	std::cout << "\nyear_lengt =" << year_lengt << "= =" << data.substr(0, year_lengt) << std::endl;;
-	std::cout << "mount_lengt =" << mount_lengt << "= =" << data.substr(year_lengt + 1, mount_lengt) << std::endl;;
-	std::cout << "day_lengt =" << day_lengt << "= =" << data.substr(mount_lengt + year_lengt + 2, day_lengt) << "\n" << std::endl;;
+	int numberYear = std::stoll(data.substr(0, year_lengt));
+	int numberMount = std::stoll(data.substr(year_lengt + 1, day_lengt));
+	int numberDay = std::stoll(data.substr(mount_lengt + year_lengt + 2, mount_lengt));
 
-	// int numberYear = std::stoll(data.substr(0, year_lengt));
-	int numberMount = std::stoll(data.substr(mount_lengt + year_lengt + 1, day_lengt));
-	// int numberDay = std::stoll(data.substr(year_lengt + 1, mount_lengt));
-	// int numberYear = std::stoll(data.substr(0, 4));
-	// int numberDay = std::stoll(data.substr(5, 7));
-	// int numberMount = std::stoll(data.substr(7, 3));
-
-	// if (data[4] != '-' || data[7] != '-'){
-		// return (false);
-	// }
+	if (numberCaracterRepeat(data, '-') != 2){
+		return (false);
+	}
 
 	// // year
-	// for (size_t i = 0; i < 4; i++)
 	for (size_t i = 0; i < year_lengt; i++)
 	{
 		if (!(data[i] >= '0' && data[i] <= '9'))
@@ -226,7 +211,6 @@ bool BitcoinExchange::_checkdata(std::string& data){
 		}
 	}
 	// // mount
-	// for (size_t i = 5; i <= 6; i++)
 	for (size_t i = year_lengt + 1; i < (year_lengt + mount_lengt + 1); i++)
 	{
 		if (!(data[i] >= '0' && data[i] <= '9'))
@@ -234,12 +218,11 @@ bool BitcoinExchange::_checkdata(std::string& data){
 			return (false);
 		}
 	}
-	if (numberMount > 12)
+	if (numberMount > 12 || numberMount <= 0 || numberDay <= 0)
 	{
 		return (false);
 	}
 	// // day
-	// // for (size_t i = 8; i <= 9; i++)
 	for (size_t i = (mount_lengt + year_lengt + 2); i <= (mount_lengt + year_lengt + 2); i++)
 	{
 		if (!(data[i] >= '0' && data[i] <= '9'))
@@ -247,20 +230,20 @@ bool BitcoinExchange::_checkdata(std::string& data){
 			return (false);
 		}
 	}
-	// if ((numberMount == 1 || numberMount == 3 || numberMount == 5 || numberMount == 7 || numberMount == 8 || numberMount == 10 || numberMount == 12 ) && numberDay > 31){
-	// 	return false;
-	// }
-	// if ((numberMount == 4 || numberMount == 6 || numberMount == 9 || numberMount == 11 ) && numberDay > 30){
-	// 	return false;
-	// }
+	if ((numberMount == 1 || numberMount == 3 || numberMount == 5 || numberMount == 7 || numberMount == 8 || numberMount == 10 || numberMount == 12 ) && numberDay > 31){
+		return false;
+	}
+	if ((numberMount == 4 || numberMount == 6 || numberMount == 9 || numberMount == 11 ) && numberDay > 30){
+		return false;
+	}
 
-	// if (numberYear % 4 == 0 && numberMount == 2 && numberDay > 29)
-	// {
-	// 	return false;
-	// }
-	// else if ( numberYear % 4 == 1  && numberMount == 2 && numberDay != 28) {
-	// 	return false;
-	// }
+	if (numberYear % 4 == 0 && numberMount == 2 && numberDay > 29)
+	{
+		return false;
+	}
+	else if ( numberYear % 4 == 1  && numberMount == 2 && numberDay != 28) {
+		return false;
+	}
 
 	return true;
 }
@@ -278,18 +261,15 @@ int BitcoinExchange::numberCaracterRepeat(std::string& data, char c){
 	return (caracterRepit);
 }
 
-float BitcoinExchange::getNumberOfDataset(std::string& date){
+double BitcoinExchange::getNumberOfDataset(std::string& date){
 
-	// size_t year_lengt = lengCut(date, 0, '-');
-	// size_t mount_lengt = lengCut(date, year_lengt + 1, '-');
-	// size_t day_lengt = lengCut(date, mount_lengt + year_lengt + 2, ' ');
+	size_t year_lengt = lengCut(date, 0, '-');
+	size_t mount_lengt = lengCut(date, year_lengt + 1, '-');
+	size_t day_lengt = date.length() - (mount_lengt + year_lengt + 2);
 
-	// int  c_year = std::stoll(date.substr(0, year_lengt));
-	// int  c_mount = std::stoll(date.substr(5, 2));
-	// int  c_day = std::stoll(date.substr(8, 2));
-	int  c_year = std::stoll(date.substr(0, 4));
-	int  c_mount = std::stoll(date.substr(5, 2));
-	int  c_day = std::stoll(date.substr(8, 2));
+	int c_year = std::stoll(date.substr(0, year_lengt));
+	int c_mount = std::stoll(date.substr(year_lengt + 1, mount_lengt));
+	int c_day = std::stoll(date.substr(mount_lengt + year_lengt + 2, day_lengt));
 
 	size_t i = 0;
 
@@ -306,11 +286,19 @@ float BitcoinExchange::getNumberOfDataset(std::string& date){
 	int c_line_mount = 0;
 	int c_line_day = 0;
 
+	size_t tem_year_lengt = 0;
+	size_t tem_mount_lengt = 0;
+	size_t tem_day_lengt = 0;
+
 	while (std::getline(input_file, c_line)) {
 
-		c_line_year = std::stoll(c_line.substr(0, 4));
-		c_line_mount = std::stoll(c_line.substr(5, 2));
-		c_line_day = std::stoll(c_line.substr(8, 2));
+		tem_year_lengt = lengCut(c_line, 0, '-');
+		tem_mount_lengt = lengCut(c_line, tem_year_lengt + 1, '-');
+		tem_day_lengt = lengCut(c_line, tem_mount_lengt + tem_year_lengt + 2, ',');
+
+		c_line_year = std::stoll(c_line.substr(0, tem_year_lengt));
+		c_line_mount = std::stoll(c_line.substr(tem_year_lengt + 1, tem_mount_lengt));
+		c_line_day= std::stoll(c_line.substr(tem_mount_lengt + tem_year_lengt + 2, tem_day_lengt));
 
 		if (i == 0 && c_year < c_line_year){
 			throw databaseError();
@@ -321,15 +309,15 @@ float BitcoinExchange::getNumberOfDataset(std::string& date){
 				c_line_mount == c_mount &&
 				c_line_day == c_day)
 		{
-				return (std::stof(c_line.substr(11, c_line.length())));
+			return (std::stod(c_line.substr(11, c_line.length())));
 		}
 		else if(
-				c_line_year >= c_year &&
-				c_line_mount >= c_mount &&
-				c_line_day >= c_day
+				c_line_year > c_year ||
+				(c_line_year == c_year && c_line_mount > c_mount) ||
+				(c_line_year == c_year && c_line_mount == c_mount && c_line_day > c_day)
 				)
 		{
-			return (std::stof(temp.substr(11, temp.length())));
+			return (std::stod(temp.substr(11, temp.length())));
 		}
 		else
 		{
@@ -341,7 +329,7 @@ float BitcoinExchange::getNumberOfDataset(std::string& date){
 		c_line_year < c_year
 	)
 	{
-		return (std::stof(temp.substr(11, temp.length())));
+		return (std::stod(temp.substr(11, temp.length())));
 	}
 
 	throw databaseError();
